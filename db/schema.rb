@@ -11,7 +11,28 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130410043900) do
+ActiveRecord::Schema.define(:version => 20130410054516) do
+
+  create_table "categories", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "cities", :force => true do |t|
+    t.string   "name"
+    t.integer  "region_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "cities", ["region_id"], :name => "index_cities_on_region_id"
+
+  create_table "regions", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "roles", :force => true do |t|
     t.string   "name"
@@ -23,6 +44,15 @@ ActiveRecord::Schema.define(:version => 20130410043900) do
 
   add_index "roles", ["name", "resource_type", "resource_id"], :name => "index_roles_on_name_and_resource_type_and_resource_id"
   add_index "roles", ["name"], :name => "index_roles_on_name"
+
+  create_table "subcategories", :force => true do |t|
+    t.string   "name"
+    t.integer  "category_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "subcategories", ["category_id"], :name => "index_subcategories_on_category_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
