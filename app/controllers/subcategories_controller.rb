@@ -1,4 +1,5 @@
 class SubcategoriesController < ApplicationController
+  authorize_resource
   # GET /subcategories
   # GET /subcategories.json
   def index

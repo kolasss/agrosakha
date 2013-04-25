@@ -1,0 +1,86 @@
+%h1 Покупка
+
+/ .indextable
+/   %table.table
+/     %tr
+/       %th Title
+/       %th Body
+/       %th Count
+/       %th Count type
+/       %th Price
+/       %th Price type
+/       %th City
+/       %th Category
+/       %th Subcategory
+/       %th User
+/       %th
+/       %th
+/       %th
+
+/     - @buys.each do |buy|
+/       %tr
+/         %td= buy.title
+/         %td= buy.body
+/         %td= buy.count
+/         %td= buy.count_type.name if buy.count_type
+/         %td= buy.price
+/         %td
+/           = show_price_type buy.price_type
+/           = buy.count_type.name if buy.count_type && buy.price_type == 1
+/         %td= buy.city.name if buy.city
+/         %td= buy.category.name
+/         %td= buy.subcategory.name if buy.subcategory
+/         %td= buy.user.name
+/         %td= link_to 'Show', buy
+/         %td= link_to 'Edit', edit_buy_path(buy)
+/         %td= link_to 'Destroy', buy, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+/ %br
+
+/ = link_to 'New Buy', new_buy_path
+.indextable
+  %table.table
+    %tr
+      %th Номер
+      %th Дата подачи
+      %th Title
+      %th Body
+      %th Count
+      %th Count type
+      %th Price
+      %th Price type
+      %th City
+      %th Category
+      %th Subcategory
+      %th User
+      %th
+      %th
+      %th
+
+    - @buys.each do |buy|
+      %tr
+        %td= buy.id
+        %td= l(buy.updated_at, :format => :long)
+        %td= buy.title
+        %td= buy.body
+        %td= buy.count
+        %td= buy.count_type.name if buy.count_type
+        %td= buy.price
+        %td
+          = show_price_type buy.price_type
+          = buy.count_type.name if buy.count_type && buy.price_type == 1
+        %td= buy.city.name if buy.city
+        %td= buy.category.name if buy.category
+        %td= buy.subcategory.name if buy.subcategory
+        %td= buy.user.name
+        %td= link_to 'Show', buy
+        %td
+          - if can? :update, buy
+            = link_to 'Edit', edit_buy_path(buy)
+        %td
+          - if can? :destroy, buy
+            = link_to 'Destroy', buy, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+- if can? :create, Buy
+  = link_to 'New buy', new_buy_path, {class: 'btn'}

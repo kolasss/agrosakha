@@ -1,7 +1,7 @@
 class CreateSubcategories < ActiveRecord::Migration
   def change
     create_table :subcategories do |t|
-      t.string :name
+      t.string :name, :null => false
       t.references :category
 
       t.timestamps

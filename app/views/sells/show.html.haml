@@ -1,0 +1,39 @@
+/ %p#notice= notice
+
+%p
+  %b Title:
+  = @sell.title
+%p
+  %b Body:
+  = @sell.body
+%p
+  %b Count:
+  = @sell.count
+%p
+  %b Count type:
+  = @sell.count_type.name if @sell.count_type
+%p
+  %b Price:
+  = @sell.price
+%p
+  %b Price type:
+  = @sell.price_type
+%p
+  %b City:
+  = @sell.city.name if @sell.city
+%p
+  %b Category:
+  = @sell.category.name if @sell.category
+%p
+  %b Subcategory:
+  = @sell.subcategory.name if @sell.subcategory
+%p
+  %b User:
+  = @sell.user.name
+%p
+  %b Создано:
+  = l(@sell.updated_at, :format => :long)
+- if can? :update, @sell
+  = link_to 'Edit', edit_sell_path(@sell)
+  \|
+= link_to 'Back', sells_path

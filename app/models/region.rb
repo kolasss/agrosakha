@@ -1,7 +1,7 @@
 class Region < ActiveRecord::Base
   attr_accessible :name
 
-  has_many :cities
+  has_many :cities, :dependent => :destroy
 
   validates :name, :presence => true
 end

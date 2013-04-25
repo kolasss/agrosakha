@@ -11,7 +11,27 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130410054516) do
+ActiveRecord::Schema.define(:version => 20130411011355) do
+
+  create_table "buys", :force => true do |t|
+    t.string   "title"
+    t.string   "body"
+    t.float    "count"
+    t.integer  "count_type_id"
+    t.float    "price"
+    t.integer  "price_type"
+    t.integer  "city_id"
+    t.integer  "category_id"
+    t.integer  "subcategory_id"
+    t.integer  "user_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  add_index "buys", ["category_id"], :name => "index_buys_on_category_id"
+  add_index "buys", ["city_id"], :name => "index_buys_on_city_id"
+  add_index "buys", ["subcategory_id"], :name => "index_buys_on_subcategory_id"
+  add_index "buys", ["user_id"], :name => "index_buys_on_user_id"
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -27,6 +47,12 @@ ActiveRecord::Schema.define(:version => 20130410054516) do
   end
 
   add_index "cities", ["region_id"], :name => "index_cities_on_region_id"
+
+  create_table "count_types", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "regions", :force => true do |t|
     t.string   "name"
@@ -44,6 +70,26 @@ ActiveRecord::Schema.define(:version => 20130410054516) do
 
   add_index "roles", ["name", "resource_type", "resource_id"], :name => "index_roles_on_name_and_resource_type_and_resource_id"
   add_index "roles", ["name"], :name => "index_roles_on_name"
+
+  create_table "sells", :force => true do |t|
+    t.string   "title"
+    t.string   "body"
+    t.float    "count"
+    t.integer  "count_type_id"
+    t.float    "price"
+    t.integer  "price_type"
+    t.integer  "city_id"
+    t.integer  "category_id"
+    t.integer  "subcategory_id"
+    t.integer  "user_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  add_index "sells", ["category_id"], :name => "index_sells_on_category_id"
+  add_index "sells", ["city_id"], :name => "index_sells_on_city_id"
+  add_index "sells", ["subcategory_id"], :name => "index_sells_on_subcategory_id"
+  add_index "sells", ["user_id"], :name => "index_sells_on_user_id"
 
   create_table "subcategories", :force => true do |t|
     t.string   "name"

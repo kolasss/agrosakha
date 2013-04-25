@@ -1,0 +1,16 @@
+= simple_form_for(@sell) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :title
+    = f.input :body
+    = f.input :count
+    = f.association :count_type
+    = f.input :price
+    = f.input :price_type
+    = f.association :city
+    = f.association :category
+    = f.association :subcategory
+
+  .form-actions
+    = f.button :submit

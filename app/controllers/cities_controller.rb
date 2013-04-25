@@ -1,4 +1,5 @@
 class CitiesController < ApplicationController
+  authorize_resource
   # GET /cities
   # GET /cities.json
   def index

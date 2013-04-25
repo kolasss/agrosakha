@@ -1,0 +1,49 @@
+ru:
+  "yes": 'Да'
+  "no": 'Нет'
+  "true": "Да"
+  "false": "Нет"
+  # actions:
+  #   edit: "izmenit"
+  #   destroy: "ydalit"
+  Grants:
+    yes: "da"
+  activerecord:
+    models:
+      grant:
+        one: "Грант"
+        other: "Гранты"
+      grantcorp:
+        one: "Грант ЮЛ"
+        other: "Гранты ЮЛ"
+      event:
+        one: "Мероприятие"
+        other: "Мероприятия"
+    attributes:
+      user:
+        login: "Handle"
+      # will translate User attribute "login" as "Handle"
+  unauthorized:
+    manage:
+      all: "Доступ запрещен."
+      user: "Not allowed to manage other user accounts."
+    update:
+      project: "asdNot allowed to update this project."
+
+  will_paginate:
+    previous_label: "&#8592; Пред."
+    next_label: "След. &#8594;"
+    page_gap: "&hellip;"
+
+    page_entries_info:
+      single_page:
+        zero:  "No %{model} found"
+        one:   "Displaying 1 %{model}"
+        other: "Displaying all %{count} %{model}"
+      single_page_html:
+        zero:  "No %{model} found"
+        one:   "Displaying <b>1</b> %{model}"
+        other: "Displaying <b>all&nbsp;%{count}</b> %{model}"
+
+      multi_page: "Displaying %{model} %{from} - %{to} of %{count} in total"
+      multi_page_html: "Displaying %{model} <b>%{from}&nbsp;-&nbsp;%{to}</b> of <b>%{count}</b> in total"

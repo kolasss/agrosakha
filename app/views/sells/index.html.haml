@@ -1,0 +1,71 @@
+%h1 Продажа
+
+%ul
+  - @categories.each do |category|
+    %li
+      = link_to category.name, sells_category_path(category)
+      - if !category.subcategories.empty?
+        %ul
+          - category.subcategories.each do |subcat|
+            %li= link_to subcat.name, sells_subcategory_path(subcat)
+
+= search_form_for @q do |f|
+  = f.label :title_cont
+  = f.text_field :title_cont
+  = f.label :city_id_eq
+  / = f.text_field :city_id_eq
+  / = f.select :city_id_eq, [] +options_from_collection_for_select(@cities, "id", "name")
+  = f.collection_select :city_id_eq, @cities, :id, :name, {:include_blank => "Все"}
+  = f.submit
+
+/ .indextable
+/   %table.table
+/     %tr
+/       %th Номер
+/       %th Дата подачи
+/       %th Title
+/       %th Body
+/       %th Count
+/       %th Count type
+/       %th Price
+/       %th Price type
+/       %th City
+/       %th Category
+/       %th Subcategory
+/       %th User
+/       %th
+/       %th
+/       %th
+
+/     - @sells.each do |sell|
+/       %tr
+/         %td= sell.id
+/         %td= l(sell.updated_at, :format => :long)
+/         %td= sell.title
+/         %td= sell.body
+/         %td= sell.count
+/         %td= sell.count_type.name if sell.count_type
+/         %td= sell.price
+/         %td
+/           = show_price_type sell.price_type
+/           = sell.count_type.name if sell.count_type && sell.price_type == 1
+/         %td= sell.city.name if sell.city
+/         %td= sell.category.name if sell.category
+/         %td= sell.subcategory.name if sell.subcategory
+/         %td= sell.user.name
+/         %td= link_to 'Show', sell
+/         %td
+/           - if can? :update, sell
+/             = link_to 'Edit', edit_sell_path(sell)
+/         %td
+/           - if can? :destroy, sell
+/             = link_to 'Destroy', sell, :method => :delete, :data => { :confirm => 'Are you sure?' }
+/ .apple_pagination
+/   = will_paginate @sells
+
+/ %br
+/ - if can? :update, Sell
+/   = link_to 'New Sell', new_sell_path, {class: 'btn'}
+
+.sellsblock
+  = render 'sells'

@@ -1,0 +1,19 @@
+%h1 Listing count_types
+
+%table.table
+  %tr
+    %th Name
+    %th
+    %th
+    %th
+
+  - @count_types.each do |count_type|
+    %tr
+      %td= count_type.name
+      %td= link_to 'Show', count_type
+      %td= link_to 'Edit', edit_count_type_path(count_type)
+      %td= link_to 'Destroy', count_type, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Count type', new_count_type_path
