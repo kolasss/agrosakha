@@ -1,5 +1,6 @@
 class SellsController < ApplicationController
-  authorize_resource
+  load_and_authorize_resource
+  skip_load_resource :only => [:index, :show_category, :show_subcategory]
   # GET /sells
   # GET /sells.json
   def index
@@ -17,7 +18,7 @@ class SellsController < ApplicationController
   # GET /sells/1
   # GET /sells/1.json
   def show
-    @sell = Sell.find(params[:id])
+    # @sell = Sell.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -28,7 +29,7 @@ class SellsController < ApplicationController
   # GET /sells/new
   # GET /sells/new.json
   def new
-    @sell = Sell.new
+    # @sell = Sell.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -38,13 +39,13 @@ class SellsController < ApplicationController
 
   # GET /sells/1/edit
   def edit
-    @sell = Sell.find(params[:id])
+    # @sell = Sell.find(params[:id])
   end
 
   # POST /sells
   # POST /sells.json
   def create
-    @sell = Sell.new(params[:sell])
+    # @sell = Sell.new(params[:sell])
     @sell.user = current_user
 
     respond_to do |format|
@@ -61,7 +62,8 @@ class SellsController < ApplicationController
   # PUT /sells/1
   # PUT /sells/1.json
   def update
-    @sell = Sell.find(params[:id])
+    # authorize! :update, @sell
+    # @sell = Sell.find(params[:id])
 
     respond_to do |format|
       if @sell.update_attributes(params[:sell])
@@ -77,7 +79,8 @@ class SellsController < ApplicationController
   # DELETE /sells/1
   # DELETE /sells/1.json
   def destroy
-    @sell = Sell.find(params[:id])
+    # authorize! :destroy, @sell
+    # @sell = Sell.find(params[:id])
     @sell.destroy
 
     respond_to do |format|

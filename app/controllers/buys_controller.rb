@@ -58,6 +58,7 @@ class BuysController < ApplicationController
   # PUT /buys/1
   # PUT /buys/1.json
   def update
+    authorize! :update, @buy
     @buy = Buy.find(params[:id])
 
     respond_to do |format|
@@ -74,6 +75,7 @@ class BuysController < ApplicationController
   # DELETE /buys/1
   # DELETE /buys/1.json
   def destroy
+    authorize! :destroy, @buy
     @buy = Buy.find(params[:id])
     @buy.destroy
 

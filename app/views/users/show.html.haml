@@ -1,5 +1,32 @@
-%h3 User
+%h3 Пользователь
 %p
-  User: #{@user.name}
+	User: #{@user.name}
 %p
-  Email: #{@user.email if @user.email}
+	Email: #{@user.email if @user.email}
+%br
+- if @user.profile
+	%h4 Профиль организации
+	%p
+		%b Name:
+		= @user.profile.name
+	%p
+		%b Inn:
+		= @user.profile.inn
+	%p
+		%b City:
+		= @user.profile.city.name if @user.profile.city
+	%p
+		%b Region:
+		= @user.profile.region.name if @user.profile.region
+	%p
+		%b Address:
+		= @user.profile.address
+	%p
+		%b Phone:
+		= @user.profile.phone
+	%p
+		%b Desc:
+		= @user.profile.desc
+
+	- if can? :update, @user.profile
+		= link_to 'Edit', edit_profile_path(@user.profile)

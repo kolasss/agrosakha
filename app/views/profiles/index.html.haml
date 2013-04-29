@@ -1,0 +1,37 @@
+%h1 Listing profiles
+
+%table.table
+  %tr
+    %th User
+    %th Name
+    %th Inn
+    %th City
+    %th Region
+    %th Address
+    %th Phone
+    %th Desc
+    %th
+    %th
+    %th
+
+  - @profiles.each do |profile|
+    %tr
+      %td= profile.user.name
+      %td= profile.name
+      %td= profile.inn
+      %td= profile.city.name if profile.city
+      %td= profile.region.name if profile.region
+      %td= profile.address
+      %td= profile.phone
+      %td= profile.desc
+      %td= link_to 'Show', profile
+      %td
+        - if can? :update, profile
+          = link_to 'Edit', edit_profile_path(profile)
+      %td
+        - if can? :destroy, profile
+          = link_to 'Destroy', profile, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Profile', new_profile_path, {class: 'btn'}

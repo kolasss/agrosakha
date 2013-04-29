@@ -1,4 +1,6 @@
 Agro14::Application.routes.draw do
+  resources :posts
+  resources :profiles
   resources :buys
   resources :count_types
   resources :sells
@@ -10,7 +12,7 @@ Agro14::Application.routes.draw do
   # authenticated :user do
   #   root :to => 'home#index'
   # end
-  root :to => "sells#index"
+  root :to => "posts#index"
   
   devise_for :users
   resources :users

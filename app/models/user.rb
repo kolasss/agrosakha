@@ -13,4 +13,12 @@ class User < ActiveRecord::Base
   
   has_many :sells, :dependent => :destroy
   has_many :buys, :dependent => :destroy
+  has_one :profile, :dependent => :destroy
+
+  after_create :default_role
+
+  private
+    def default_role
+      self.roles << Role.where(:name => 'guest').first
+    end
 end

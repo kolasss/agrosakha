@@ -13,4 +13,11 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+//= require bootstrap-wysihtml5
+//= require bootstrap-wysihtml5/locales/ru-RU
 //= require_tree .
+$(document).ready(function() {
+  $('.wysihtml5').each(function(i, elem) {
+	  $(elem).wysihtml5({locale: "ru-RU"});
+	});
+});

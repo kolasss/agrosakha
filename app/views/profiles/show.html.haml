@@ -1,0 +1,31 @@
+/ %p#notice= notice
+
+%p
+  %b User:
+  = @profile.user.name
+%p
+  %b Name:
+  = @profile.name
+%p
+  %b Inn:
+  = @profile.inn
+%p
+  %b City:
+  = @profile.city.name if @profile.city
+%p
+  %b Region:
+  = @profile.region.name if @profile.region
+%p
+  %b Address:
+  = @profile.address
+%p
+  %b Phone:
+  = @profile.phone
+%p
+  %b Desc:
+  = @profile.desc
+
+- if can? :update, @profile
+  = link_to 'Edit', edit_profile_path(@profile)
+  \|
+= link_to 'Back', profiles_path

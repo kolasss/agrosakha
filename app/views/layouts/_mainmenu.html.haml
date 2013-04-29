@@ -1,4 +1,6 @@
 %ul.nav.nav-tabs
+	%li{:class => ("active" if params[:controller] == "posts")}
+		= link_to 'Новости', posts_path
 	%li.dropdown{:class => ("active" if params[:controller] == "sells")}
 		= link_to 'Продажа', sells_path
 		/ %a.dropdown-toggle{ "data-toggle" => "dropdown", :href => sells_path }

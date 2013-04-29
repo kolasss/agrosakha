@@ -31,20 +31,20 @@ class UsersController < ApplicationController
   #   end
   # end
 
-  authorize_resource
+  load_and_authorize_resource
 
   def index
-    authorize! :index, @user, :message => 'Not authorized as an administrator.'
-    @users = User.all
+    # authorize! :index, @user, :message => 'Not authorized as an administrator.'
+    # @users = User.all
   end
 
   def show
-    @user = User.find(params[:id])
+    # @user = User.find(params[:id])
   end
 
   def update
-    authorize! :update, @user, :message => 'Not authorized as an administrator.'
-    @user = User.find(params[:id])
+    # authorize! :update, @user, :message => 'Not authorized as an administrator.'
+    # @user = User.find(params[:id])
 
     params[:user].delete(:password) if params[:user][:password].blank?
     params[:user].delete(:password_confirmation) if params[:user][:password].blank? and params[:user][:password_confirmation].blank?
@@ -66,10 +66,10 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    authorize! :destroy, @user, :message => 'Not authorized as an administrator.'
-    user = User.find(params[:id])
-    unless user == current_user
-      user.destroy
+    # authorize! :destroy, @user, :message => 'Not authorized as an administrator.'
+    @user = User.find(params[:id])
+    unless @user == current_user
+      @user.destroy
       redirect_to users_path, :notice => "User deleted."
     else
       redirect_to users_path, :notice => "Can't delete yourself."
@@ -77,7 +77,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
+    # @user = User.find(params[:id])
   end
 
 end

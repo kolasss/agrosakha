@@ -41,3 +41,4 @@ gem "simple_form", ">= 2.1.0"
 gem 'russian', '~> 0.6.0'
 gem "ransack"
 gem 'will_paginate', '~> 3.0'
+gem 'bootstrap-wysihtml5-rails'

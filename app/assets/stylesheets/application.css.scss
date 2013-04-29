@@ -9,6 +9,7 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= require bootstrap-wysihtml5
  *= require_tree .
 */
 
@@ -23,6 +24,11 @@
   -moz-box-shadow: 0 1px 2px rgba(0,0,0,.15);
   box-shadow: 0 1px 2px rgba(0,0,0,.15);
 }
+
+/* table with sells and buys */
 .indextable {
 	overflow-x: auto;
+}
+
+.wysihtml5 {
 }

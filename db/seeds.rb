@@ -5,7 +5,8 @@ puts 'CREATING ROLES'
 Role.delete_all
 Role.create([
   { :name => 'admin' }, 
-  { :name => 'user' }
+  { :name => 'user' },
+  { :name => 'guest' }
 ], :without_protection => true)
 
 puts 'SETTING UP DEFAULT USER LOGIN'
