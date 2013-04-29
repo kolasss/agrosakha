@@ -40,6 +40,7 @@ class SellsController < ApplicationController
   # GET /sells/1/edit
   def edit
     # @sell = Sell.find(params[:id])
+    session[:return_to] ||= request.referer
   end
 
   # POST /sells
@@ -67,7 +68,7 @@ class SellsController < ApplicationController
 
     respond_to do |format|
       if @sell.update_attributes(params[:sell])
-        format.html { redirect_to @sell, notice: 'Sell was successfully updated.' }
+        format.html { redirect_to session.delete(:return_to) || root_path, notice: 'Sell was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -84,7 +85,7 @@ class SellsController < ApplicationController
     @sell.destroy
 
     respond_to do |format|
-      format.html { redirect_to sells_url }
+      format.html { redirect_to :back }
       format.json { head :no_content }
     end
   end
