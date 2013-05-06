@@ -1,9 +1,13 @@
 class BuysController < ApplicationController
-  authorize_resource
+  load_and_authorize_resource
+  skip_load_resource :only => [:index, :show_category, :show_subcategory]
   # GET /buys
   # GET /buys.json
   def index
-    @buys = Buy.all
+    @categories = Category.all
+    @cities = City.all
+    @q = Buy.search(params[:q])
+    @buys = @q.result(:distinct => true).paginate(:page => params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,7 +18,7 @@ class BuysController < ApplicationController
   # GET /buys/1
   # GET /buys/1.json
   def show
-    @buy = Buy.find(params[:id])
+    # @buy = Buy.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -25,7 +29,7 @@ class BuysController < ApplicationController
   # GET /buys/new
   # GET /buys/new.json
   def new
-    @buy = Buy.new
+    # @buy = Buy.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,13 +39,14 @@ class BuysController < ApplicationController
 
   # GET /buys/1/edit
   def edit
-    @buy = Buy.find(params[:id])
+    # @buy = Buy.find(params[:id])
+    session[:return_to] ||= request.referer
   end
 
   # POST /buys
   # POST /buys.json
   def create
-    @buy = Buy.new(params[:buy])
+    # @buy = Buy.new(params[:buy])
     @buy.user = current_user
 
     respond_to do |format|
@@ -58,12 +63,12 @@ class BuysController < ApplicationController
   # PUT /buys/1
   # PUT /buys/1.json
   def update
-    authorize! :update, @buy
-    @buy = Buy.find(params[:id])
+    # authorize! :update, @buy
+    # @buy = Buy.find(params[:id])
 
     respond_to do |format|
       if @buy.update_attributes(params[:buy])
-        format.html { redirect_to @buy, notice: 'Buy was successfully updated.' }
+        format.html { redirect_to session.delete(:return_to) || root_path, notice: 'Buy was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -75,13 +80,33 @@ class BuysController < ApplicationController
   # DELETE /buys/1
   # DELETE /buys/1.json
   def destroy
-    authorize! :destroy, @buy
-    @buy = Buy.find(params[:id])
+    # authorize! :destroy, @buy
+    # @buy = Buy.find(params[:id])
     @buy.destroy
 
     respond_to do |format|
       format.html { redirect_to buys_url }
       format.json { head :no_content }
+    end
+  end
+
+  def show_category
+    @category = Category.find(params[:id])
+    @buys = @category.buys.paginate(:page => params[:page])
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @category }
+    end
+  end
+
+  def show_subcategory
+    @category = Subcategory.find(params[:id])
+    @buys = @category.buys.paginate(:page => params[:page])
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @category }
     end
   end
 end

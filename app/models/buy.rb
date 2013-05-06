@@ -13,4 +13,6 @@ class Buy < ActiveRecord::Base
   validates :count, :presence => true, :numericality => { :greater_than_or_equal_to => 0 }
   validates :count_type_id, :presence => true
   validates :price, :presence => true, :numericality => { :greater_than_or_equal_to => 0 }
+
+  self.per_page = 5
 end

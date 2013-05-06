@@ -50,7 +50,6 @@
 .apple_pagination
   = will_paginate @sells
 
-/ = link_to 'New Sell', new_sell_path, {class: 'btn'}
 %br
 - if can? :create, Sell
-  = link_to 'New Sell', new_sell_path, {class: 'btn'}
+  = link_to 'Подать объявление о продаже', new_sell_path, {class: 'btn'}

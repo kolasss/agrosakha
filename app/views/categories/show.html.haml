@@ -1,12 +1,16 @@
 / %p#notice= notice
 
-%p
-	%b Name:
-	= @category.name
+%h3
+  = @category.name
+  - if can? :update, @category
+    = link_to 'редактировать', edit_category_path(@category), :class => 'btn btn-mini'
 
-= link_to 'Edit', edit_category_path(@category)
-\|
-= link_to 'Back', categories_path
+- unless @category.subcategories.empty?
+  %ul
+    - @category.subcategories.each do |subcat|
+      %li= link_to subcat.name, subcat
 
-.sellsblock
-	= render 'sells'
+= link_to 'Назад', categories_path, {class: 'btn'}
+
+/ .sellsblock
+/   = render 'sells'

@@ -17,6 +17,8 @@ class User < ActiveRecord::Base
 
   after_create :default_role
 
+  self.per_page = 25
+
   private
     def default_role
       self.roles << Role.where(:name => 'guest').first

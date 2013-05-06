@@ -10,5 +10,5 @@
 		/ 	%li= link_to 'Все', sells_path
 		/ 	- Category.all.each do |category|
 		/ 		%li= link_to category.name, sells_category_path(category)
-	%li{:class => ("active" if params[:controller] == "buys")}
+	%li.dropdown{:class => ("active" if params[:controller] == "buys")}
 		= link_to 'Покупка', buys_path

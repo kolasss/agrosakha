@@ -1,4 +1,4 @@
-%h3 Users
+%h3 Список пользователей
 
 %table.table.table-condensed.table-striped
   %thead
@@ -20,5 +20,8 @@
         %td
           %a.btn.btn-mini{"data-toggle" => "modal", :href => "#role-options-#{user.id}", :type => "button"} Изменить роль
           = render user
-        %td= link_to("Delete user", user_path(user), :data => { :confirm => "Вы уверены?" }, :method => :delete, :class => 'btn btn-mini') unless user == current_user
-        %td= link_to("<i class='icon-wrench'></i> Редактировать".html_safe, edit_user_path(user), :class => 'btn btn-mini') unless user == current_user
+        %td= link_to("Удалить", user_path(user), :data => { :confirm => "Вы уверены?" }, :method => :delete, :class => 'btn btn-mini btn-danger') unless user == current_user
+        %td= link_to("Редактировать", edit_user_path(user), :class => 'btn btn-mini') unless user == current_user
+
+.apple_pagination
+  = will_paginate @sells

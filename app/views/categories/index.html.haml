@@ -1,19 +1,23 @@
-%h1 Listing categories
+%h1 Список категорий
 
-%table.table
+%table.table.table-hover
   %tr
-    %th Name
+    %th Наименование
     %th
     %th
     %th
 
   - @categories.each do |category|
     %tr
-      %td= category.name
-      %td= link_to 'Show', category
-      %td= link_to 'Edit', edit_category_path(category)
-      %td= link_to 'Destroy', category, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      / %td= category.name
+      %td= link_to category.name, category
+      %td
+        - if can? :update, category
+          = link_to 'Изменить', edit_category_path(category), :class => 'btn btn-mini'
+      %td
+        - if can? :destroy, category
+          = link_to 'Удалить', category, :method => :delete, :data => { :confirm => 'Вы уверены?' }, :class => 'btn btn-mini btn-danger'
 
 %br
 
-= link_to 'New Category', new_category_path
+= link_to 'Добавить категорию', new_category_path, {class: 'btn'}

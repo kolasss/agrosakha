@@ -1,0 +1,55 @@
+%h2 Покупка
+
+.indextable
+  %table.table
+    %tr
+      %th Номер
+      %th Дата подачи
+      %th Title
+      / %th Body
+      %th Count
+      / %th Count type
+      %th Price
+      / %th Price type
+      %th City
+      %th Category
+      %th Subcategory
+      %th User
+      %th
+      %th
+      %th
+
+    - @buys.each do |buy|
+      %tr
+        %td= buy.id
+        %td= l(buy.updated_at, :format => :long)
+        %td= buy.title
+        / %td= buy.body
+        %td
+          = buy.count
+          = ' ' + buy.count_type.name if buy.count_type
+        / %td= buy.count_type.name if buy.count_type
+        %td
+          = buy.price.to_s + ' руб.'
+          = ' за ' + buy.count_type.name if buy.count_type
+        / %td
+        /   = show_price_type buy.price_type
+        /   = buy.count_type.name if buy.count_type && buy.price_type == 1
+        %td= buy.city.name if buy.city
+        %td= buy.category.name if buy.category
+        %td= buy.subcategory.name if buy.subcategory
+        %td= buy.user.name
+        %td= link_to 'Show', buy
+        %td
+          - if can? :update, buy
+            = link_to 'Edit', edit_buy_path(buy)
+        %td
+          - if can? :destroy, buy
+            = link_to 'Destroy', buy, :method => :delete, :data => { :confirm => 'Вы уверены?' }
+
+.apple_pagination
+  = will_paginate @buys
+  
+%br
+- if can? :create, Buy
+  = link_to 'Подать объявление о покупке', new_buy_path, {class: 'btn'}
