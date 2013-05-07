@@ -1,22 +1,22 @@
-%h1 Listing profiles
+%h1 Список организаций
 
 %table.table
   %tr
-    %th User
-    %th Name
-    %th Inn
-    %th City
-    %th Region
-    %th Address
-    %th Phone
-    %th Desc
+    / %th User
+    %th Наименование
+    %th ИНН
+    %th Населенный пункт
+    %th Район
+    %th Адрес
+    %th Телефон
+    %th Описание
     %th
     %th
     %th
 
   - @profiles.each do |profile|
     %tr
-      %td= profile.user.name
+      / %td= profile.user.name
       %td= profile.name
       %td= profile.inn
       %td= profile.city.name if profile.city
@@ -34,4 +34,7 @@
 
 %br
 
+.apple_pagination
+  = will_paginate @profiles
+  
 = link_to 'New Profile', new_profile_path, {class: 'btn'}

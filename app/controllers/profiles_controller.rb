@@ -1,15 +1,16 @@
 class ProfilesController < ApplicationController
   load_and_authorize_resource
-  skip_load_resource :only => :new
+  skip_load_resource :only => [:new, :index]
   # GET /profiles
   # GET /profiles.json
   def index
     # @profiles = Profile.all
+    @profiles = Profile.paginate(:page => params[:page])
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @profiles }
-    end
+    # respond_to do |format|
+    #   format.html # index.html.erb
+    #   format.json { render json: @profiles }
+    # end
   end
 
   # GET /profiles/1
@@ -17,10 +18,10 @@ class ProfilesController < ApplicationController
   def show
     # @profile = Profile.find(params[:id])
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @profile }
-    end
+    # respond_to do |format|
+    #   format.html # show.html.erb
+    #   format.json { render json: @profile }
+    # end
   end
 
   # GET /profiles/new
