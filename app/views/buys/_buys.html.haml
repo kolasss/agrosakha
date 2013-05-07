@@ -5,16 +5,17 @@
     %tr
       %th Номер
       %th Дата подачи
-      %th Title
-      / %th Body
-      %th Count
-      / %th Count type
-      %th Price
+      %th Заголовок
+      /%th Body
+      %th Количество
+      /%th Count type
+      %th Цена
       / %th Price type
-      %th City
-      %th Category
-      %th Subcategory
-      %th User
+      %th Населенный пункт
+      %th Район
+      %th Категория
+      %th Подкатегория
+      %th Пользователь
       %th
       %th
       %th
@@ -36,6 +37,7 @@
         /   = show_price_type buy.price_type
         /   = buy.count_type.name if buy.count_type && buy.price_type == 1
         %td= buy.city.name if buy.city
+        %td= buy.city.region.name if buy.city
         %td= buy.category.name if buy.category
         %td= buy.subcategory.name if buy.subcategory
         %td= buy.user.name
