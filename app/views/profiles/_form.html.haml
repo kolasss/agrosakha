@@ -5,8 +5,32 @@
     / = f.association :user
     = f.input :name
     = f.input :inn
-    = f.association :city
     = f.association :region
+    = f.association :city
+
+    / = f.association :categories, as: :check_boxes, :collection => Category.all+Subcategory.all
+    / = f.association :categories, as: :check_boxes
+
+    %ul.control-group.check_boxes.optional.unstyled.row-fluid
+      %label.check_boxes.optional.control-label Категории
+      .controls
+        - Category.all.each do |category|
+          %li.span4
+            %label.checkbox
+              = check_box_tag 'profile[category_ids][]', category.id, @profile.category_ids.include?(category.id), :class => "check_boxes optional", :id => "profile_category_ids_#{category.id}"
+              = category.name
+            - unless category.subcategories.empty?
+              %ul.control-group.check_boxes.optional.subcat
+                / %label.check_boxes.optional.control-label Категории
+                .controls
+                  - category.subcategories.each do |subcat|
+                    %li
+                      %label.checkbox
+                        = check_box_tag 'profile[subcategory_ids][]', subcat.id, @profile.subcategory_ids.include?(subcat.id), :class => "check_boxes optional", :id => "profile_category_ids_#{subcat.id}"
+                        = subcat.name
+
+    / = f.association :subcategories, as: :check_boxes
+
     = f.input :address
     = f.input :phone
     = f.input :desc

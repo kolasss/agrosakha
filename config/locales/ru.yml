@@ -10,12 +10,15 @@ ru:
     yes: "da"
   activerecord:
     models:
-      grant:
-        one: "Грант"
-        other: "Гранты"
-      grantcorp:
-        one: "Грант ЮЛ"
-        other: "Гранты ЮЛ"
+      profile:
+        one: "Профиль"
+        other: "Профили"
+      sell:
+        one: "Объявление"
+        other: "Объявления"
+      buy:
+        one: "Объявление"
+        other: "Объявления"
       event:
         one: "Мероприятие"
         other: "Мероприятия"

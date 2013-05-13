@@ -1,10 +1,11 @@
 class ProfilesController < ApplicationController
   load_and_authorize_resource
-  skip_load_resource :only => [:new, :index]
+  skip_load_resource :only => [:new, :index, :show_category, :show_subcategory]
   # GET /profiles
   # GET /profiles.json
   def index
     # @profiles = Profile.all
+    @categories = Category.all
     @profiles = Profile.paginate(:page => params[:page])
 
     # respond_to do |format|
@@ -64,7 +65,16 @@ class ProfilesController < ApplicationController
   # PUT /profiles/1.json
   def update
     # @profile = Profile.find(params[:id])
-
+    params[:profile][:subcategory_ids] ||= []
+    params[:profile][:category_ids] ||= []
+    
+    params[:profile][:subcategory_ids].each do |subcat_id|
+      parent_cat_id = Subcategory.find(subcat_id).category.id
+      unless params[:profile][:category_ids].include?(parent_cat_id)
+        params[:profile][:category_ids] << parent_cat_id
+      end
+    end
+    
     respond_to do |format|
       if @profile.update_attributes(params[:profile])
         format.html { redirect_to @profile, notice: 'Profile was successfully updated.' }
@@ -86,6 +96,26 @@ class ProfilesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to profiles_url }
       format.json { head :no_content }
+    end
+  end
+
+  def show_category
+    @category = Category.find(params[:id])
+    @profiles = @category.profiles.paginate(:page => params[:page])
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @category }
+    end
+  end
+
+  def show_subcategory
+    @category = Subcategory.find(params[:id])
+    @profiles = @category.profiles.paginate(:page => params[:page])
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @category }
     end
   end
 end

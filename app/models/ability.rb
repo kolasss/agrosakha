@@ -17,7 +17,8 @@ class Ability
       #   comment.try(:user) == user || user.role?(:moderator)
       # end
       if user.has_role?(:guest)
-        can :manage, Profile, :user_id => user.id
+        # can :manage, Profile, :user_id => user.id
+        can :manage, [Buy, Profile], :user_id => user.id
       elsif user.has_role?(:user)
         can :manage, [Buy, Sell, Profile], :user_id => user.id
         # can [:update, :destroy], [Buy, Sell, Profile], :user_id => user.id

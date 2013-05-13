@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130426050351) do
+ActiveRecord::Schema.define(:version => 20130508051014) do
 
   create_table "buys", :force => true do |t|
     t.string   "title"
@@ -39,6 +39,13 @@ ActiveRecord::Schema.define(:version => 20130426050351) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "categories_profiles", :id => false, :force => true do |t|
+    t.integer "category_id"
+    t.integer "profile_id"
+  end
+
+  add_index "categories_profiles", ["category_id", "profile_id"], :name => "index_categories_profiles_on_category_id_and_profile_id"
+
   create_table "cities", :force => true do |t|
     t.string   "name"
     t.integer  "region_id"
@@ -59,6 +66,7 @@ ActiveRecord::Schema.define(:version => 20130426050351) do
     t.string   "body"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "body_cache"
   end
 
   create_table "profiles", :force => true do |t|
@@ -77,6 +85,13 @@ ActiveRecord::Schema.define(:version => 20130426050351) do
   add_index "profiles", ["city_id"], :name => "index_profiles_on_city_id"
   add_index "profiles", ["region_id"], :name => "index_profiles_on_region_id"
   add_index "profiles", ["user_id"], :name => "index_profiles_on_user_id"
+
+  create_table "profiles_subcategories", :id => false, :force => true do |t|
+    t.integer "subcategory_id"
+    t.integer "profile_id"
+  end
+
+  add_index "profiles_subcategories", ["subcategory_id", "profile_id"], :name => "index_profiles_subcategories_on_subcategory_id_and_profile_id"
 
   create_table "regions", :force => true do |t|
     t.string   "name"

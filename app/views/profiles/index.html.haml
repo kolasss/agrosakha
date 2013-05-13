@@ -1,40 +1,13 @@
-%h1 Список организаций
+/ %h1 Список организаций
 
-%table.table
-  %tr
-    / %th User
-    %th Наименование
-    %th ИНН
-    %th Населенный пункт
-    %th Район
-    %th Адрес
-    %th Телефон
-    %th Описание
-    %th
-    %th
-    %th
+%ul
+  - @categories.each do |category|
+    %li
+      = link_to category.name, profiles_category_path(category)
+      - if !category.subcategories.empty?
+        %ul
+          - category.subcategories.each do |subcat|
+            %li= link_to subcat.name, profiles_subcategory_path(subcat)
 
-  - @profiles.each do |profile|
-    %tr
-      / %td= profile.user.name
-      %td= profile.name
-      %td= profile.inn
-      %td= profile.city.name if profile.city
-      %td= profile.region.name if profile.region
-      %td= profile.address
-      %td= profile.phone
-      %td= profile.desc
-      %td= link_to 'Show', profile
-      %td
-        - if can? :update, profile
-          = link_to 'Edit', edit_profile_path(profile)
-      %td
-        - if can? :destroy, profile
-          = link_to 'Destroy', profile, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-.apple_pagination
-  = will_paginate @profiles
-  
-= link_to 'New Profile', new_profile_path, {class: 'btn'}
+.sellsblock
+  = render 'profiles'

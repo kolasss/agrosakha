@@ -15,6 +15,24 @@
 %p
   %b Region:
   = @profile.region.name if @profile.region
+
+- unless @profile.categories.empty?
+  %p
+    %b Категории:
+    %ul
+      - @profile.categories.each do |cat|
+        %li= cat.name
+        - unless @profile.subcategories.empty? && cat.subcategories.empty?
+          %ul
+            - @profile.subcategories.each do |subcat|
+              - if subcat.category == cat
+                %li= subcat.name
+/ - unless @profile.subcategories.empty?
+/   %p
+/     %b Подкатегории:
+/     %ul
+/       - @profile.subcategories.each do |subcat|
+/         %li= subcat.name
 %p
   %b Address:
   = @profile.address

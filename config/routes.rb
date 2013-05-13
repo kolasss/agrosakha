@@ -21,4 +21,6 @@ Agro14::Application.routes.draw do
   match "/sells/subcategory/:id", to: "sells#show_subcategory", :as => :sells_subcategory
   match "/buys/category/:id", to: "buys#show_category", :as => :buys_category
   match "/buys/subcategory/:id", to: "buys#show_subcategory", :as => :buys_subcategory
+  match "/profiles/category/:id", to: "profiles#show_category", :as => :profiles_category
+  match "/profiles/subcategory/:id", to: "profiles#show_subcategory", :as => :profiles_subcategory
 end

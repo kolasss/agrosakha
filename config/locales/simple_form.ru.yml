@@ -44,6 +44,16 @@ ru:
         category: "Категория"
         subcategory: "Подкатегория"
         submit: "Создать"
+      profile:
+        name: "Наименование"
+        inn: "ИНН"
+        region: "Район"
+        city: "Населенный пункт"
+        category: "Категория"
+        subcategory: "Подкатегория"
+        address: "Адрес"
+        desc: "Описание"
+        phone: "Телефон"
 
     hints:
       defaults:
