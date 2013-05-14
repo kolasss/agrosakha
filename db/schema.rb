@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130508051014) do
+ActiveRecord::Schema.define(:version => 20130514044257) do
 
   create_table "buys", :force => true do |t|
     t.string   "title"
@@ -26,10 +26,12 @@ ActiveRecord::Schema.define(:version => 20130508051014) do
     t.integer  "user_id"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+    t.integer  "region_id"
   end
 
   add_index "buys", ["category_id"], :name => "index_buys_on_category_id"
   add_index "buys", ["city_id"], :name => "index_buys_on_city_id"
+  add_index "buys", ["region_id"], :name => "index_buys_on_region_id"
   add_index "buys", ["subcategory_id"], :name => "index_buys_on_subcategory_id"
   add_index "buys", ["user_id"], :name => "index_buys_on_user_id"
 
@@ -123,10 +125,12 @@ ActiveRecord::Schema.define(:version => 20130508051014) do
     t.integer  "user_id"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+    t.integer  "region_id"
   end
 
   add_index "sells", ["category_id"], :name => "index_sells_on_category_id"
   add_index "sells", ["city_id"], :name => "index_sells_on_city_id"
+  add_index "sells", ["region_id"], :name => "index_sells_on_region_id"
   add_index "sells", ["subcategory_id"], :name => "index_sells_on_subcategory_id"
   add_index "sells", ["user_id"], :name => "index_sells_on_user_id"
 

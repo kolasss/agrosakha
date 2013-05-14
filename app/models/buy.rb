@@ -1,11 +1,12 @@
 class Buy < ActiveRecord::Base
   belongs_to :count_type
   belongs_to :city
+  belongs_to :region
   belongs_to :category
   belongs_to :subcategory
   belongs_to :user
   
-  attr_accessible :body, :count, :count_type_id, :price, :price_type, :title, :city_id, :category_id, :subcategory_id
+  attr_accessible :body, :count, :count_type_id, :price, :price_type, :title, :city_id, :region_id, :category_id, :subcategory_id
 
   validates :title, :presence => true, :length => { :maximum => 100 }
   validates :body, :length => { :maximum => 3000 }

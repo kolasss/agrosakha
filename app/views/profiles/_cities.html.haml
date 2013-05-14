@@ -1,0 +1,10 @@
+/ <% if places.blank? %>
+/   <%= collection_select(:work, :place_id, [], :id, :name, {:prompt => "Выберите место работы"}) %>
+/ <% else %>
+/   <%= collection_select(:work, :place_id, places, :id, :name, {:prompt => "Выберите место работы"}) %>
+/ <% end %>
+
+-if @cities.blank?
+	= collection_select( :profile, :city_id, [], :id, :name, {:prompt => "Выберите населенный пункт"})
+-else
+	= collection_select( :profile, :city_id, @cities, :id, :name, {:prompt => "Выберите населенный пункт"})
