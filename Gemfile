@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 
 ruby '1.9.3'
 gem 'rails', '3.2.13'
-gem 'sqlite3'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -29,6 +28,7 @@ end
 group :development, :test do
 	gem "rspec-rails", ">= 2.12.2"
 	gem "factory_girl_rails", ">= 4.2.0"
+	gem 'sqlite3'
 end
 
 gem 'jquery-rails'
