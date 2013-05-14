@@ -18,9 +18,11 @@ puts 'New user created: ' << user2.name
 user.add_role :admin
 user2.add_role :user
 
-determine id of region for city in DB
+# determine id of region for city in DB
 def region_id number
-	@regions.each { |row|	return row[2] if row[0].to_i == number }
+	@regions.each do |row|
+		return row[2] if row[0].to_i == number
+	end
 	return false
 end
 
