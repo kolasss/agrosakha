@@ -37,7 +37,7 @@
   = will_paginate @profiles
 
 %br
-- if current_user.profile
+- if current_user && current_user.profile
   = link_to 'Изменить профиль своей организации', edit_profile_path(current_user.profile), {class: 'btn'}
-- else
+- elsif can? :create, Profile
   = link_to 'Создать профиль своей организации', new_profile_path, {class: 'btn'}
