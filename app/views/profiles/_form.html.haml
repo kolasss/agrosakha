@@ -5,12 +5,18 @@
     / = f.association :user
     = f.input :name
     = f.input :inn
-    = f.association :region
-    = f.association :city
 
-    / = f.association :categories, as: :check_boxes, :collection => Category.all+Subcategory.all
-    / = f.association :categories, as: :check_boxes
+    / #region and city selects
+    = f.association :region, :prompt => "Выберите район" #profile_region_id
+    / = f.association :city #profile_city_id
+    
+    .control-group.select.optional.profile_city
+      %label.select.optional.control-label{ for: "profile_city_id" }
+        Населенный пункт
+      #profile_city
+        = render :partial => "cities"
 
+    / #categories and subcategories checkboxes
     %ul.control-group.check_boxes.optional.unstyled.row-fluid
       %label.check_boxes.optional.control-label Категории
       .controls
@@ -29,11 +35,9 @@
                         = check_box_tag 'profile[subcategory_ids][]', subcat.id, @profile.subcategory_ids.include?(subcat.id), :class => "check_boxes optional", :id => "profile_category_ids_#{subcat.id}"
                         = subcat.name
 
-    / = f.association :subcategories, as: :check_boxes
-
     = f.input :address
     = f.input :phone
     = f.input :desc
 
   .form-actions
-    = f.button :submit
+    = f.button :submit, :class => 'btn btn-primary'

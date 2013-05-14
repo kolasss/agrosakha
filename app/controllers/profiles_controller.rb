@@ -1,6 +1,6 @@
 class ProfilesController < ApplicationController
   load_and_authorize_resource
-  skip_load_resource :only => [:new, :index, :show_category, :show_subcategory]
+  skip_load_resource :only => [:new, :index, :show_category, :show_subcategory, :update_city_select]
   # GET /profiles
   # GET /profiles.json
   def index
@@ -42,6 +42,11 @@ class ProfilesController < ApplicationController
   # GET /profiles/1/edit
   def edit
     # @profile = Profile.find(params[:id])
+    if @profile.city
+      @cities = City.where(:region_id => @profile.city.region_id).order(:name)
+    # else
+    #   @places = []
+    end
   end
 
   # POST /profiles
@@ -117,5 +122,11 @@ class ProfilesController < ApplicationController
       format.html # show.html.erb
       format.json { render json: @category }
     end
+  end
+
+  def update_city_select
+    # @cities = City.where(:region_id => params[:id]).order(:name) unless params[:id].blank?
+    @cities = City.where(:region_id => params[:id]).order(:name)
+    render :partial => "cities", :locals => {:cities => @cities}
   end
 end

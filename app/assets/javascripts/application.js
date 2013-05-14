@@ -17,7 +17,17 @@
 //= require bootstrap-wysihtml5/locales/ru-RU
 //= require_tree .
 $(document).ready(function() {
+	//WYSIWYG editor
   $('.wysihtml5').each(function(i, elem) {
 	  $(elem).wysihtml5({locale: "ru-RU"});
+	});
+
+  //change select cities collection in profile
+  $("#profile_region_id").change(function(){
+  	var region = $('#profile_region_id').val();
+    if(region == "") region="0";
+	  $.get("/profiles/update_city_select/"+region, function(data){
+	  	$("#profile_city_id").html(data);
+	  } );
 	});
 });
