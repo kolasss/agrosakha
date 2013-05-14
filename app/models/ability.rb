@@ -7,8 +7,8 @@ class Ability
       can :manage, :all
     else
       can :read, :all
-      can :show_category, [Sell, Buy]
-      can :show_subcategory, [Sell, Buy]
+      can :show_category, [Sell, Buy, Profile]
+      can :show_subcategory, [Sell, Buy, Profile]
       cannot :index, User
       # can :show2, Grant
       # can :show2, Grantcorp
