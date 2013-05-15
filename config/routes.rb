@@ -22,4 +22,9 @@ Agro14::Application.routes.draw do
   match "/profiles/subcategory/:id", to: "profiles#show_subcategory", :as => :profiles_subcategory
 
   match '/profiles/update_city_select/:id', :controller=>'profiles', :action => 'update_city_select'
+  match '/sells/update_city_select/:id', :controller=>'sells', :action => 'update_city_select'
+  match '/buys/update_city_select/:id', :controller=>'buys', :action => 'update_city_select'
+  
+  match '/sells/update_subcat_select/:id', :controller=>'sells', :action => 'update_subcat_select'
+  match '/buys/update_subcat_select/:id', :controller=>'buys', :action => 'update_subcat_select'
 end

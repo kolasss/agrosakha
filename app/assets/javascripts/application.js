@@ -22,13 +22,53 @@ $(document).ready(function() {
 	  $(elem).wysihtml5({locale: "ru-RU"});
 	});
 
-  //change select cities collection in profile
-  $("#profile_region_id").change(function(e){
-  	e.preventDefault();
+  //change select cities collection in profile edit
+  $("#profile_region_id").change(function(){
+  	// e.preventDefault();
   	var region = $('#profile_region_id').val();
-    if(region == "") region="0";
+    if(region == "") region="no";
 	  $.get("/profiles/update_city_select/" + region, function(data){
 	  	$("#profile_city").html(data);
+	  } );
+	});
+
+	//change select cities collection in sell edit
+  $("#sell_region_id").change(function(){
+  	// e.preventDefault();
+  	var region = $('#sell_region_id').val();
+    if(region == "") region="no";
+	  $.get("/sells/update_city_select/" + region, function(data){
+	  	$("#sell_city").html(data);
+	  } );
+	});
+
+	//change select cities collection in buy edit
+  $("#buy_region_id").change(function(){
+  	// e.preventDefault();
+  	var region = $('#buy_region_id').val();
+    if(region == "") region="no";
+	  $.get("/buys/update_city_select/" + region, function(data){
+	  	$("#buy_city").html(data);
+	  } );
+	});
+
+	//change select subcategories collection in sell edit
+  $("#sell_category_id").change(function(){
+  	// e.preventDefault();
+  	var region = $('#sell_category_id').val();
+    if(region == "") region="no";
+	  $.get("/sells/update_subcat_select/" + region, function(data){
+	  	$("#sell_subcategory").html(data);
+	  } );
+	});
+
+	//change select subcategories collection in buy edit
+  $("#buy_category_id").change(function(){
+  	// e.preventDefault();
+  	var region = $('#buy_category_id').val();
+    if(region == "") region="no";
+	  $.get("/buys/update_subcat_select/" + region, function(data){
+	  	$("#buy_subcategory").html(data);
 	  } );
 	});
 });

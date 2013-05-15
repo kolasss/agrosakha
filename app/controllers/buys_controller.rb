@@ -1,6 +1,6 @@
 class BuysController < ApplicationController
   load_and_authorize_resource
-  skip_load_resource :only => [:index, :show_category, :show_subcategory]
+  skip_load_resource :only => [:index, :show_category, :show_subcategory, :update_city_select, :update_subcat_select]
   # GET /buys
   # GET /buys.json
   def index
@@ -41,6 +41,9 @@ class BuysController < ApplicationController
   def edit
     # @buy = Buy.find(params[:id])
     session[:return_to] ||= request.referer
+
+    @cities = City.where(:region_id => @buy.city.region_id).order(:name) if @buy.city
+    @subcats = Subcategory.where(:category_id => @buy.subcategory.category_id) if @buy.subcategory
   end
 
   # POST /buys
@@ -108,5 +111,23 @@ class BuysController < ApplicationController
       format.html # show.html.erb
       format.json { render json: @category }
     end
+  end
+
+  def update_city_select
+    if params[:id] == 'no' || params[:id].blank?
+      @cities = []
+    else
+      @cities = City.where(:region_id => params[:id]).order(:name)
+    end
+    render :partial => "cities", :locals => {:cities => @cities}
+  end
+
+  def update_subcat_select
+    if params[:id] == 'no' || params[:id].blank?
+      @subcats = []
+    else
+      @subcats = Subcategory.where(:category_id => params[:id])
+    end
+    render :partial => "subcats", :locals => {:subcats => @subcats}
   end
 end

@@ -19,6 +19,9 @@
 /   %b Price type:
 /   = @sell.price_type
 %p
+  %b Район:
+  = @sell.region.name if @sell.region
+%p
   %b City:
   = @sell.city.name if @sell.city
 %p

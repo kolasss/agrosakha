@@ -44,8 +44,6 @@ class ProfilesController < ApplicationController
     # @profile = Profile.find(params[:id])
     if @profile.city
       @cities = City.where(:region_id => @profile.city.region_id).order(:name)
-    # else
-    #   @places = []
     end
   end
 
@@ -130,8 +128,11 @@ class ProfilesController < ApplicationController
   end
 
   def update_city_select
-    # @cities = City.where(:region_id => params[:id]).order(:name) unless params[:id].blank?
-    @cities = City.where(:region_id => params[:id]).order(:name)
+    if params[:id] == 'no' || params[:id].blank?
+      @cities = []
+    else
+      @cities = City.where(:region_id => params[:id]).order(:name)
+    end
     render :partial => "cities", :locals => {:cities => @cities}
   end
 end

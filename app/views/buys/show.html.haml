@@ -19,6 +19,9 @@
 /   %b Price type:
 /   = @buy.price_type
 %p
+  %b Район:
+  = @buy.region.name if @buy.region
+%p
   %b City:
   = @buy.city.name if @buy.city
 %p
@@ -34,6 +37,6 @@
   %b Создано:
   = l(@buy.updated_at, :format => :long)
 - if can? :update, @buy
-  = link_to 'Edit', edit_sell_path(@buy)
+  = link_to 'Edit', edit_buy_path(@buy)
   \|
-= link_to 'Back', sells_path
+= link_to 'Back', buys_path
