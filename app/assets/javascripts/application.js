@@ -27,7 +27,7 @@ $(document).ready(function() {
   	e.preventDefault();
   	var region = $('#profile_region_id').val();
     if(region == "") region="0";
-	  $.get("/profiles/update_city_select/"+region, function(data){
+	  $.get("/profiles/update_city_select/" + region + "?ie_hack=" + new Date().getTime(), function(data){
 	  	$("#profile_city_id").html(data);
 	  } );
 	});
