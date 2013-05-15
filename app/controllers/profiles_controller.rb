@@ -74,12 +74,17 @@ class ProfilesController < ApplicationController
     params[:profile][:category_ids] ||= []
     
     params[:profile][:subcategory_ids].each do |subcat_id|
-      parent_cat_id = Subcategory.find(subcat_id).category.id
+      parent_cat_id = Subcategory.find(subcat_id).category.id.to_s
       unless params[:profile][:category_ids].include?(parent_cat_id)
         params[:profile][:category_ids] << parent_cat_id
       end
     end
-    
+
+    params[:profile][:category_ids].collect!{|i| i.to_i}.uniq!
+
+    # params[:profile][:city_id] = 0 if params[:profile][:region_id].nil?
+    params[:profile].delete(:city_id) if params[:profile][:region_id].nil?
+
     respond_to do |format|
       if @profile.update_attributes(params[:profile])
         format.html { redirect_to @profile, notice: 'Profile was successfully updated.' }
