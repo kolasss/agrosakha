@@ -71,4 +71,16 @@ $(document).ready(function() {
 	  	$("#buy_subcategory").html(data);
 	  } );
 	});
+
+	//change category checkbox in profile edit
+	$("input.category_checkbox").change(function() {
+		if ($(this).prop("checked") == false) {
+			$(this).closest('li.span4').find('input.subcat_checkbox').prop('checked', false);
+		}
+	});
+	$("input.subcat_checkbox").change(function() {
+		if ($(this).prop("checked") == true) {
+			$(this).closest('li.span4').find('input.category_checkbox').prop('checked', true);
+		}
+	});
 });

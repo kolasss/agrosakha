@@ -23,7 +23,7 @@
         - Category.all.each do |category|
           %li.span4
             %label.checkbox
-              = check_box_tag 'profile[category_ids][]', category.id, @profile.category_ids.include?(category.id), :class => "check_boxes optional", :id => "profile_category_ids_#{category.id}"
+              = check_box_tag 'profile[category_ids][]', category.id, @profile.category_ids.include?(category.id), :class => "check_boxes optional category_checkbox", :id => "profile_category_ids_#{category.id}"
               = category.name
             - unless category.subcategories.empty?
               %ul.control-group.check_boxes.optional.subcat
@@ -32,7 +32,7 @@
                   - category.subcategories.each do |subcat|
                     %li
                       %label.checkbox
-                        = check_box_tag 'profile[subcategory_ids][]', subcat.id, @profile.subcategory_ids.include?(subcat.id), :class => "check_boxes optional", :id => "profile_category_ids_#{subcat.id}"
+                        = check_box_tag 'profile[subcategory_ids][]', subcat.id, @profile.subcategory_ids.include?(subcat.id), :class => "check_boxes optional subcat_checkbox", :id => "profile_category_ids_#{subcat.id}"
                         = subcat.name
 
     = f.input :address
