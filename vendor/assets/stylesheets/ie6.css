@@ -15,3 +15,20 @@ body {background:#ffffff;background-image:none;padding:0;}
 .row {margin:0;}
 .span1, .span2, .span3, .span4, .span5, .span6, .span7, .span8, .span9, .span10, .span11, .span12  {float:left;margin:0 30px 0 0;}
 .last-child {margin-right:0;}
+
+/* Checkbosex in profile */
+label.checkbox {
+    display: block;
+    padding-left: 15px;
+    text-indent: -15px;
+}
+input.check_boxes {
+    width: 13px;
+    height: 13px;
+    padding: 0;
+    margin:0;
+    vertical-align: bottom;
+    position: relative;
+    top: -1px;
+    overflow: hidden;
+}
