@@ -3,7 +3,7 @@
 
   .form-inputs
     = f.input :title
-    = f.input :body
+    = f.input :body, as: :text
     = f.input :count
     = f.association :count_type
     = f.input :price

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130514044257) do
+ActiveRecord::Schema.define(:version => 20130605061717) do
 
   create_table "buys", :force => true do |t|
     t.string   "title"
@@ -65,10 +65,10 @@ ActiveRecord::Schema.define(:version => 20130514044257) do
 
   create_table "posts", :force => true do |t|
     t.string   "title"
-    t.string   "body"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.string   "body_cache"
+    t.text     "body",       :limit => 255
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+    t.text     "body_cache", :limit => 255
   end
 
   create_table "profiles", :force => true do |t|

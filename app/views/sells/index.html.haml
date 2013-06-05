@@ -1,22 +1,22 @@
 / %h1 Продажа
+.catsblock
+  %ul
+    - @categories.each do |category|
+      %li
+        = link_to category.name, sells_category_path(category)
+        - if !category.subcategories.empty?
+          %ul
+            - category.subcategories.each do |subcat|
+              %li= link_to subcat.name, sells_subcategory_path(subcat)
 
-%ul
-  - @categories.each do |category|
-    %li
-      = link_to category.name, sells_category_path(category)
-      - if !category.subcategories.empty?
-        %ul
-          - category.subcategories.each do |subcat|
-            %li= link_to subcat.name, sells_subcategory_path(subcat)
-
-= search_form_for @q do |f|
-  = f.label :title_cont
-  = f.text_field :title_cont
-  = f.label :city_id_eq
-  / = f.text_field :city_id_eq
-  / = f.select :city_id_eq, [] +options_from_collection_for_select(@cities, "id", "name")
-  = f.collection_select :city_id_eq, @cities, :id, :name, {:include_blank => "Все"}
-  = f.submit
+  = search_form_for @q do |f|
+    = f.label :title_cont
+    = f.text_field :title_cont
+    = f.label :city_id_eq
+    / = f.text_field :city_id_eq
+    / = f.select :city_id_eq, [] +options_from_collection_for_select(@cities, "id", "name")
+    = f.collection_select :city_id_eq, @cities, :id, :name, {:include_blank => "Все"}
+    = f.submit
 
 .sellsblock
   = render 'sells'
