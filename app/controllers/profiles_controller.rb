@@ -5,7 +5,7 @@ class ProfilesController < ApplicationController
   # GET /profiles.json
   def index
     # @profiles = Profile.all
-    @categories = Category.all
+    # @categories = Category.all
     @profiles = Profile.paginate(:page => params[:page])
 
     # respond_to do |format|

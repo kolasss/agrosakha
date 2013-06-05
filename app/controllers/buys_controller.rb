@@ -4,8 +4,9 @@ class BuysController < ApplicationController
   # GET /buys
   # GET /buys.json
   def index
-    @categories = Category.all
+    # @categories = Category.all
     @cities = City.all
+    @regions = Region.all
     @q = Buy.search(params[:q])
     @buys = @q.result(:distinct => true).paginate(:page => params[:page])
 
