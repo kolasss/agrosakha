@@ -40,7 +40,7 @@
         %td= sell.city.region.name if sell.city
         %td= sell.category.name if sell.category
         %td= sell.subcategory.name if sell.subcategory
-        %td= link_to sell.user.profile.name, sell.user.profile
+        %td= link_to sell.user.profile.name, sell.user.profile if sell.user.profile
         %td= link_to 'Show', sell
         %td
           - if can? :update, sell
