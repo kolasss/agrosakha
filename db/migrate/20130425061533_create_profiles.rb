@@ -2,7 +2,7 @@ class CreateProfiles < ActiveRecord::Migration
   def change
     create_table :profiles do |t|
       t.references :user, :null => false
-      t.string :name
+      t.string :name, :null => false
       t.integer :inn
       t.references :city
       t.references :region
