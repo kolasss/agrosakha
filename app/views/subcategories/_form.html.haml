@@ -3,7 +3,7 @@
 
   .form-inputs
     = f.input :name
-    = f.association :category
+    = f.association :category, :selected => params[:category]
 
   .form-actions
     = f.button :submit

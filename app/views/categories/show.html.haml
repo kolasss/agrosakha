@@ -3,13 +3,23 @@
 %h3
   = @category.name
   - if can? :update, @category
-    = link_to 'редактировать', edit_category_path(@category), :class => 'btn btn-mini'
+    = link_to 'Редактировать', edit_category_path(@category), :class => 'btn btn-mini'
+  - if can? :destroy, @category
+    %td= link_to 'Удалить', @category, :method => :delete, :data => { :confirm => 'Вы уверены?' }, :class => 'btn btn-mini btn-danger'
 
 - unless @category.subcategories.empty?
-  %ul
-    - @category.subcategories.each do |subcat|
-      %li= link_to subcat.name, subcat
+  %h4 Подкатегории
 
+  %table.table
+    - @category.subcategories.each do |subcategory|
+      %tr
+        %td= link_to subcategory.name, subcategory
+        - if can? :update, subcategory
+          %td= link_to 'Изменить', edit_subcategory_path(subcategory), :class => 'btn btn-mini'
+        - if can? :destroy, subcategory
+          %td= link_to 'Удалить', subcategory, :method => :delete, :data => { :confirm => 'Вы уверены?' }, :class => 'btn btn-mini btn-danger'
+
+= link_to 'Новая подкатегория', new_subcategory_path(category: @category), {class: 'btn'}
 = link_to 'Назад', categories_path, {class: 'btn'}
 
 / .sellsblock

@@ -1,4 +1,4 @@
-%h1 Listing regions
+%h1 Список регионов
 
 %table.table
   %tr
@@ -6,16 +6,18 @@
     %th Name
     %th
     %th
-    %th
 
   - @regions.each do |region|
     %tr
       %td= region.id
-      %td= region.name
-      %td= link_to 'Show', region
-      %td= link_to 'Edit', edit_region_path(region)
-      %td= link_to 'Destroy', region, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %td= link_to region.name, region
+      %td
+        - if can? :update, region
+          = link_to 'Изменить', edit_region_path(region), :class => 'btn btn-mini'
+      %td
+        - if can? :destroy, region
+          = link_to 'Удалить', region, :method => :delete, :data => { :confirm => 'Вы уверены?' }, :class => 'btn btn-mini btn-danger'
 
 %br
 
-= link_to 'New Region', new_region_path
+= link_to 'Новый регион', new_region_path

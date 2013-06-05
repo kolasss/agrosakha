@@ -1,12 +1,23 @@
 / %p#notice= notice
 
-%p
-  %b Id:
-  = @region.id
-%p
-  %b Name:
+%h3
   = @region.name
+  - if can? :update, @region
+    = link_to 'Редактировать', edit_region_path(@region), :class => 'btn btn-mini'
+  - if can? :destroy, @region
+    %td= link_to 'Удалить', @region, :method => :delete, :data => { :confirm => 'Вы уверены?' }, :class => 'btn btn-mini btn-danger'
 
-= link_to 'Edit', edit_region_path(@region)
-\|
-= link_to 'Back', regions_path
+- unless @region.cities.empty?
+  %h4 Населенные пункты
+
+  %table.table
+    - @region.cities.each do |city|
+      %tr
+        %td= link_to city.name, city
+        - if can? :update, city
+          %td= link_to 'Изменить', edit_city_path(city), :class => 'btn btn-mini'
+        - if can? :destroy, city
+          %td= link_to 'Удалить', city, :method => :delete, :data => { :confirm => 'Вы уверены?' }, :class => 'btn btn-mini btn-danger'
+
+= link_to 'Новый населенный пункт', new_city_path(region: @region), {class: 'btn'}
+= link_to 'Назад', regions_path, {class: 'btn'}
