@@ -1,46 +1,32 @@
-/ %ul.nav.nav-tabs
-/ 	%li{:class => ("active" if params[:controller] == "posts")}
-/ 		= link_to 'Главная', posts_path
-/ 	%li.dropdown{:class => ("active" if params[:controller] == "sells")}
-/ 		= link_to 'Продажа', sells_path
-/ 		/ %a.dropdown-toggle{ "data-toggle" => "dropdown", :href => sells_path }
-/ 		/ 	Продажа
-/ 		/ 	%b.caret
-/ 		/ %ul.dropdown-menu
-/ 		/ 	%li= link_to 'Все', sells_path
-/ 		/ 	- Category.all.each do |category|
-/ 		/ 		%li= link_to category.name, sells_category_path(category)
-/ 	%li.dropdown{:class => ("active" if params[:controller] == "buys")}
-/ 		= link_to 'Покупка', buys_path
-/ 	%li.dropdown{:class => ("active" if params[:controller] == "profiles")}
-/ 		= link_to 'Реестр участников', profiles_path
-
-- if params[:action] == "index"
-	.catsblock
-		- if params[:controller] == "sells"
-			%ul
-				- Category.all.each do |category|
-					%li
-						= link_to category.name, sells_category_path(category)
-						- if !category.subcategories.empty?
-							%ul
-								- category.subcategories.each do |subcat|
-									%li= link_to subcat.name, sells_subcategory_path(subcat)
-		- elsif params[:controller] == "buys"
-			%ul
-				- Category.all.each do |category|
-					%li
-						= link_to category.name, buys_category_path(category)
-						- if !category.subcategories.empty?
-							%ul
-								- category.subcategories.each do |subcat|
-									%li= link_to subcat.name, buys_subcategory_path(subcat)
-		- elsif params[:controller] == "profiles"
-			%ul
-				- Category.all.each do |category|
-					%li
-						= link_to category.name, profiles_category_path(category)
-						- if !category.subcategories.empty?
-							%ul
-								- category.subcategories.each do |subcat|
-									%li= link_to subcat.name, profiles_subcategory_path(subcat)
+/ - if params[:action] == "index"
+.catsblock
+	- if params[:controller] == "sells"
+		%ul.nav.nav-list
+			- Category.all.each do |category|
+				%li{:class => ("active" if params[:action] == "show_category" && params[:id].to_i == category.id)}
+					= link_to category.name, sells_category_path(category)
+					- if !category.subcategories.empty?
+						%ul.nav.nav-list
+							- category.subcategories.each do |subcat|
+								%li{:class => ("active" if params[:action] == "show_subcategory" && params[:id].to_i == subcat.id)}
+									= link_to subcat.name, sells_subcategory_path(subcat)
+	- elsif params[:controller] == "buys"
+		%ul.nav.nav-list
+			- Category.all.each do |category|
+				%li{:class => ("active" if params[:action] == "show_category" && params[:id].to_i == category.id)}
+					= link_to category.name, buys_category_path(category)
+					- if !category.subcategories.empty?
+						%ul.nav.nav-list
+							- category.subcategories.each do |subcat|
+								%li{:class => ("active" if params[:action] == "show_subcategory" && params[:id].to_i == subcat.id)}
+									= link_to subcat.name, buys_subcategory_path(subcat)
+	- elsif params[:controller] == "profiles"
+		%ul.nav.nav-list
+			- Category.all.each do |category|
+				%li{:class => ("active" if params[:action] == "show_category" && params[:id].to_i == category.id)}
+					= link_to category.name, profiles_category_path(category)
+					- if !category.subcategories.empty?
+						%ul.nav.nav-list
+							- category.subcategories.each do |subcat|
+								%li{:class => ("active" if params[:action] == "show_subcategory" && params[:id].to_i == subcat.id)}
+									= link_to subcat.name, profiles_subcategory_path(subcat)

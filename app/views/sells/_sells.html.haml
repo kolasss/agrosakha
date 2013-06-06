@@ -18,13 +18,12 @@
       %th Пользователь
       %th
       %th
-      %th
 
     - @sells.each do |sell|
       %tr
         %td= sell.id
         %td= l(sell.updated_at, :format => :long)
-        %td= sell.title
+        %td= link_to sell.title, sell
         /%td= sell.body
         %td
           = sell.count
@@ -41,7 +40,6 @@
         %td= sell.category.name if sell.category
         %td= sell.subcategory.name if sell.subcategory
         %td= link_to sell.user.profile.name, sell.user.profile if sell.user.profile
-        %td= link_to 'Show', sell
         %td
           - if can? :update, sell
             = link_to 'Edit', edit_sell_path(sell)
