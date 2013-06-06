@@ -18,13 +18,12 @@
       %th Пользователь
       %th
       %th
-      %th
 
     - @buys.each do |buy|
       %tr
         %td= buy.id
         %td= l(buy.updated_at, :format => :long)
-        %td= buy.title
+        %td= link_to buy.title, buy
         / %td= buy.body
         %td
           = buy.count
@@ -41,7 +40,6 @@
         %td= buy.category.name if buy.category
         %td= buy.subcategory.name if buy.subcategory
         %td= link_to buy.user.profile.name, buy.user.profile if buy.user.profile
-        %td= link_to 'Show', buy
         %td
           - if can? :update, buy
             = link_to 'Edit', edit_buy_path(buy)
