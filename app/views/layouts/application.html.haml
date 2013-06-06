@@ -27,11 +27,16 @@
               / %nav.navbar-inner
               = render 'layouts/mainmenu'
           .row
-            .span3
-              = render 'layouts/categories'
-            .span9
-              = render 'layouts/messages'
-              = yield
+            - unless params[:controller] == "posts"
+              .span3
+                = render 'layouts/categories'
+              .span9
+                = render 'layouts/messages'
+                = yield
+            - else
+              .span12
+                = render 'layouts/messages'
+                = yield
           %footer
       / ! end of .container
     / ! end of #main
