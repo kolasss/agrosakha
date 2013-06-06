@@ -1,42 +1,50 @@
 / %p#notice= notice
 
-%p
-  %b Title:
+%h4
   = @sell.title
 %p
-  %b Body:
   = @sell.body
 %p
-  %b Count:
+  %b Количество:
   = @sell.count
-%p
-  %b Count type:
   = @sell.count_type.name if @sell.count_type
 %p
-  %b Price:
-  = @sell.price
+  %b Цена:
+  = @sell.price.to_s + ' руб.'
+  = ' за ' + @sell.count_type.name if @sell.count_type
 / %p
 /   %b Price type:
 /   = @sell.price_type
-%p
-  %b Район:
-  = @sell.region.name if @sell.region
-%p
-  %b City:
-  = @sell.city.name if @sell.city
-%p
-  %b Category:
-  = @sell.category.name if @sell.category
-%p
-  %b Subcategory:
-  = @sell.subcategory.name if @sell.subcategory
-%p
-  %b User:
-  = @sell.user.name
+- if @sell.region
+  %p
+    %b Район:
+    = @sell.region.name
+- if @sell.city
+  %p
+    %b Населенный пункт:
+    = @sell.city.name
+- if @sell.category
+  %p
+    %b Категория:
+    = @sell.category.name
+- if @sell.subcategory
+  %p
+    %b Подкатегория:
+    = @sell.subcategory.name
+- if @sell.user.profile
+  %p
+    %b Организация:
+    = link_to @sell.user.profile.name, @sell.user.profile
+    - unless @sell.user.profile.phone.empty?
+      %b Телефон:
+      = @sell.user.profile.phone
+    - unless @sell.user.profile.address.empty?
+      %b Адрес:
+      = @sell.user.profile.address
 %p
   %b Создано:
   = l(@sell.updated_at, :format => :long)
 - if can? :update, @sell
-  = link_to 'Edit', edit_sell_path(@sell)
+  = link_to 'Изменить', edit_sell_path(@sell)
   \|
-= link_to 'Back', sells_path
+= link_to 'Назад', :back

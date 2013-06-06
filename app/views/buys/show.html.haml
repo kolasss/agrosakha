@@ -1,42 +1,48 @@
 / %p#notice= notice
 
-%p
-  %b Title:
+%h4
   = @buy.title
 %p
-  %b Body:
   = @buy.body
 %p
-  %b Count:
+  %b Количество:
   = @buy.count
-%p
-  %b Count type:
   = @buy.count_type.name if @buy.count_type
 %p
-  %b Price:
-  = @buy.price
-/ %p
-/   %b Price type:
-/   = @buy.price_type
-%p
-  %b Район:
-  = @buy.region.name if @buy.region
-%p
-  %b City:
-  = @buy.city.name if @buy.city
-%p
-  %b Category:
-  = @buy.category.name if @buy.category
-%p
-  %b Subcategory:
-  = @buy.subcategory.name if @buy.subcategory
-%p
-  %b User:
-  = @buy.user.name
+  %b Цена:
+  = @buy.price.to_s + ' руб.'
+  = ' за ' + @buy.count_type.name if @buy.count_type
+
+- if @buy.region
+  %p
+    %b Район:
+    = @buy.region.name
+- if @buy.city
+  %p
+    %b Населенный пункт:
+    = @buy.city.name
+- if @buy.category
+  %p
+    %b Категория:
+    = @buy.category.name
+- if @buy.subcategory
+  %p
+    %b Подкатегория:
+    = @buy.subcategory.name
+- if @buy.user.profile
+  %p
+    %b Организация:
+    = link_to @buy.user.profile.name, @buy.user.profile
+    - unless @buy.user.profile.phone.empty?
+      %b Телефон:
+      = @buy.user.profile.phone
+    - unless @buy.user.profile.address.empty?
+      %b Адрес:
+      = @buy.user.profile.address
 %p
   %b Создано:
   = l(@buy.updated_at, :format => :long)
 - if can? :update, @buy
-  = link_to 'Edit', edit_buy_path(@buy)
+  = link_to 'Изменить', edit_buy_path(@buy)
   \|
-= link_to 'Back', buys_path
+= link_to 'Назад', :back
