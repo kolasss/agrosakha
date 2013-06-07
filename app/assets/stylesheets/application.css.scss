@@ -71,7 +71,7 @@
 }
 
 
-/* STicky footer */
+/* Sticky footer */
 html,
 body {
   height: 100%;
@@ -79,7 +79,7 @@ body {
 }
 
 /* Wrapper for page content to push down footer */
-#main {
+#wrap {
   min-height: 100%;
   height: auto !important;
   height: 100%;
@@ -97,13 +97,4 @@ footer {
   height: 60px;
   text-align: center;
   line-height: 60px;
-}
-/* Lastly, apply responsive CSS fixes as necessary */
-@media (max-width: 767px) {
-  footer {
-    margin-left: -20px;
-    margin-right: -20px;
-    padding-left: 20px;
-    padding-right: 20px;
-  }
 }
