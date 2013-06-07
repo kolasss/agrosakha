@@ -1,31 +1,33 @@
 = simple_form_for(@buy) do |f|
   = f.error_notification
 
-  .form-inputs
-    = f.input :title
-    = f.input :body, as: :text
-    = f.input :count
-    = f.association :count_type
-    = f.input :price
-    / = f.input :price_type
+  .form-inputs.row
+    .span4.fortextarea
+      = f.input :title
+      = f.input :body, as: :text
+    .span4
+      = f.input :count
+      = f.association :count_type
+      = f.input :price
+      / = f.input :price_type
 
-    / #region and city selects
-    = f.association :region, :prompt => "Выберите район"
-    / = f.association :city
-    .control-group.select.optional.buy_city
-      %label.select.optional.control-label{ for: "buy_city_id" }
-        Населенный пункт
-      #buy_city
-        = render :partial => "cities"
+      / #region and city selects
+      = f.association :region, :prompt => "Выберите район"
+      / = f.association :city
+      .control-group.select.optional.buy_city
+        %label.select.optional.control-label{ for: "buy_city_id" }
+          Населенный пункт
+        #buy_city
+          = render :partial => "cities"
 
-    / #category and subcategory selects
-    = f.association :category, :prompt => "Выберите категорию"
-    / = f.association :subcategory
-    .control-group.select.optional.buy_subcategory
-      %label.select.optional.control-label{ for: "buy_subcategory_id" }
-        Подкатегория
-      #buy_subcategory
-        = render :partial => "subcats"
+      / #category and subcategory selects
+      = f.association :category, :prompt => "Выберите категорию"
+      / = f.association :subcategory
+      .control-group.select.optional.buy_subcategory
+        %label.select.optional.control-label{ for: "buy_subcategory_id" }
+          Подкатегория
+        #buy_subcategory
+          = render :partial => "subcats"
 
   .form-actions
     = f.button :submit, :class => 'btn btn-primary'

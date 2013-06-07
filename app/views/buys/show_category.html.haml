@@ -1,13 +1,4 @@
-/ %p#notice= notice
-
-/ %p
-/   %b Категория:
-/   = @category.name
-
-/ - if !@category.subcategories.empty?
-/   %ul
-/     - @category.subcategories.each do |subcat|
-/       %li= link_to subcat.name, sells_subcategory_path(subcat)
+%h2 Покупка
 
 .sellsblock
   = render 'buys'

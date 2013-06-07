@@ -1,4 +1,5 @@
-%h2 Покупка
+- if can? :create, Buy
+  = link_to 'Подать объявление о покупке', new_buy_path, {class: 'btn btn-success'}
 
 .indextable
   %table.table
@@ -49,7 +50,6 @@
 
 .apple_pagination
   = will_paginate @buys
-  
-%br
+
 - if can? :create, Buy
-  = link_to 'Подать объявление о покупке', new_buy_path, {class: 'btn'}
+  = link_to 'Подать объявление о покупке', new_buy_path, {class: 'btn btn-success'}
