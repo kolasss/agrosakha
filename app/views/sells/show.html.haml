@@ -1,50 +1,59 @@
 / %p#notice= notice
+.well
+  %h4
+    = @sell.title
+    - if can? :update, @sell
+      = link_to 'Изменить', edit_sell_path(@sell), class: "btn btn-mini btn-info headbtn"
+  %p
+    = @sell.body
 
-%h4
-  = @sell.title
-%p
-  = @sell.body
-%p
-  %b Количество:
-  = @sell.count
-  = @sell.count_type.name if @sell.count_type
-%p
-  %b Цена:
-  = @sell.price.to_s + ' руб.'
-  = ' за ' + @sell.count_type.name if @sell.count_type
-/ %p
-/   %b Price type:
-/   = @sell.price_type
-- if @sell.region
-  %p
-    %b Район:
-    = @sell.region.name
-- if @sell.city
-  %p
-    %b Населенный пункт:
-    = @sell.city.name
-- if @sell.category
-  %p
-    %b Категория:
-    = @sell.category.name
-- if @sell.subcategory
-  %p
-    %b Подкатегория:
-    = @sell.subcategory.name
-- if @sell.user.profile
-  %p
-    %b Организация:
-    = link_to @sell.user.profile.name, @sell.user.profile
+  %table.table.table-condensed.table-striped
+    %tr
+      %td
+        %b Цена
+      %td
+        = number_to_currency @sell.price
+        = ' за ' + @sell.count_type.name if @sell.count_type
+    %tr
+      %td 
+        %b Количество
+      %td
+        = number_with_precision @sell.count, precision: 2, strip_insignificant_zeros: true
+        = ' ' + @sell.count_type.name if @sell.count_type
+    %tr
+      %td 
+        %b Категория
+      %td
+        = @sell.category.name
+        = "/ " + @sell.subcategory.name if @sell.subcategory
+    - if @sell.city
+      %tr
+        %td 
+          %b Населенный пункт
+        %td
+          = @sell.city.region.name + ' район'
+          = "/ " + @sell.city.name
+    %tr
+      %td 
+        %b Организация
+      %td
+        = link_to @sell.user.profile.name, @sell.user.profile
     - unless @sell.user.profile.phone.empty?
-      %b Телефон:
-      = @sell.user.profile.phone
+      %tr
+        %td 
+          %b Телефон
+        %td
+          = @sell.user.profile.phone
     - unless @sell.user.profile.address.empty?
-      %b Адрес:
-      = @sell.user.profile.address
-%p
-  %b Создано:
-  = l(@sell.updated_at, :format => :long)
-- if can? :update, @sell
-  = link_to 'Изменить', edit_sell_path(@sell)
-  \|
-= link_to 'Назад', :back
+      %tr
+        %td 
+          %b Адрес
+        %td
+          = @sell.user.profile.address
+    %tr
+      %td 
+        %b Создано
+      %td
+        = l(@sell.updated_at, :format => :long)
+
+  = link_to 'Назад', :back, class: "btn"

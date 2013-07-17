@@ -1,49 +1,65 @@
 / %p#notice= notice
 
-%p
-  %b User:
-  = @profile.user.name
-%p
-  %b Name:
-  = @profile.name
-%p
-  %b Inn:
-  = @profile.inn
-%p
-  %b City:
-  = @profile.city.name if @profile.city
-%p
-  %b Region:
-  = @profile.region.name if @profile.region
-
-- unless @profile.categories.empty?
-  %p
-    %b Категории:
-    %ul
-      - @profile.categories.each do |cat|
-        %li= cat.name
-        - unless @profile.subcategories.empty? && cat.subcategories.empty?
-          %ul
-            - @profile.subcategories.each do |subcat|
-              - if subcat.category == cat
-                %li= subcat.name
-/ - unless @profile.subcategories.empty?
+/ - unless @profile.categories.empty?
 /   %p
-/     %b Подкатегории:
+/     %b Категории:
 /     %ul
-/       - @profile.subcategories.each do |subcat|
-/         %li= subcat.name
-%p
-  %b Address:
-  = @profile.address
-%p
-  %b Phone:
-  = @profile.phone
-%p
-  %b Desc:
-  = @profile.desc
+/       - @profile.categories.each do |cat|
+/         %li= cat.name
+/         - unless @profile.subcategories.empty? && cat.subcategories.empty?
+/           %ul
+/             - @profile.subcategories.each do |subcat|
+/               - if subcat.category == cat
+/                 %li= subcat.name
 
-- if can? :update, @profile
-  = link_to 'Edit', edit_profile_path(@profile)
-  \|
-= link_to 'Back', :back
+.well
+  %h4
+    = @profile.name
+    - if can? :update, @profile
+      = link_to 'Изменить', edit_profile_path(@profile), class: "btn btn-mini btn-info headbtn"
+
+  %table.table.table-condensed.table-striped
+    %tr
+      %td
+        %b ИНН
+      %td
+        = @profile.inn
+    - if @profile.city
+      %tr
+        %td 
+          %b Населенный пункт
+        %td
+          = @profile.city.region.name + ' район'
+          = "/ " + @profile.city.name
+    %tr
+      %td 
+        %b Категории
+      %td
+        %ul
+          - @profile.categories.each do |cat|
+            %li= cat.name
+            - unless @profile.subcategories.empty? && cat.subcategories.empty?
+              %ul
+                - @profile.subcategories.each do |subcat|
+                  - if subcat.category == cat
+                    %li= subcat.name
+    - unless @profile.phone.empty?
+      %tr
+        %td 
+          %b Телефон
+        %td
+          = @profile.phone
+    - unless @profile.address.empty?
+      %tr
+        %td 
+          %b Адрес
+        %td
+          = @profile.address
+    - unless @profile.desc.empty?
+      %tr
+        %td 
+          %b Описание
+        %td
+          = @profile.desc
+
+  = link_to 'Назад', :back, class: "btn"

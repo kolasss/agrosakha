@@ -2,51 +2,42 @@
   = link_to 'Подать объявление о покупке', new_buy_path, {class: 'btn btn-success'}
 
 .indextable
-  %table.table
+  %table.table.table-hover.table-condensed
     %tr
-      %th Номер
       %th Дата подачи
       %th Заголовок
-      /%th Body
       %th Количество
-      /%th Count type
       %th Цена
-      / %th Price type
       %th Населенный пункт
-      %th Район
       %th Категория
-      %th Подкатегория
       %th Пользователь
       %th
       %th
 
     - @buys.each do |buy|
       %tr
-        %td= buy.id
         %td= l(buy.updated_at, :format => :long)
         %td= link_to buy.title, buy
-        / %td= buy.body
         %td
-          = buy.count
+          = number_with_precision buy.count, precision: 2, strip_insignificant_zeros: true
           = ' ' + buy.count_type.name if buy.count_type
-        / %td= buy.count_type.name if buy.count_type
         %td
-          = buy.price.to_s + ' руб.'
+          = number_to_currency buy.price
           = ' за ' + buy.count_type.name if buy.count_type
-        / %td
-        /   = show_price_type buy.price_type
-        /   = buy.count_type.name if buy.count_type && buy.price_type == 1
-        %td= buy.city.name if buy.city
-        %td= buy.city.region.name if buy.city
-        %td= buy.category.name if buy.category
-        %td= buy.subcategory.name if buy.subcategory
+        %td
+          - if buy.city
+            = buy.city.region.name + ' район'
+            = "/ " + buy.city.name
+        %td
+          = buy.category.name if buy.category
+          = "/ " + buy.subcategory.name if buy.subcategory
         %td= link_to buy.user.profile.name, buy.user.profile if buy.user.profile
         %td
           - if can? :update, buy
-            = link_to 'Edit', edit_buy_path(buy)
+            = link_to 'Изменить', edit_buy_path(buy), class: "btn btn-mini btn-info"
         %td
           - if can? :destroy, buy
-            = link_to 'Destroy', buy, :method => :delete, :data => { :confirm => 'Вы уверены?' }
+            = link_to 'Удалить', buy, :method => :delete, :data => { :confirm => 'Вы уверены?' }, class: "btn btn-mini btn-danger"
 
 .apple_pagination
   = will_paginate @buys

@@ -1,48 +1,60 @@
 / %p#notice= notice
 
-%h4
-  = @buy.title
-%p
-  = @buy.body
-%p
-  %b Количество:
-  = @buy.count
-  = @buy.count_type.name if @buy.count_type
-%p
-  %b Цена:
-  = @buy.price.to_s + ' руб.'
-  = ' за ' + @buy.count_type.name if @buy.count_type
+.well
+  %h4
+    = @buy.title
+    - if can? :update, @buy
+      = link_to 'Изменить', edit_buy_path(@buy), class: "btn btn-mini btn-info headbtn"
+  %p
+    = @buy.body
 
-- if @buy.region
-  %p
-    %b Район:
-    = @buy.region.name
-- if @buy.city
-  %p
-    %b Населенный пункт:
-    = @buy.city.name
-- if @buy.category
-  %p
-    %b Категория:
-    = @buy.category.name
-- if @buy.subcategory
-  %p
-    %b Подкатегория:
-    = @buy.subcategory.name
-- if @buy.user.profile
-  %p
-    %b Организация:
-    = link_to @buy.user.profile.name, @buy.user.profile
+  %table.table.table-condensed.table-striped
+    %tr
+      %td
+        %b Цена
+      %td
+        = number_to_currency @buy.price
+        = ' за ' + @buy.count_type.name if @buy.count_type
+    %tr
+      %td 
+        %b Количество
+      %td
+        = number_with_precision @buy.count, precision: 2, strip_insignificant_zeros: true
+        = ' ' + @buy.count_type.name if @buy.count_type
+    %tr
+      %td 
+        %b Категория
+      %td
+        = @buy.category.name
+        = "/ " + @buy.subcategory.name if @buy.subcategory
+    - if @buy.city
+      %tr
+        %td 
+          %b Населенный пункт
+        %td
+          = @buy.city.region.name + ' район'
+          = "/ " + @buy.city.name
+    %tr
+      %td 
+        %b Организация
+      %td
+        = link_to @buy.user.profile.name, @buy.user.profile
     - unless @buy.user.profile.phone.empty?
-      %b Телефон:
-      = @buy.user.profile.phone
+      %tr
+        %td 
+          %b Телефон
+        %td
+          = @buy.user.profile.phone
     - unless @buy.user.profile.address.empty?
-      %b Адрес:
-      = @buy.user.profile.address
-%p
-  %b Создано:
-  = l(@buy.updated_at, :format => :long)
-- if can? :update, @buy
-  = link_to 'Изменить', edit_buy_path(@buy)
-  \|
-= link_to 'Назад', :back
+      %tr
+        %td 
+          %b Адрес
+        %td
+          = @buy.user.profile.address
+    %tr
+      %td 
+        %b Создано
+      %td
+        = l(@buy.updated_at, :format => :long)
+
+  = link_to 'Назад', :back, class: "btn"

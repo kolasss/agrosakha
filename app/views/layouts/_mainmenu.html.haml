@@ -1,4 +1,4 @@
-%ul.nav.nav-tabs
+%ul.nav.nav-pills
 	%li{:class => ("active" if params[:controller] == "posts")}
 		= link_to 'Главная', posts_path
 	%li.dropdown{:class => ("active" if params[:controller] == "sells")}

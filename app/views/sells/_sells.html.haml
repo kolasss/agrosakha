@@ -2,51 +2,42 @@
   = link_to 'Подать объявление о продаже', new_sell_path, {class: 'btn btn-success'}
 
 .indextable
-  %table.table
+  %table.table.table-hover.table-condensed
     %tr
-      %th Номер
       %th Дата подачи
       %th Заголовок
-      /%th Body
       %th Количество
-      /%th Count type
       %th Цена
-      / %th Price type
       %th Населенный пункт
-      %th Район
       %th Категория
-      %th Подкатегория
       %th Пользователь
       %th
       %th
 
     - @sells.each do |sell|
       %tr
-        %td= sell.id
         %td= l(sell.updated_at, :format => :long)
         %td= link_to sell.title, sell
-        /%td= sell.body
         %td
-          = sell.count
+          = number_with_precision sell.count, precision: 2, strip_insignificant_zeros: true
           = ' ' + sell.count_type.name if sell.count_type
-        /%td= sell.count_type.name if sell.count_type
         %td
-          = sell.price.to_s + ' руб.'
+          = number_to_currency sell.price
           = ' за ' + sell.count_type.name if sell.count_type
-        / %td
-        /   = show_price_type sell.price_type
-        /   = sell.count_type.name if sell.count_type && sell.price_type == 1
-        %td= sell.city.name if sell.city
-        %td= sell.city.region.name if sell.city
-        %td= sell.category.name if sell.category
-        %td= sell.subcategory.name if sell.subcategory
+        %td
+          - if sell.city
+            = sell.city.region.name + ' район'
+            = "/ " + sell.city.name
+        %td
+          = sell.category.name if sell.category
+          = "/ " + sell.subcategory.name if sell.subcategory
         %td= link_to sell.user.profile.name, sell.user.profile if sell.user.profile
         %td
           - if can? :update, sell
-            = link_to 'Edit', edit_sell_path(sell)
+            = link_to 'Изменить', edit_sell_path(sell), class: "btn btn-mini btn-info"
         %td
           - if can? :destroy, sell
-            = link_to 'Destroy', sell, :method => :delete, :data => { :confirm => 'Are you sure?' }
+            = link_to 'Удалить', sell, :method => :delete, :data => { :confirm => 'Вы уверены?' }, class: "btn btn-mini btn-danger"
 
 .apple_pagination
   = will_paginate @sells

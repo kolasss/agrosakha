@@ -8,21 +8,49 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require_self
  *= require bootstrap-wysihtml5
  *= require_tree .
+ *= require_self
 */
 
+//overriding boostrap
+.mynavbar-top .container {
+  //border-bottom: 1px solid black;
+}
+.navbar .brand {
+  color: #000;
+  text-shadow: none;
+}
+.navbar .nav > li > a {
+  color: #0F4E85;
+  text-shadow: none;
+}
+.navbar .nav > li > a:hover {
+  color: #cc0000;
+}
+.table th, .table td {
+    border-top: none;
+}
+.table th {
+  color: #778FA2;
+  border-bottom: 1px solid #315B7F;
+}
+.table td {
+  color: #424242;
+}
+
+
 .content {
+  border-top: 1px solid #fff;
   //background-color: #eee;
   padding: 20px;
   margin: 0 -20px; /* negative indent the amount of the padding to maintain the grid system */
-  -webkit-border-radius: 0 0 6px 6px;
-  -moz-border-radius: 0 0 6px 6px;
-  border-radius: 0 0 6px 6px;
-  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.15);
-  -moz-box-shadow: 0 1px 2px rgba(0,0,0,.15);
-  box-shadow: 0 1px 2px rgba(0,0,0,.15);
+  //-webkit-border-radius: 0 0 6px 6px;
+  //-moz-border-radius: 0 0 6px 6px;
+  //border-radius: 0 0 6px 6px;
+  //-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+  //-moz-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+  //box-shadow: 0 1px 2px rgba(0,0,0,.15);
 }
 
 .post {
@@ -97,4 +125,27 @@ footer {
   height: 60px;
   text-align: center;
   line-height: 60px;
+}
+
+/* Search form for sells. buys */
+.searchform {
+  overflow-x: auto;
+  .searchblock {
+    float: left;
+    margin-right: 40px;
+  }
+  input {
+    font-size: 12px;
+  }
+  select {
+    font-size: 12px;
+  }
+  label {
+    font-size: 12px;
+  }
+}
+
+/*buttons edit and delete*/
+.headbtn {
+  margin-left: 30px;
 }

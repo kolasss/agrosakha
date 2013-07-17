@@ -1,7 +1,7 @@
-%h2 Список организаций
+%h4 Список организаций
 
 .indextable
-  %table.table
+  %table.table.table-hover.table-condensed
     %tr
       / %th User
       %th Наименование
@@ -13,25 +13,23 @@
       %th Описание
       %th
       %th
-      %th
 
     - @profiles.each do |profile|
       %tr
         / %td= profile.user.name
-        %td= profile.name
+        %td= link_to profile.name, profile
         %td= profile.inn
         %td= profile.city.name if profile.city
         %td= profile.region.name if profile.region
         %td= profile.address
         %td= profile.phone
         %td= profile.desc
-        %td= link_to 'Показать', profile
         %td
           - if can? :update, profile
-            = link_to 'Изменить', edit_profile_path(profile)
+            = link_to 'Изменить', edit_profile_path(profile), class: "btn btn-mini btn-info"
         %td
           - if can? :destroy, profile
-            = link_to 'Удалить', profile, :method => :delete, :data => { :confirm => 'Вы уверены?' }
+            = link_to 'Удалить', profile, :method => :delete, :data => { :confirm => 'Вы уверены?' }, class: "btn btn-mini btn-danger"
 
 .apple_pagination
   = will_paginate @profiles

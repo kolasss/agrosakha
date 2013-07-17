@@ -1,11 +1,11 @@
-%h1 Статьи
+%h3 Статьи
 
 - @posts.each do |post|
   .post  
-    %h2
+    %h4
       = link_to post.title, post
       - if can? :update, post
-        = link_to 'Изменить', edit_post_path(post), class: "btn btn-mini"
+        = link_to 'Изменить', edit_post_path(post), class: "btn btn-mini headbtn"
       - if can? :destroy, post
         = link_to 'Удалить', post, :method => :delete, :data => { :confirm => 'Вы уверены?' }, class: "btn btn-mini btn-danger"
     %p

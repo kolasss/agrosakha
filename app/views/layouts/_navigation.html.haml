@@ -1,5 +1,5 @@
 = link_to "Agrosakha.ru", root_path, :class => 'brand'
-%ul.nav.pull-right
+%ul.nav.pull-right.mynav
   - if user_signed_in?
     %li
       = link_to 'Выйти', destroy_user_session_path, :method=>'delete'
