@@ -10,5 +10,5 @@ class Profile < ActiveRecord::Base
   validates :name, :presence => true, :length => { :maximum => 100 }
   validates :user_id, :presence => true
 
-  self.per_page = 5
+  self.per_page = 20
 end

@@ -7,10 +7,10 @@
       %th Наименование
       %th ИНН
       %th Населенный пункт
-      %th Район
+      / %th Район
       %th Адрес
       %th Телефон
-      %th Описание
+      / %th Описание
       %th
       %th
 
@@ -19,11 +19,13 @@
         / %td= profile.user.name
         %td= link_to profile.name, profile
         %td= profile.inn
-        %td= profile.city.name if profile.city
-        %td= profile.region.name if profile.region
+        / %td= profile.city.name if profile.city
+        %td
+          = profile.region.name if profile.region
+          = "/ " + profile.city.name if profile.city
         %td= profile.address
         %td= profile.phone
-        %td= profile.desc
+        / %td= profile.desc
         %td
           - if can? :update, profile
             = link_to 'Изменить', edit_profile_path(profile), class: "btn btn-mini btn-info"

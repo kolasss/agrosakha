@@ -4,8 +4,7 @@ class SellsController < ApplicationController
   # GET /sells
   # GET /sells.json
   def index
-    # @categories = Category.all
-    @cities = City.all
+    # @cities = City.all
     @regions = Region.all
     @q = Sell.search(params[:q])
     @sells = @q.result(:distinct => true).paginate(:page => params[:page])
@@ -95,8 +94,12 @@ class SellsController < ApplicationController
   end
 
   def show_category
+    # @cities = City.all
+    @regions = Region.all
+
     @category = Category.find(params[:id])
-    @sells = @category.sells.paginate(:page => params[:page])
+    @q = @category.sells.search(params[:q])
+    @sells = @q.result(:distinct => true).paginate(:page => params[:page])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -105,8 +108,12 @@ class SellsController < ApplicationController
   end
 
   def show_subcategory
+    # @cities = City.all
+    @regions = Region.all
+
     @category = Subcategory.find(params[:id])
-    @sells = @category.sells.paginate(:page => params[:page])
+    @q = @category.sells.search(params[:q])
+    @sells = @q.result(:distinct => true).paginate(:page => params[:page])
 
     respond_to do |format|
       format.html # show.html.erb

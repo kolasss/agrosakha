@@ -6,11 +6,11 @@
     %tr
       %th Дата подачи
       %th Заголовок
-      %th Количество
+      / %th Количество
       %th Цена
       %th Населенный пункт
       %th Категория
-      %th Пользователь
+      %th Организация
       %th
       %th
 
@@ -18,15 +18,15 @@
       %tr
         %td= l(sell.updated_at, :format => :long)
         %td= link_to sell.title, sell
-        %td
-          = number_with_precision sell.count, precision: 2, strip_insignificant_zeros: true
-          = ' ' + sell.count_type.name if sell.count_type
+        / %td
+        /   = number_with_precision sell.count, precision: 2, strip_insignificant_zeros: true
+        /   = ' ' + sell.count_type.name if sell.count_type
         %td
           = number_to_currency sell.price
           = ' за ' + sell.count_type.name if sell.count_type
         %td
           - if sell.city
-            = sell.city.region.name + ' район'
+            = sell.city.region.name
             = "/ " + sell.city.name
         %td
           = sell.category.name if sell.category
