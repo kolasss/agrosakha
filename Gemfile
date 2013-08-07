@@ -44,3 +44,6 @@ gem "ransack"
 gem 'will_paginate', '~> 3.0'
 gem 'bootstrap-wysihtml5-rails'
 gem 'html_slicer'
+
+gem "paperclip", "~> 3.0"
+gem 'aws-sdk'

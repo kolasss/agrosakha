@@ -15,5 +15,7 @@ class Sell < ActiveRecord::Base
   validates :count_type_id, :presence => true
   validates :price, :presence => true, :numericality => { :greater_than_or_equal_to => 0 }
 
-  self.per_page = 5
+  self.per_page = 20
+
+  default_scope order('updated_at DESC')
 end

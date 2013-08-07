@@ -1,0 +1,14 @@
+%h4 Все объявления
+
+= search_form_for @q, :url => root_path, :class => "well well-small searchform" do |f|
+	.searchblock
+		= f.label :title_cont, 'Поиск по заголовку'
+		= f.text_field :title_cont
+	.searchblock
+		= f.label :region_id_eq, "Фильтр по региону"
+		= f.collection_select :region_id_eq, @regions, :id, :name, {:include_blank => "Все"}
+	.clearfix
+	= f.submit "Применить", class: "btn btn-small"
+
+.sellsblock
+	= render 'sells'

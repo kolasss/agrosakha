@@ -11,4 +11,6 @@ class Profile < ActiveRecord::Base
   validates :user_id, :presence => true
 
   self.per_page = 20
+
+  default_scope order('updated_at DESC')
 end

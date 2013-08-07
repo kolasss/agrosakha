@@ -1,17 +1,6 @@
 = link_to "Agrosakha.ru", root_path, :class => 'brand'
-%ul.nav.pull-right.mynav
-  - if user_signed_in?
-    %li
-      = link_to 'Выйти', destroy_user_session_path, :method=>'delete'
-  - else
-    %li
-      = link_to 'Войти', new_user_session_path
-  - if user_signed_in?
-    %li
-      = link_to current_user.name, edit_user_registration_path
-    - if current_user.has_role? :admin
-      %li
-        = link_to 'Администрирование', users_path
-  - else
-    %li
-      = link_to 'Зарегистрироваться', new_user_registration_path
+%ul.nav.pull-right
+  %li{:class => ("active" if params[:controller] == "home" || params[:controller] == "sells" || params[:controller] == "buys")}
+    = link_to 'Каталог', root_path
+  %li.dropdown{:class => ("active" if params[:controller] == "profiles")}
+    = link_to 'Реестр участников', profiles_path

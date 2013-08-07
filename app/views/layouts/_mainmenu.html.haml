@@ -1,16 +1,16 @@
-%ul.nav.nav-pills
-	%li{:class => ("active" if params[:controller] == "posts")}
-		= link_to 'Главная', posts_path
-	%li.dropdown{:class => ("active" if params[:controller] == "sells")}
-		= link_to 'Продажа', sells_path
-		/ %a.dropdown-toggle{ "data-toggle" => "dropdown", :href => sells_path }
-		/ 	Продажа
-		/ 	%b.caret
-		/ %ul.dropdown-menu
-		/ 	%li= link_to 'Все', sells_path
-		/ 	- Category.all.each do |category|
-		/ 		%li= link_to category.name, sells_category_path(category)
-	%li.dropdown{:class => ("active" if params[:controller] == "buys")}
-		= link_to 'Покупка', buys_path
-	%li.dropdown{:class => ("active" if params[:controller] == "profiles")}
-		= link_to 'Реестр участников', profiles_path
+%ul.nav.nav-tabs.nav-stacked
+  - if user_signed_in?
+    %li
+      = link_to 'Выйти', destroy_user_session_path, :method=>'delete'
+  - else
+    %li
+      = link_to 'Войти', new_user_session_path
+  - if user_signed_in?
+    %li
+      = link_to current_user.name, edit_user_registration_path
+    - if current_user.has_role? :admin
+      %li
+        = link_to 'Администрирование', users_path
+  - else
+    %li
+      = link_to 'Зарегистрироваться', new_user_registration_path

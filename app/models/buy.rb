@@ -16,4 +16,6 @@ class Buy < ActiveRecord::Base
   validates :price, :presence => true, :numericality => { :greater_than_or_equal_to => 0 }
 
   self.per_page = 20
+
+  default_scope order('updated_at DESC')
 end

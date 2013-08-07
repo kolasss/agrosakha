@@ -9,7 +9,8 @@ Agro14::Application.routes.draw do
   resources :cities
   resources :regions
 
-  root :to => "posts#index"
+  # root :to => "posts#index"
+  root :to => "home#index"
   
   devise_for :users
   resources :users
