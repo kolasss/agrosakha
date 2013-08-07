@@ -6,7 +6,8 @@
       = link_to 'Изменить', edit_sell_path(@sell), class: "btn btn-mini btn-info headbtn"
   %p
     = @sell.body
-
+  .thumbnail
+    = image_tag @sell.image.url(:large)
   %table.table.table-condensed.table-striped
     %tr
       %td

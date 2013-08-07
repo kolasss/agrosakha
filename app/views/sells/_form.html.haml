@@ -28,6 +28,18 @@
           Подкатегория
         #sell_subcategory
           = render :partial => "subcats"
+          
+      -if f.error(:image_file_name) || f.error(:image_content_type) || f.error(:image_content_type)
+        = f.input :image, wrapper_html: { class: 'error' }
+      -else
+        = f.input :image
+      %ul.myerror
+        -if f.error :image_file_name
+          %li= f.error :image_file_name
+        -if f.error :image_content_type
+          %li= f.error :image_content_type
+        -if f.error :image_file_size
+          %li= f.error :image_file_size
 
   .form-actions
     = f.button :submit, :class => 'btn btn-primary'

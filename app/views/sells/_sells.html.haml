@@ -5,6 +5,7 @@
   %table.table.table-hover.table-condensed
     %tr
       %th Дата подачи
+      %th Фотография
       %th Заголовок
       / %th Количество
       %th Цена
@@ -17,6 +18,7 @@
     - @sells.each do |sell|
       %tr
         %td= l(sell.updated_at, :format => :long)
+        %td= image_tag sell.image.url(:thumb)
         %td= link_to sell.title, sell
         / %td
         /   = number_with_precision sell.count, precision: 2, strip_insignificant_zeros: true

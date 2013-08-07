@@ -41,6 +41,7 @@ Agro14::Application.configure do
     :path => ":attachment/:id/:style.:extension",
     :bucket => 'agrosakha-dev',
     :url => ":s3_domain_url",
-    :s3_host_name => "s3-eu-west-1.amazonaws.com"
+    :s3_host_name => "s3-eu-west-1.amazonaws.com",
+    :default_url => '/:attachment/missing_:style.png'
   }
 end

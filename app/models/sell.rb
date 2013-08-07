@@ -6,7 +6,7 @@ class Sell < ActiveRecord::Base
   belongs_to :user
   belongs_to :count_type
 
-  attr_accessible :body, :count, :count_type_id, :price, :price_type, :title, :city_id, :region_id, :category_id, :subcategory_id
+  attr_accessible :image, :body, :count, :count_type_id, :price, :price_type, :title, :city_id, :region_id, :category_id, :subcategory_id
 
   validates :title, :presence => true, :length => { :maximum => 100 }
   validates :body, :length => { :maximum => 3000 }
@@ -18,4 +18,15 @@ class Sell < ActiveRecord::Base
   self.per_page = 20
 
   default_scope order('updated_at DESC')
+
+  has_attached_file :image, 
+    :styles => {
+      :thumb => {:geometry => "100x100>"},
+      :large => {:geometry => "500x500>"}
+    }
+
+  validates_attachment :image,
+    :content_type => { :content_type => ['image/jpeg', 'image/png', 'image/gif', 'image/jpg'] },
+    :size => { :in => 10..300.kilobytes }
+
 end
