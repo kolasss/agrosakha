@@ -1,16 +1,21 @@
-%ul.nav.nav-tabs.nav-stacked
+%ul.nav.nav-pills.nav-stacked
   - if user_signed_in?
+    %h4.mainname= link_to current_user.name, edit_user_registration_path
+
+    - if current_user && current_user.profile
+      %li    
+        = link_to 'Профиль Вашей организации', edit_profile_path(current_user.profile)
+    - elsif can? :create, Profile
+      %li
+        = link_to 'Создать профиль Вашей организации', new_profile_path
+    - if current_user.has_role? :admin
+      %li
+        = link_to 'Администрирование', users_path
+
     %li
       = link_to 'Выйти', destroy_user_session_path, :method=>'delete'
   - else
     %li
-      = link_to 'Войти', new_user_session_path
-  - if user_signed_in?
-    %li
-      = link_to current_user.name, edit_user_registration_path
-    - if current_user.has_role? :admin
-      %li
-        = link_to 'Администрирование', users_path
-  - else
-    %li
       = link_to 'Зарегистрироваться', new_user_registration_path
+    %li
+      = link_to 'Войти', new_user_session_path

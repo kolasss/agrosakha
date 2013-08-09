@@ -26,7 +26,8 @@
             .row
               / - if ["buys", "sells", "profiles"].include? params[:controller]
               .span3
-                = render 'layouts/mainmenu'
+                .well.well-small
+                  = render 'layouts/mainmenu'
                 = render 'layouts/categories'
               .span9
                 = render 'layouts/advs'

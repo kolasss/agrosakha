@@ -5,37 +5,43 @@
   
 .indextable
   %table.table.table-hover.table-condensed
-    %tr
-      %th Дата подачи
-      %th Фотография
-      %th Заголовок
-      / %th Количество
-      %th Цена
-      %th Населенный пункт
-      %th Категория
-      %th Организация
-      %th
-      %th
+    / %tr
+    /   %th Дата подачи
+    /   %th Фотография
+    /   %th Заголовок
+    /   / %th Количество
+    /   %th Цена
+    /   %th Населенный пункт
+    /   %th Категория
+    /   %th Организация
+    /   %th
+    /   %th
 
     - @ad.each do |sell|
       %tr
-        %td= l(sell.updated_at, :format => :long)
+        %td
+          %b= custom_format(sell.updated_at)
+          %br
+          = sell.updated_at.to_s :time
         %td= image_tag sell.image.url(:thumb)
-        %td= link_to sell.title, sell
+        %td
+          %p.category
+            = sell.category.name if sell.category
+            = "/ " + sell.subcategory.name if sell.subcategory
+          %h5
+            = link_to sell.title, sell
+          %p.price
+            = number_to_currency sell.price, strip_insignificant_zeros: true
+            = ' за ' + sell.count_type.name if sell.count_type
+          %p.profile
+            = link_to sell.user.profile.name, sell.user.profile if sell.user.profile
+          - if sell.city
+            %p.city
+              = sell.city.region.name
+              = " - " + sell.city.name
         / %td
         /   = number_with_precision sell.count, precision: 2, strip_insignificant_zeros: true
         /   = ' ' + sell.count_type.name if sell.count_type
-        %td
-          = number_to_currency sell.price
-          = ' за ' + sell.count_type.name if sell.count_type
-        %td
-          - if sell.city
-            = sell.city.region.name
-            = "/ " + sell.city.name
-        %td
-          = sell.category.name if sell.category
-          = "/ " + sell.subcategory.name if sell.subcategory
-        %td= link_to sell.user.profile.name, sell.user.profile if sell.user.profile
         %td
           - if can? :update, sell
             = link_to 'Изменить', edit_sell_path(sell), class: "btn btn-mini btn-info"
