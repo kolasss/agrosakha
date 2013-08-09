@@ -1,13 +1,13 @@
 / %p#notice= notice
-
 .well
   %h4
     = @buy.title
     - if can? :update, @buy
       = link_to 'Изменить', edit_buy_path(@buy), class: "btn btn-mini btn-info headbtn"
   %p
-    = @buy.body
-
+    = raw @buy.body
+  .thumbnail
+    = image_tag @buy.image.url(:large)
   %table.table.table-condensed.table-striped
     %tr
       %td

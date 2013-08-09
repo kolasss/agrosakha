@@ -19,6 +19,16 @@ class ProfilesController < ApplicationController
   def show
     # @profile = Profile.find(params[:id])
 
+    # @q = Sell.search(params[:q])
+    # @sells = @q.result(:distinct => true)
+    @sells = @profile.user.sells.all
+    # @sells = Sell.paginate(:page => params[:page])
+    # @q2 = Buy.search(params[:q])
+    # @buys = @q2.result(:distinct => true)
+    @buys = @profile.user.buys.all
+    # @buys = Buy.paginate(:page => params[:page])
+    @ad = (@sells + @buys).paginate(:page => params[:page], :per_page => 20)
+
     # respond_to do |format|
     #   format.html # show.html.erb
     #   format.json { render json: @profile }

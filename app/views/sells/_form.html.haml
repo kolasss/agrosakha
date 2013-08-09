@@ -4,7 +4,7 @@
   .form-inputs.row
     .span4.fortextarea
       = f.input :title
-      = f.input :body, as: :text
+      = f.input :body, input_html: { class: 'wysihtml5' }, as: :text
     .span4
       = f.input :count
       = f.association :count_type
@@ -28,7 +28,7 @@
           Подкатегория
         #sell_subcategory
           = render :partial => "subcats"
-          
+      
       -if f.error(:image_file_name) || f.error(:image_content_type) || f.error(:image_content_type)
         = f.input :image, wrapper_html: { class: 'error' }
       -else
@@ -40,6 +40,8 @@
           %li= f.error :image_content_type
         -if f.error :image_file_size
           %li= f.error :image_file_size
-
+      - if @sell.image
+        .thumbnail
+          = image_tag @sell.image.url(:large)
   .form-actions
     = f.button :submit, :class => 'btn btn-primary'

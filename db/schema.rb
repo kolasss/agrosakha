@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130807075243) do
+ActiveRecord::Schema.define(:version => 20130808010405) do
 
   create_table "buys", :force => true do |t|
     t.string   "title"
@@ -24,9 +24,13 @@ ActiveRecord::Schema.define(:version => 20130807075243) do
     t.integer  "category_id"
     t.integer  "subcategory_id"
     t.integer  "user_id"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
     t.integer  "region_id"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   add_index "buys", ["category_id"], :name => "index_buys_on_category_id"

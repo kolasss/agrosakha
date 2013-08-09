@@ -94,8 +94,12 @@ class BuysController < ApplicationController
   end
 
   def show_category
+    # @cities = City.all
+    @regions = Region.all
+
     @category = Category.find(params[:id])
-    @buys = @category.buys.paginate(:page => params[:page])
+    @q = @category.buys.search(params[:q])
+    @buys = @q.result(:distinct => true).paginate(:page => params[:page])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -104,8 +108,12 @@ class BuysController < ApplicationController
   end
 
   def show_subcategory
+    # @cities = City.all
+    @regions = Region.all
+
     @category = Subcategory.find(params[:id])
-    @buys = @category.buys.paginate(:page => params[:page])
+    @q = @category.buys.search(params[:q])
+    @buys = @q.result(:distinct => true).paginate(:page => params[:page])
 
     respond_to do |format|
       format.html # show.html.erb

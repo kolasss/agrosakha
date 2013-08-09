@@ -5,8 +5,9 @@
   %table.table.table-hover.table-condensed
     %tr
       %th Дата подачи
+      %th Фотография
       %th Заголовок
-      %th Количество
+      / %th Количество
       %th Цена
       %th Населенный пункт
       %th Категория
@@ -17,10 +18,11 @@
     - @buys.each do |buy|
       %tr
         %td= l(buy.updated_at, :format => :long)
+        %td= image_tag buy.image.url(:thumb)
         %td= link_to buy.title, buy
-        %td
-          = number_with_precision buy.count, precision: 2, strip_insignificant_zeros: true
-          = ' ' + buy.count_type.name if buy.count_type
+        / %td
+        /   = number_with_precision buy.count, precision: 2, strip_insignificant_zeros: true
+        /   = ' ' + buy.count_type.name if buy.count_type
         %td
           = number_to_currency buy.price
           = ' за ' + buy.count_type.name if buy.count_type
