@@ -1,39 +1,31 @@
-- if can? :create, Buy
-  = link_to 'Подать объявление о покупке', new_buy_path, {class: 'btn btn-success'}
+//- if can? :create, Buy
+//  = link_to 'Подать объявление о покупке', new_buy_path, {class: 'btn btn-success'}
 
 .indextable
   %table.table.table-hover.table-condensed
-    %tr
-      %th Дата подачи
-      %th Фотография
-      %th Заголовок
-      / %th Количество
-      %th Цена
-      %th Населенный пункт
-      %th Категория
-      %th Организация
-      %th
-      %th
-
     - @buys.each do |buy|
       %tr
-        %td= l(buy.updated_at, :format => :long)
-        %td= image_tag buy.image.url(:thumb)
-        %td= link_to buy.title, buy
-        / %td
-        /   = number_with_precision buy.count, precision: 2, strip_insignificant_zeros: true
-        /   = ' ' + buy.count_type.name if buy.count_type
         %td
-          = number_to_currency buy.price
-          = ' за ' + buy.count_type.name if buy.count_type
+          %b= custom_format(buy.updated_at)
+          %br
+          = buy.updated_at.to_s :time
         %td
+          = link_to image_tag(buy.image.url(:thumb)), buy
+        %td
+          %p.category
+            = buy.category.name if buy.category
+            = "/ " + buy.subcategory.name if buy.subcategory
+          %h5
+            = link_to buy.title, buy
+          %p.price
+            = number_to_currency buy.price, strip_insignificant_zeros: true
+            = ' за ' + buy.count_type.name if buy.count_type
+          %p.profile
+            = link_to buy.user.profile.name, buy.user.profile if buy.user.profile
           - if buy.city
-            = buy.city.region.name + ' район'
-            = "/ " + buy.city.name
-        %td
-          = buy.category.name if buy.category
-          = "/ " + buy.subcategory.name if buy.subcategory
-        %td= link_to buy.user.profile.name, buy.user.profile if buy.user.profile
+            %p.city
+              = buy.city.region.name
+              = " - " + buy.city.name
         %td
           - if can? :update, buy
             = link_to 'Изменить', edit_buy_path(buy), class: "btn btn-mini btn-info"

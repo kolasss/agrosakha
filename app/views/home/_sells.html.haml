@@ -1,29 +1,18 @@
-- if can? :create, Sell
-  = link_to 'Подать объявление о продаже', new_sell_path, {class: 'btn btn-success'}
-- if can? :create, Buy
-  = link_to 'Подать объявление о покупке', new_buy_path, {class: 'btn btn-success'}
+/ - if can? :create, Sell
+/   = link_to 'Подать объявление о продаже', new_sell_path, {class: 'btn btn-success'}
+/ - if can? :create, Buy
+/   = link_to 'Подать объявление о покупке', new_buy_path, {class: 'btn btn-success'}
   
 .indextable
-  %table.table.table-hover.table-condensed
-    / %tr
-    /   %th Дата подачи
-    /   %th Фотография
-    /   %th Заголовок
-    /   / %th Количество
-    /   %th Цена
-    /   %th Населенный пункт
-    /   %th Категория
-    /   %th Организация
-    /   %th
-    /   %th
-
+  %table.table.table-hover.table-condensed.table-striped
     - @ad.each do |sell|
       %tr
         %td
           %b= custom_format(sell.updated_at)
           %br
           = sell.updated_at.to_s :time
-        %td= image_tag sell.image.url(:thumb)
+        %td
+          = link_to image_tag(sell.image.url(:thumb)), sell
         %td
           %p.category
             = sell.category.name if sell.category
@@ -39,9 +28,6 @@
             %p.city
               = sell.city.region.name
               = " - " + sell.city.name
-        / %td
-        /   = number_with_precision sell.count, precision: 2, strip_insignificant_zeros: true
-        /   = ' ' + sell.count_type.name if sell.count_type
         %td
           - if can? :update, sell
             = link_to 'Изменить', edit_sell_path(sell), class: "btn btn-mini btn-info"

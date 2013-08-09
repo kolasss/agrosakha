@@ -4,10 +4,10 @@
     = @sell.title
     - if can? :update, @sell
       = link_to 'Изменить', edit_sell_path(@sell), class: "btn btn-mini btn-info headbtn"
-  %p
-    = raw @sell.body
   .thumbnail
     = image_tag @sell.image.url(:large)
+  %p
+    = raw @sell.body
   %table.table.table-condensed.table-striped
     %tr
       %td
