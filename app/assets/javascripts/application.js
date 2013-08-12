@@ -18,12 +18,15 @@
 //= require_tree .
 $(document).ready(function() {
 	//WYSIWYG editor
-  $('.wysihtml5').each(function(i, elem) {
-	  $(elem).wysihtml5({locale: "ru-RU"});
+	$('.wysihtml5').each(function(i, elem) {
+		$(elem).wysihtml5({
+			locale: "ru-RU",
+			"image": false
+		});
 	});
-
-  //change select cities collection in profile edit
-  $("#profile_region_id").change(function(){
+	
+	//change select cities collection in profile edit
+	$("#profile_region_id").change(function(){
   	// e.preventDefault();
   	var region = $('#profile_region_id').val();
     if(region == "") region="no";
@@ -33,7 +36,7 @@ $(document).ready(function() {
 	});
 
 	//change select cities collection in sell edit
-  $("#sell_region_id").change(function(){
+	$("#sell_region_id").change(function(){
   	// e.preventDefault();
   	var region = $('#sell_region_id').val();
     if(region == "") region="no";
@@ -43,7 +46,7 @@ $(document).ready(function() {
 	});
 
 	//change select cities collection in buy edit
-  $("#buy_region_id").change(function(){
+	$("#buy_region_id").change(function(){
   	// e.preventDefault();
   	var region = $('#buy_region_id').val();
     if(region == "") region="no";
@@ -53,7 +56,7 @@ $(document).ready(function() {
 	});
 
 	//change select subcategories collection in sell edit
-  $("#sell_category_id").change(function(){
+	$("#sell_category_id").change(function(){
   	// e.preventDefault();
   	var region = $('#sell_category_id').val();
     if(region == "") region="no";
@@ -63,7 +66,7 @@ $(document).ready(function() {
 	});
 
 	//change select subcategories collection in buy edit
-  $("#buy_category_id").change(function(){
+	$("#buy_category_id").change(function(){
   	// e.preventDefault();
   	var region = $('#buy_category_id').val();
     if(region == "") region="no";

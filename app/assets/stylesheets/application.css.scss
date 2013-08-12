@@ -146,9 +146,12 @@
   //width: 100%;
 }
 
-.wysihtml5 {
-  width: 90%;
+ul.wysihtml5-toolbar {
+  //width: 100%;
+  background-color: #f0f0f0;
+  padding: 10px 10px 0;
 }
+
 .subcat {
   padding-left: 15px;
   label {

@@ -4,8 +4,9 @@
     = @buy.title
     - if can? :update, @buy
       = link_to 'Изменить', edit_buy_path(@buy), class: "btn btn-mini btn-info headbtn"
-  .thumbnail
-    = image_tag @buy.image.url(:large)
+  - if @buy.image.file?
+    .thumbnail
+      = image_tag @buy.image.url(:large)
   %p
     = raw @buy.body
   %table.table.table-condensed.table-striped
