@@ -7,6 +7,7 @@ class Sell < ActiveRecord::Base
   belongs_to :count_type
 
   attr_accessible :image, :body, :count, :count_type_id, :price, :price_type, :title, :city_id, :region_id, :category_id, :subcategory_id
+  attr_accessor :type
 
   validates :title, :presence => true, :length => { :maximum => 100 }
   validates :body, :length => { :maximum => 3000 }

@@ -27,12 +27,13 @@
               / - if ["buys", "sells", "profiles"].include? params[:controller]
               .span3
                 - if can? :create, Sell
-                  = link_to 'Подать объявление', new_sell_path, {class: 'btn btn-success btn-large advbtn'}
+                  = link_to 'Подать объявление', new_sell_path, {class: 'btn btn-success btn-large advbtn input-block-level'}
                 .well.well-small
                   = render 'layouts/mainmenu'
                 = render 'layouts/categories'
               .span9
-                = render 'layouts/advs'
+                - if params[:controller] == "sells" || params[:controller] == "buys" || params[:controller] == "home"
+                  = render 'layouts/advs'
                 = render 'layouts/messages'
                 = yield
               / - else

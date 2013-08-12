@@ -1,13 +1,16 @@
-/ %p#notice= notice
+%h4 Список организаций
 
-/ %p
-/   %b Категория:
-/   = @category.name
-
-/ - if !@category.subcategories.empty?
-/   %ul
-/     - @category.subcategories.each do |subcat|
-/       %li= link_to subcat.name, profiles_subcategory_path(subcat)
+= search_form_for @q, :url => profiles_category_path(params[:id].to_i), :class => "well well-small searchform" do |f|
+	.searchblock
+		= f.label :name_cont, 'Поиск по наименованию'
+		= f.text_field :name_cont
+	/ = f.label :city_id_eq, "Фильтр по населенному пункту"
+	/ = f.collection_select :city_id_eq, @cities, :id, :name, {:include_blank => "Все"}
+	.searchblock
+		= f.label :region_id_eq, "Фильтр по району"
+		= f.collection_select :region_id_eq, @regions, :id, :name, {:include_blank => "Все"}
+	.clearfix
+	= f.submit "Применить", class: "btn btn-small"
 
 .sellsblock
-  = render 'profiles'
+	= render 'profiles'

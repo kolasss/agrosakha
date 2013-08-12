@@ -10,7 +10,7 @@ class HomeController < ApplicationController
     @q2 = Buy.search(params[:q])
     @buys = @q2.result(:distinct => true)
     # @buys = Buy.paginate(:page => params[:page])
-    @ad = (@sells + @buys).paginate(:page => params[:page], :per_page => 20)
+    @ad = (@sells + @buys).sort_by {|obj| obj.updated_at}.reverse!.paginate(:page => params[:page], :per_page => 20)
     respond_to do |format|
       format.html
       format.json { head :no_content }

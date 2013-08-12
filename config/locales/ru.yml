@@ -6,8 +6,6 @@ ru:
   # actions:
   #   edit: "izmenit"
   #   destroy: "ydalit"
-  Grants:
-    yes: "da"
   activerecord:
     models:
       profile:
@@ -50,3 +48,6 @@ ru:
 
       multi_page: "Displaying %{model} %{from} - %{to} of %{count} in total"
       multi_page_html: "Displaying %{model} <b>%{from}&nbsp;-&nbsp;%{to}</b> of <b>%{count}</b> in total"
+  helpers:
+    label:
+      region_id_eq: "asda"

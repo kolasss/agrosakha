@@ -4,9 +4,10 @@ class ProfilesController < ApplicationController
   # GET /profiles
   # GET /profiles.json
   def index
-    # @profiles = Profile.all
-    # @categories = Category.all
-    @profiles = Profile.paginate(:page => params[:page])
+    @regions = Region.all
+    @q = Profile.search(params[:q])
+    @profiles = @q.result(:distinct => true).paginate(:page => params[:page])
+    # @profiles = Profile.paginate(:page => params[:page])
 
     # respond_to do |format|
     #   format.html # index.html.erb
@@ -118,9 +119,11 @@ class ProfilesController < ApplicationController
   end
 
   def show_category
+    @regions = Region.all
     @category = Category.find(params[:id])
-    @profiles = @category.profiles.paginate(:page => params[:page])
-
+    @q = @category.profiles.search(params[:q])
+    @profiles = @q.result(:distinct => true).paginate(:page => params[:page])
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @category }
@@ -128,8 +131,10 @@ class ProfilesController < ApplicationController
   end
 
   def show_subcategory
+    @regions = Region.all
     @category = Subcategory.find(params[:id])
-    @profiles = @category.profiles.paginate(:page => params[:page])
+    @q = @category.profiles.search(params[:q])
+    @profiles = @q.result(:distinct => true).paginate(:page => params[:page])
 
     respond_to do |format|
       format.html # show.html.erb

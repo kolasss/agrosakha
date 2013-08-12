@@ -1,6 +1,7 @@
+#encoding: utf-8
 class SellsController < ApplicationController
   load_and_authorize_resource
-  skip_load_resource :only => [:index, :show_category, :show_subcategory, :update_city_select, :update_subcat_select]
+  skip_load_resource :only => [:create, :index, :show_category, :show_subcategory, :update_city_select, :update_subcat_select]
   # GET /sells
   # GET /sells.json
   def index
@@ -49,16 +50,33 @@ class SellsController < ApplicationController
   # POST /sells
   # POST /sells.json
   def create
-    # @sell = Sell.new(params[:sell])
-    @sell.user = current_user
+    if params[:sell][:type] == 'true'
+      params[:sell].delete :type
+      @sell = Sell.new(params[:sell])
+      @sell.user = current_user
 
-    respond_to do |format|
-      if @sell.save
-        format.html { redirect_to @sell, notice: 'Sell was successfully created.' }
-        format.json { render json: @sell, status: :created, location: @sell }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @sell.errors, status: :unprocessable_entity }
+      respond_to do |format|
+        if @sell.save
+          format.html { redirect_to @sell, notice: 'Объявление создано.' }
+          format.json { render json: @sell, status: :created, location: @sell }
+        else
+          format.html { render action: "new" }
+          format.json { render json: @sell.errors, status: :unprocessable_entity }
+        end
+      end
+    else
+      params[:sell].delete :type
+      @buy = Buy.new(params[:sell])
+      @buy.user = current_user
+
+      respond_to do |format|
+        if @buy.save
+          format.html { redirect_to @buy, notice: 'Объявление создано.' }
+          format.json { render json: @buy, status: :created, location: @buy }
+        else
+          format.html { render action: "new" }
+          format.json { render json: @buy.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
@@ -71,7 +89,7 @@ class SellsController < ApplicationController
 
     respond_to do |format|
       if @sell.update_attributes(params[:sell])
-        format.html { redirect_to session.delete(:return_to) || root_path, notice: 'Sell was successfully updated.' }
+        format.html { redirect_to session.delete(:return_to) || root_path, notice: 'Объявление обновлено.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

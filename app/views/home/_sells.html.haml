@@ -4,7 +4,7 @@
 /   = link_to 'Подать объявление о покупке', new_buy_path, {class: 'btn btn-success'}
   
 .indextable
-  %table.table.table-hover.table-condensed.table-striped
+  %table.table.table-hover.table-condensed
     - @ad.each do |sell|
       %tr
         %td
@@ -15,6 +15,8 @@
           = link_to image_tag(sell.image.url(:thumb)), sell
         %td
           %p.category
+            = "Предложение / " if sell.class.model_name == 'Sell'
+            = "Спрос / " if sell.class.model_name == 'Buy'
             = sell.category.name if sell.category
             = "/ " + sell.subcategory.name if sell.subcategory
           %h5
@@ -39,6 +41,6 @@
   = will_paginate @ad
 
 - if can? :create, Sell
-  = link_to 'Подать объявление о продаже', new_sell_path, {class: 'btn btn-success'}
-- if can? :create, Buy
+  = link_to 'Новое объявление', new_sell_path, {class: 'btn btn-success'}
+- elsif can? :create, Buy
   = link_to 'Подать объявление о покупке', new_buy_path, {class: 'btn btn-success'}

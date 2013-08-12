@@ -3,6 +3,9 @@
 
   .form-inputs.row
     .span4.fortextarea
+      - if params[:action] == "new"
+        = f.input :type, :collection => [['Предложение',true] ,['Спрос', false]], :as => :radio_buttons, :item_wrapper_class => 'inline', :label => 'Тип объявления', checked: true
+
       = f.input :title
       = f.input :body, input_html: { class: 'wysihtml5' }, as: :text
     .span4

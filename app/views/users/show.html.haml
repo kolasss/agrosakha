@@ -28,10 +28,10 @@
 		%b Desc:
 		= @user.profile.desc
 		
-	- unless user.roles.first.nil?
+	- unless @user.roles.first.nil?
 		%p
 			%b Роль
-			= user.roles.first.name.titleize
+			= @user.roles.first.name.titleize
 
 	- if can? :update, @user.profile
 		= link_to 'Edit', edit_profile_path(@user.profile)

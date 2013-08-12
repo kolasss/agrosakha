@@ -23,17 +23,4 @@ module ApplicationHelper
     end
   end
 
-  #   date = 
-  #   case 
-  #   # display today's date as "today"
-  #   when t >= Date.today then "today"
-  #   # display yesterday's date as 'Yesterday'
-  #   when (t >= Date.yesterday and t <= Date.today) then "yesterday"
-  #   # otherwise, display date: eg. Mon 4th June
-  #   else
-  #     t.strftime("%A #{t.day.ordinalize} %B")
-  #   end
-  #   time = t.strftime(" #{t.strftime("%I").to_i}:%M%p").downcase
-  #   date + time
-  # end
 end
