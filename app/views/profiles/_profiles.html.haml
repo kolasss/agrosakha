@@ -2,36 +2,30 @@
 
 .indextable
   %table.table.table-hover.table-condensed
-    %tr
-      / %th User
-      %th Наименование
-      %th ИНН
-      %th Населенный пункт
-      / %th Район
-      %th Адрес
-      %th Телефон
-      / %th Описание
-      %th
-      %th
-
     - @profiles.each do |profile|
       %tr
-        / %td= profile.user.name
-        %td= link_to profile.name, profile
-        %td= profile.inn
-        / %td= profile.city.name if profile.city
         %td
-          = profile.region.name if profile.region
-          = "/ " + profile.city.name if profile.city
-        %td= profile.address
-        %td= profile.phone
-        / %td= profile.desc
+          - if profile.city
+            %p.city
+              = profile.city.region.name
+              = " - " + profile.city.name
+          %h5
+            = link_to profile.name, profile
+          %p.price
+            Телефон: 
+            -if !profile.phone.empty?
+              = profile.phone
+            -else
+              нет данных
+          %p.profile
+            Адрес: 
+            -if !profile.address.empty?
+              = profile.address
+            -else
+              нет данных
         %td
           - if can? :update, profile
             = link_to 'Изменить', edit_profile_path(profile), class: "btn btn-mini btn-info"
-        %td
-          - if can? :destroy, profile
-            = link_to 'Удалить', profile, :method => :delete, :data => { :confirm => 'Вы уверены?' }, class: "btn btn-mini btn-danger"
 
 .apple_pagination
   = will_paginate @profiles

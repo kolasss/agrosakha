@@ -3,17 +3,16 @@
 
   .form-inputs
     / = f.association :user
-    = f.input :name
-    = f.input :inn
+    = f.input :name, input_html: { class: 'title_input' }
+    = f.input :inn, input_html: { class: 'category_input' }
 
     / #region and city selects
-    = f.association :region, :prompt => "Выберите район" #profile_region_id
+    = f.association :region, :prompt => "Выберите район", input_html: { class: 'category_input' }
     / = f.association :city #profile_city_id
-    
     .control-group.select.optional.profile_city
       %label.select.optional.control-label{ for: "profile_city_id" }
         Населенный пункт
-      #profile_city
+      #profile_city.controls
         = render :partial => "cities"
 
     / #categories and subcategories checkboxes
@@ -35,9 +34,11 @@
                         = check_box_tag 'profile[subcategory_ids][]', subcat.id, @profile.subcategory_ids.include?(subcat.id), :class => "check_boxes optional subcat_checkbox", :id => "profile_category_ids_#{subcat.id}"
                         = subcat.name
 
-    = f.input :address
-    = f.input :phone
-    = f.input :desc
+    = f.input :address, input_html: { class: 'title_input' }
+    = f.input :phone, input_html: { class: 'title_input' }
+    / = f.input :desc
+    .fortextarea
+      = f.input :desc, input_html: { class: 'wysihtml5' }, as: :text
 
   .form-actions
     = f.button :submit, :class => 'btn btn-primary'
