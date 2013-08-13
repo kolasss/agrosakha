@@ -24,6 +24,20 @@ ru:
       user:
         login: "Handle"
       # will translate User attribute "login" as "Handle"
+    errors:
+      models:
+        sell:
+          attributes:
+            image_file_size:
+              in_between: "Размер файла должен быть меньше %{max}"
+            image_content_type:
+              invalid: "Неверный тип файла"
+        buy:
+          attributes:
+            image_file_size:
+              in_between: "Размер файла должен быть меньше %{max}"
+            image_content_type:
+              invalid: "Неверный тип файла"
   unauthorized:
     manage:
       all: "Доступ запрещен."

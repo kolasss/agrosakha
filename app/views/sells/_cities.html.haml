@@ -1,4 +1,4 @@
 -if @cities.blank?
-	= collection_select(:sell, :city_id, [], :id, :name, {:prompt => "Выберите район"}, {:disabled => true})
+	= collection_select(:sell, :city_id, [], :id, :name, {:prompt => "Выберите район"}, {:disabled => true, class: 'category_input'})
 -else
-	= collection_select(:sell, :city_id, @cities, :id, :name, {:prompt => "Выберите населенный пункт"})
+	= collection_select(:sell, :city_id, @cities, :id, :name, {:prompt => "Выберите населенный пункт"}, {class: 'category_input'})

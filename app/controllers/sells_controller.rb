@@ -50,21 +50,7 @@ class SellsController < ApplicationController
   # POST /sells
   # POST /sells.json
   def create
-    if params[:sell][:type] == 'true'
-      params[:sell].delete :type
-      @sell = Sell.new(params[:sell])
-      @sell.user = current_user
-
-      respond_to do |format|
-        if @sell.save
-          format.html { redirect_to @sell, notice: 'Объявление создано.' }
-          format.json { render json: @sell, status: :created, location: @sell }
-        else
-          format.html { render action: "new" }
-          format.json { render json: @sell.errors, status: :unprocessable_entity }
-        end
-      end
-    else
+    if params[:sell][:type] == 'false'
       params[:sell].delete :type
       @buy = Buy.new(params[:sell])
       @buy.user = current_user
@@ -76,6 +62,21 @@ class SellsController < ApplicationController
         else
           format.html { render action: "new" }
           format.json { render json: @buy.errors, status: :unprocessable_entity }
+        end
+      end
+    else
+      params[:sell].delete :type
+      
+      @sell = Sell.new(params[:sell])
+      @sell.user = current_user
+
+      respond_to do |format|
+        if @sell.save
+          format.html { redirect_to @sell, notice: 'Объявление создано.' }
+          format.json { render json: @sell, status: :created, location: @sell }
+        else
+          format.html { render action: "new" }
+          format.json { render json: @sell.errors, status: :unprocessable_entity }
         end
       end
     end

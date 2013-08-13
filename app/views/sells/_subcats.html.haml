@@ -1,4 +1,4 @@
 -if @subcats.blank?
-	= collection_select(:sell, :subcategory_id, [], :id, :name, {:prompt => "Подкатегорий нет"}, {:disabled => true})
+	= collection_select(:sell, :subcategory_id, [], :id, :name, {:prompt => "Подкатегорий нет"}, {:disabled => true, class: 'category_input'})
 -else
-	= collection_select(:sell, :subcategory_id, @subcats, :id, :name, {:prompt => "Выберите подкатегорию"})
+	= collection_select(:sell, :subcategory_id, @subcats, :id, :name, {:prompt => "Выберите подкатегорию"}, {class: 'category_input'})

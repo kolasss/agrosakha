@@ -1,3 +1,4 @@
+#encoding: utf-8
 class BuysController < ApplicationController
   load_and_authorize_resource
   skip_load_resource :only => [:index, :show_category, :show_subcategory, :update_city_select, :update_subcat_select]
@@ -54,7 +55,7 @@ class BuysController < ApplicationController
 
     respond_to do |format|
       if @buy.save
-        format.html { redirect_to @buy, notice: 'Buy was successfully created.' }
+        format.html { redirect_to @buy, notice: 'Объявление создано.' }
         format.json { render json: @buy, status: :created, location: @buy }
       else
         format.html { render action: "new" }
@@ -71,7 +72,7 @@ class BuysController < ApplicationController
 
     respond_to do |format|
       if @buy.update_attributes(params[:buy])
-        format.html { redirect_to session.delete(:return_to) || root_path, notice: 'Buy was successfully updated.' }
+        format.html { redirect_to session.delete(:return_to) || root_path, notice: 'Объявление обновлено.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
