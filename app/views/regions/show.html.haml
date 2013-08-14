@@ -10,7 +10,7 @@
 - unless @region.cities.empty?
   %h4 Населенные пункты
 
-  %table.table
+  %table.table.table-hover
     - @region.cities.each do |city|
       %tr
         %td= link_to city.name, city

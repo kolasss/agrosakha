@@ -9,8 +9,8 @@
         /   %b= custom_format(buy.updated_at)
         /   %br
         /   = buy.updated_at.to_s :time
-        %td
-          = link_to image_tag(buy.image.url(:thumb)), buy
+        %td.thumb_img
+          = link_to image_tag(buy.image.url(:thumb), alt: ""), buy
         %td
           %p.category
             = buy.category.name if buy.category

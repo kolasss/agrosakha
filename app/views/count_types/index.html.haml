@@ -1,19 +1,17 @@
-%h1 Listing count_types
+%h1 Список едениц измерения
 
 %table.table
   %tr
-    %th Name
-    %th
+    %th Наименование
     %th
     %th
 
   - @count_types.each do |count_type|
     %tr
-      %td= count_type.name
-      %td= link_to 'Show', count_type
-      %td= link_to 'Edit', edit_count_type_path(count_type)
-      %td= link_to 'Destroy', count_type, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %td= link_to count_type.name, count_type
+      %td= link_to 'Изменить', edit_count_type_path(count_type), :class => 'btn btn-mini'
+      %td= link_to 'Удалить', count_type, :method => :delete, :data => { :confirm => 'Вы уверены?' }, :class => 'btn btn-mini btn-danger'
 
 %br
 
-= link_to 'New Count type', new_count_type_path
+= link_to 'Новая еденица измерения', new_count_type_path, {class: 'btn'}
