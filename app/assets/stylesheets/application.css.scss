@@ -243,9 +243,15 @@ footer {
   }
   select {
     font-size: 12px;
+    width: 250px;
   }
   label {
     font-size: 12px;
+  }
+  .btn-filter {
+    margin-top: 26px;
+    height: 28px;
+    float: left;
   }
 }
 

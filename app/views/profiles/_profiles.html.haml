@@ -13,20 +13,21 @@
             = link_to profile.name, profile
           %p.price
             Телефон: 
-            -if !profile.phone.empty?
+            -if profile.phone && !profile.phone.empty?
               = profile.phone
             -else
-              нет данных
+              Нет данных
           %p.profile
             Адрес: 
-            -if !profile.address.empty?
+            -if profile.address && !profile.address.empty?
               = profile.address
             -else
-              нет данных
+              Нет данных
         %td
           - if can? :update, profile
             = link_to 'Изменить', edit_profile_path(profile), class: "btn btn-mini btn-info"
-
+    - if @profiles.empty?
+      Записей нет
 .apple_pagination
   = will_paginate @profiles
 

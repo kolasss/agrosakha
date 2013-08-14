@@ -39,14 +39,14 @@
       %td 
         %b Организация
       %td
-        = link_to @buy.user.profile.name, @buy.user.profile
-    - unless @buy.user.profile.phone.empty?
+        = link_to @buy.user.profile.name, @buy.user.profile if @buy.user.profile
+    - if @buy.user.profile.phone && !@buy.user.profile.phone.empty?
       %tr
         %td 
           %b Телефон
         %td
           = @buy.user.profile.phone
-    - unless @buy.user.profile.address.empty?
+    - if @buy.user.profile.address && !@buy.user.profile.address.empty?
       %tr
         %td 
           %b Адрес

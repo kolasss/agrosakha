@@ -23,4 +23,27 @@ module ApplicationHelper
     end
   end
 
+  def filter_url
+    if params[:controller] == "home" && params[:action] == "index"
+      root_path
+    elsif params[:controller] == "buys"
+      if params[:action] == "show_category"
+        buys_category_path(params[:id].to_i)
+      elsif params[:action] == "show_subcategory"
+        buys_subcategory_path(params[:id].to_i)
+      end
+    elsif params[:controller] == "sells"
+      if params[:action] == "show_category"
+        sells_category_path(params[:id].to_i)
+      elsif params[:action] == "show_subcategory"
+        sells_subcategory_path(params[:id].to_i)
+      end
+    elsif params[:controller] == "profiles"
+      if params[:action] == "show_category"
+        profiles_category_path(params[:id].to_i)
+      elsif params[:action] == "show_subcategory"
+        profiles_subcategory_path(params[:id].to_i)
+      end
+    end
+  end
 end

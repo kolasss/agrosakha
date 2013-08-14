@@ -22,5 +22,6 @@ class User < ActiveRecord::Base
   private
     def default_role
       self.roles << Role.where(:name => 'guest').first
+      @profile = self.create_profile(name: self.name)
     end
 end

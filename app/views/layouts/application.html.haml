@@ -33,6 +33,8 @@
                   = render 'layouts/mainmenu'
                 = render 'layouts/categories'
               .span9
+                - if (params[:controller] == "sells" || params[:controller] == "buys" || params[:controller] == "home" || params[:controller] == "profiles") && (params[:action] == "index" || params[:action] == "show_category" || params[:action] == "show_subcategory")
+                  = render 'layouts/filter'
                 - if params[:controller] == "sells" || params[:controller] == "buys" || params[:controller] == "home"
                   = render 'layouts/advs'
                 = render 'layouts/messages'

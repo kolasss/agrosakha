@@ -1,21 +1,20 @@
 %h1 Подкатегории
 
-%table.table
+%table.table.table-hover
   %tr
-    %th Name
-    %th Category
+    %th Наименование
+    %th Категория
     %th
     %th
     %th
 
   - @subcategories.each do |subcategory|
     %tr
-      %td= subcategory.name
+      %td= link_to subcategory.name, subcategory
       %td= subcategory.category.name
-      %td= link_to 'Show', subcategory
-      %td= link_to 'Edit', edit_subcategory_path(subcategory)
-      %td= link_to 'Destroy', subcategory, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %td= link_to 'Изменить', edit_subcategory_path(subcategory), :class => 'btn btn-mini'
+      %td= link_to 'Удалить', subcategory, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn btn-mini btn-danger'
 
 %br
 
-= link_to 'New Subcategory', new_subcategory_path
+= link_to 'Новая подкатегория', new_subcategory_path, {class: 'btn'}

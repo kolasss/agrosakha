@@ -12,7 +12,7 @@ Agro14::Application.routes.draw do
   # root :to => "posts#index"
   root :to => "home#index"
   
-  devise_for :users
+  devise_for :users, :controllers => { :registrations => "registrations" }
   resources :users
 
   match "/sells/category/:id", to: "sells#show_category", :as => :sells_category

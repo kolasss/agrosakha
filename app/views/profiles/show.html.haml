@@ -23,7 +23,10 @@
       %td
         %b ИНН
       %td
-        = @profile.inn
+        - if @profile.inn
+          = @profile.inn
+        - else
+          Нет данных
     - if @profile.city
       %tr
         %td 
@@ -35,27 +38,30 @@
       %td 
         %b Категории
       %td
-        %ul
-          - @profile.categories.each do |cat|
-            %li= cat.name
-            - unless @profile.subcategories.empty? && cat.subcategories.empty?
-              %ul
-                - @profile.subcategories.each do |subcat|
-                  - if subcat.category == cat
-                    %li= subcat.name
-    - unless @profile.phone.empty?
+        - if @profile.categories.empty?
+          Нет данных
+        - else
+          %ul
+            - @profile.categories.each do |cat|
+              %li= cat.name
+              - unless @profile.subcategories.empty? && cat.subcategories.empty?
+                %ul
+                  - @profile.subcategories.each do |subcat|
+                    - if subcat.category == cat
+                      %li= subcat.name
+    - if @profile.phone && !@profile.phone.empty?
       %tr
         %td 
           %b Телефон
         %td
           = @profile.phone
-    - unless @profile.address.empty?
+    - if @profile.address && !@profile.address.empty?
       %tr
         %td 
           %b Адрес
         %td
           = @profile.address
-    - unless @profile.desc.empty?
+    - if @profile.desc && !@profile.desc.empty?
       %tr
         %td 
           %b Описание

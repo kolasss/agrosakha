@@ -1,12 +1,12 @@
 / %p#notice= notice
 
 %p
-  %b Name:
+  %b Наименование:
   = @subcategory.name
 %p
-  %b Category:
+  %b Категория:
   = @subcategory.category.name
 
-= link_to 'Edit', edit_subcategory_path(@subcategory)
+= link_to 'Изменить', edit_subcategory_path(@subcategory)
 \|
-= link_to 'Back', subcategories_path
+= link_to 'Назад', subcategories_path

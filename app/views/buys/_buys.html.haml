@@ -5,10 +5,10 @@
   %table.table.table-hover.table-condensed
     - @buys.each do |buy|
       %tr
-        %td
-          %b= custom_format(buy.updated_at)
-          %br
-          = buy.updated_at.to_s :time
+        / %td
+        /   %b= custom_format(buy.updated_at)
+        /   %br
+        /   = buy.updated_at.to_s :time
         %td
           = link_to image_tag(buy.image.url(:thumb)), buy
         %td
@@ -32,7 +32,9 @@
         %td
           - if can? :destroy, buy
             = link_to 'Удалить', buy, :method => :delete, :data => { :confirm => 'Вы уверены?' }, class: "btn btn-mini btn-danger"
-
+    - if @buys.empty?
+      Объявлений нет
+      
 .apple_pagination
   = will_paginate @buys
 
