@@ -1,7 +1,8 @@
 %h1 Список категорий
 
-%table.table.table-hover
+%table.table.table-hover.table-condensed
   %tr
+    %th Стандартное изображание
     %th Наименование
     %th
     %th
@@ -9,7 +10,7 @@
 
   - @categories.each do |category|
     %tr
-      / %td= category.name
+      %td= image_tag("/images/missing/thumb/#{category.default_image}", class: "img-polaroid")
       %td= link_to category.name, category
       %td
         - if can? :update, category

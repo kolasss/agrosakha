@@ -1,7 +1,8 @@
 %h1 Подкатегории
 
-%table.table.table-hover
+%table.table.table-hover.table-condensed
   %tr
+    %th Стандартное изображание
     %th Наименование
     %th Категория
     %th
@@ -10,6 +11,7 @@
 
   - @subcategories.each do |subcategory|
     %tr
+      %td= image_tag("/images/missing/thumb/#{subcategory.default_image}", class: "img-polaroid")
       %td= link_to subcategory.name, subcategory
       %td= subcategory.category.name
       %td= link_to 'Изменить', edit_subcategory_path(subcategory), :class => 'btn btn-mini'
