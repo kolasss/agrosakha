@@ -1,3 +1,4 @@
+#encoding: utf-8
 class SubcategoriesController < ApplicationController
   load_and_authorize_resource
   # GET /subcategories
@@ -53,7 +54,7 @@ class SubcategoriesController < ApplicationController
     #   end
     # end
     if @subcategory.save
-      redirect_to @subcategory, notice: 'Subcategory was successfully created.'
+      redirect_to @subcategory, notice: 'Подкатегория создана.'
     else
       render action: "new"
     end
@@ -74,7 +75,7 @@ class SubcategoriesController < ApplicationController
     #   end
     # end
     if @subcategory.update_attributes(params[:subcategory])
-      redirect_to @subcategory, notice: 'Subcategory was successfully updated.'
+      redirect_to @subcategory, notice: 'Подкатегория обновлена.'
     else
       render action: "edit"
     end

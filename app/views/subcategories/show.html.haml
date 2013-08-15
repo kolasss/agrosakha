@@ -6,6 +6,11 @@
 %p
   %b Категория:
   = @subcategory.category.name
+  
+%p
+  = @subcategory.default_image
+%p
+  = image_tag("/images/missing/thumb/#{@subcategory.default_image}", class: "img-polaroid")
 
 = link_to 'Изменить', edit_subcategory_path(@subcategory)
 \|

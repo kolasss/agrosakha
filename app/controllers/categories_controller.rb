@@ -1,3 +1,4 @@
+#encoding: utf-8
 class CategoriesController < ApplicationController
   load_and_authorize_resource
   # GET /categories
@@ -53,7 +54,7 @@ class CategoriesController < ApplicationController
     #   end
     # end
     if @category.save
-      redirect_to @category, notice: 'Category was successfully created.'
+      redirect_to @category, notice: 'Категория создана.'
     else
       render action: "new"
     end
@@ -74,7 +75,7 @@ class CategoriesController < ApplicationController
     #   end
     # end
     if @category.update_attributes(params[:category])
-      redirect_to @category, notice: 'Category was successfully updated.'
+      redirect_to @category, notice: 'Категория обновлена.'
     else
       render action: "edit"
     end

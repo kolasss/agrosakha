@@ -43,6 +43,6 @@ Agro14::Application.configure do
     :url => ":s3_domain_url",
     :s3_host_name => "s3-eu-west-1.amazonaws.com",
     # :default_url => '/:attachment/missing_:style.png'
-    :default_url => "/:attachment/missing/:style/:category_name.jpg"
+    :default_url => "/:attachment/missing/:style/:category_name"
   }
 end

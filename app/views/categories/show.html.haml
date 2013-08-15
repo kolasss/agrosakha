@@ -7,6 +7,11 @@
   - if can? :destroy, @category
     %td= link_to 'Удалить', @category, :method => :delete, :data => { :confirm => 'Вы уверены?' }, :class => 'btn btn-mini btn-danger'
 
+%p
+  = @category.default_image
+%p
+  = image_tag("/images/missing/thumb/#{@category.default_image}", class: "img-polaroid")
+
 - unless @category.subcategories.empty?
   %h4 Подкатегории
 
