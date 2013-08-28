@@ -13,17 +13,36 @@
  *= require_self
 */
 
+body {
+  //background-color: #CEECF5;
+  background-color: #fff;
+  color: #333;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+}
+
 //overriding boostrap
 .navbar {
   background-color: #088A08;
+}
+.mylogo {
+  line-height: 59px;
+}
+.mylogo img {
+  max-width: 40%;
 }
 .navbar .brand {
   color: #fff;
   text-shadow: none;
 }
+.navbar .nav {
+  //height: 100%;
+}
 .navbar .nav > li > a {
   color: #fff;
   text-shadow: none;
+  line-height: 32px;
 }
 .navbar .nav > li > a:hover {
   //color: #cc0000;
@@ -33,6 +52,8 @@
   color: #fff;
   background-color: #0B610B;
 }
+
+/*table */
 .table th, .table td {
   //border-top: none;
 }
@@ -43,6 +64,7 @@
 .table td {
   color: #424242;
 }
+
 .well {
   //background-color: #F5ECCE;
   //border: none;
@@ -57,29 +79,29 @@
 .ads {
   width: 100%;
   //border-bottom: 0;
-  border: 1px solid;
+  //border: 1px solid;
 }
 .ads li{
   display: table-cell;
   float: none;
   width: 1%;
   text-align: center;
-  border-left: 1px solid black;
+  //border-left: 1px solid black;
 }
 .ads li:first-child {
-  border-left: 0;
+  //border-left: 0;
 }
 .ads .active a{
-  background-color: #EEEEEE;
-  border: 1px solid #EEEEEE;
+  //background-color: #EEEEEE;
+  //border: 1px solid #EEEEEE;
 }
 .nav-tabs > .active > a:hover{
-  background-color: #EEEEEE;
-  border: 1px solid #EEEEEE;
+  //background-color: #EEEEEE;
+  //border: 1px solid #EEEEEE;
 }
 .nav-tabs > li > a {
-  border-radius: 0;
-  margin: 0;
+  //border-radius: 0;
+  //margin: 0;
 }
 
 
@@ -133,9 +155,15 @@
   .city {
     color: #848484;
   }
+  .thumb_img {
+    width: 120px;
+  }
   .thumb_img a img {
     max-width: 100px;
     max-height: 100px;
+  }
+  .edit_td {
+    width: 100px;
   }
 }
 
@@ -197,14 +225,6 @@ ul.wysihtml5-toolbar {
 .catsblock {
   margin-right: 20px;
 }
-.sellsblock {
-  //overflow: hidden;
-  //float: left;
-}
-
-.apple_pagination {
-  margin-bottom: 20px;
-}
 
 
 /* Sticky footer */
@@ -261,7 +281,8 @@ footer {
 
 /*buttons edit and delete*/
 .headbtn {
-  margin-left: 30px;
+  //margin-left: 30px;
+  float: right;
 }
 
 .myerror {

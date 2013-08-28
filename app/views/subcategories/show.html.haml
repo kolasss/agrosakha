@@ -12,6 +12,5 @@
 %p
   = image_tag("/images/missing/thumb/#{@subcategory.default_image}", class: "img-polaroid")
 
-= link_to 'Изменить', edit_subcategory_path(@subcategory)
-\|
-= link_to 'Назад', subcategories_path
+= link_to 'Изменить', edit_subcategory_path(@subcategory), class: "btn"
+= link_to 'Назад', subcategories_path, class: "btn"

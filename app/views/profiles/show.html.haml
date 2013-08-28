@@ -13,10 +13,10 @@
 /                 %li= subcat.name
 
 .well
+  - if can? :update, @profile
+    = link_to 'Изменить', edit_profile_path(@profile), class: "btn-u btn-u-blue btn-u-small headbtn"
   %h4
     = @profile.name
-    - if can? :update, @profile
-      = link_to 'Изменить', edit_profile_path(@profile), class: "btn btn-mini btn-info headbtn"
 
   %table.table.table-condensed.table-striped
     %tr

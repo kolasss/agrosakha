@@ -1,6 +1,3 @@
-//- if can? :create, Buy
-//  = link_to 'Подать объявление о покупке', new_buy_path, {class: 'btn btn-success'}
-
 .indextable
   %table.table.table-hover.table-condensed
     - @buys.each do |buy|
@@ -26,17 +23,17 @@
             %p.city
               = buy.city.region.name
               = " - " + buy.city.name
-        %td
-          - if can? :update, buy
-            = link_to 'Изменить', edit_buy_path(buy), class: "btn btn-mini btn-info"
-        %td
-          - if can? :destroy, buy
-            = link_to 'Удалить', buy, :method => :delete, :data => { :confirm => 'Вы уверены?' }, class: "btn btn-mini btn-danger"
+        - if can? :update, buy
+          %td.edit_td
+            = link_to 'Изменить', edit_buy_path(buy), class: "btn-u btn-u-blue btn-u-small"
+        - if can? :destroy, buy
+          %td.edit_td
+            = link_to 'Удалить', buy, :method => :delete, :data => { :confirm => 'Вы уверены?' }, class: "btn-u btn-u-red btn-u-small"
     - if @buys.empty?
       Объявлений нет
       
-.apple_pagination
-  = will_paginate @buys
+.well.well-small
+  = will_paginate @buys, renderer: BootstrapPagination::Rails
 
 - if can? :create, Buy
-  = link_to 'Подать объявление о покупке', new_buy_path, {class: 'btn btn-success'}
+  = link_to 'Новое объявление о покупке', new_buy_path, {class: 'btn-u'}

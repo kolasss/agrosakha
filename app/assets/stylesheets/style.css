@@ -1,0 +1,258 @@
+/*   
+Template Name: Unify - Responsive Bootstrap Template
+Description: Business, Corporate, Portfolio and Blog Theme.
+Version: 1.2
+Author: Html Stream
+Website: http://htmlstream.com/preview/unify
+*/
+
+/*Import Google Fonts*/
+@import url(http://fonts.googleapis.com/css?family=Monda:400,700);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+
+* {
+	border-radius:0 !important;
+}
+
+body { 
+    padding:0;
+	color:#333; 
+    font-size:13px;
+    line-height:1.6;
+	background:#fff;
+}
+
+p, a, li { 
+	color:#555;
+	line-height:1.6; 
+}
+
+a,
+a:focus, 
+a:hover, 
+a:active {
+   outline:0 !important;
+}
+a:hover {
+	color:#72c02c;
+	text-decoration:underline;
+}
+
+h1, h2, h3, h4, h5 {
+	color:#555; 
+	margin-top:5px; 
+	text-shadow:none; 
+	text-shadow:0 0 1px #f6f6f6;
+	font-weight:normal !important; 
+	font-family:'Open Sans', sans-serif; 
+} 
+h1 i, h2 i, h3 i, h4 i, h5 i {
+	margin-right:7px;
+}
+
+
+
+/*Pegination*/
+.pagination {
+	text-align: center;
+}
+.pagination ul {
+	box-shadow:none;
+}
+.pagination li a {
+	color:#777;
+	padding:5px 15px;
+	border-radius:0 !important;
+}
+
+
+
+
+/*Breadcrumbs*/
+.breadcrumbs {
+	padding:10px 0 6px;
+	box-shadow:inset 0 0 4px #eee;
+	background:url(../img/breadcrumbs.png) repeat;
+}
+.breadcrumbs h1 {
+	color:#686868;
+	font-size:30px;
+	text-shadow:0 1px 0 #f1efef;
+}
+.breadcrumbs .container {
+	padding:0 15px;
+}
+
+.breadcrumb { 
+	top:9px;
+	padding-right:0;
+	background:none;
+	position:relative;
+}
+.breadcrumb a {
+	color:#777;
+}
+.breadcrumb li.active,
+.breadcrumb li a:hover {
+	color:#72c02c;
+	text-decoration:none;
+}
+
+/
+
+/*Tabs*/
+.nav-tabs { 
+	background:none !important;
+}
+.nav-tabs a { 
+	font-size:14px;
+	padding:5px 15px !important; 
+}
+.nav-tabs li.active a, 
+.nav-tabs li.active a:hover,
+.nav-tabs > .active > a, 
+.nav-tabs > .active > a:hover, 
+.nav-tabs > .active > a:focus { 
+	color:#fff;
+	border:none; 
+	background:#72c02c; 
+}
+.nav-tabs > li > a { 
+	border:none;
+	border-radius:0; 
+}
+.nav-tabs > li > a:hover { 
+	color:#fff; 
+	background:#72c02c; 
+}
+.tab-content { 
+	padding:7px 10px;
+	border-top:solid 2px #72c02c; 
+}
+
+
+
+/*Others (Global classes)
+------------------------------------*/
+.color-red { color:#c00;}
+.color-green { color:#72c02c;}
+.color-blue { color:#3498db;}
+
+.pull-lft { text-align:left;}
+.pull-rgt { text-align:right;}
+
+.rgt-img-margin { margin:4px 0 5px 8px;}
+.lft-img-margin { margin:5px 20px 5px 0;}
+
+.overflow-hidden { overflow:hidden;}
+.padding-left-5 { padding-left:5px;}
+.img-width-200 { width:200px;}
+
+/*Image Border*/
+.img-border {
+	border:solid 3px #fff;
+}
+
+/*Background light-style*/
+.bg-light { 
+	padding:10px 15px; 
+	border-radius:3px;
+	margin-bottom:10px; 
+	background:#fcfcfc; 
+}
+.bg-light:hover { 
+	padding:9px 14px;
+	border:solid 1px #e5e5e5;
+}
+
+
+
+/*Button Style*/
+.btn {
+	box-shadow: none;
+}
+
+.btn-u {
+	text-shadow: none;
+	border:0;
+	font-size:14px;
+	cursor:pointer;
+	padding:5px 13px;
+	position:relative;
+	background:#72c02c;
+	display:inline-block;
+	color:#fff !important;
+	text-decoration:none !important;
+	text-align: center;
+}
+.btn-u:hover {
+	color:#fff;
+	background:#5fb611;
+	text-decoration:none;
+    -webkit-transition:all 0.4s ease-in-out;
+    -moz-transition:all 0.4s ease-in-out;
+    -o-transition:all 0.4s ease-in-out;
+    transition:all 0.4s ease-in-out;
+}
+
+.btn-u-small {
+	padding:3px 12px;
+}
+.btn-u-large {
+	font-size:18px;
+	padding:10px 25px;
+}
+a.btn-u {
+	padding:4px 13px;
+	vertical-align:middle;
+}
+a.btn-u-small {
+	padding:2px 12px;
+}
+a.btn-u-large {
+	font-size:18px;
+	padding:6px 25px;
+}
+
+/*Buttons Color*/
+.btn-u-blue {
+	background: #3498db !important;
+}
+.btn-u-blue:hover {
+	background: #2980b9 !important;
+}
+
+.btn-u-red {
+	background: #e74c3c !important;
+}
+.btn-u-red:hover {
+	background: #c0392b !important;
+}
+
+.btn-u-orange {
+	background: #e67e22 !important;
+}
+.btn-u-orange:hover {
+	background: #d35400 !important;
+}
+
+.btn-u-sea {
+	background: #1abc9c !important;
+}
+.btn-u-sea:hover {
+	background: #16a085 !important;
+}
+
+.btn-u-green {
+	background: #2ecc71 !important;
+}
+.btn-u-green:hover {
+	background: #27ae60 !important;
+}
+
+.btn-u-yellow {
+	background: #F1C40F !important;
+}
+.btn-u-yellow:hover {
+	background: #F39C12 !important;
+}

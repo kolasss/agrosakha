@@ -1,31 +1,32 @@
 %h3 Пользователь
 %p
-	User: #{@user.name}
-%p
-	Email: #{@user.email if @user.email}
+	= @user.name
+- if @user.email
+	%p
+		Email: #{@user.email}
 %br
 - if @user.profile
 	%h4 Профиль организации
 	%p
-		%b Name:
+		%b Наименование:
 		= @user.profile.name
 	%p
-		%b Inn:
+		%b ИНН:
 		= @user.profile.inn
 	%p
-		%b City:
+		%b Населенный пункт:
 		= @user.profile.city.name if @user.profile.city
 	%p
-		%b Region:
+		%b Район:
 		= @user.profile.region.name if @user.profile.region
 	%p
-		%b Address:
+		%b Адрес:
 		= @user.profile.address
 	%p
-		%b Phone:
+		%b Телефон:
 		= @user.profile.phone
 	%p
-		%b Desc:
+		%b Описание:
 		= @user.profile.desc
 		
 	- unless @user.roles.first.nil?
@@ -34,4 +35,5 @@
 			= @user.roles.first.name.titleize
 
 	- if can? :update, @user.profile
-		= link_to 'Edit', edit_profile_path(@user.profile)
+		= link_to 'Изменить профиль', edit_profile_path(@user.profile), class: "btn"
+= link_to 'Назад', :back, class: "btn"

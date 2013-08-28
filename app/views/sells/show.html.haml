@@ -1,9 +1,9 @@
 / %p#notice= notice
 .well
+  - if can? :update, @sell
+    = link_to 'Изменить', edit_sell_path(@sell), class: "btn-u btn-u-blue btn-u-small headbtn"
   %h4
     = @sell.title
-    - if can? :update, @sell
-      = link_to 'Изменить', edit_sell_path(@sell), class: "btn btn-mini btn-info headbtn"
   - if @sell.image.file?
     .thumbnail
       = image_tag @sell.image.url(:large)

@@ -25,19 +25,20 @@
             %p.city
               = sell.city.region.name
               = " - " + sell.city.name
-        %td
-          - if can? :update, sell
-            = link_to 'Изменить', edit_sell_path(sell), class: "btn btn-mini btn-info"
-        %td
-          - if can? :destroy, sell
-            = link_to 'Удалить', sell, :method => :delete, :data => { :confirm => 'Вы уверены?' }, class: "btn btn-mini btn-danger"
+        - if can? :update, sell
+          %td.edit_td
+            = link_to 'Изменить', edit_sell_path(sell), class: "btn-u btn-u-blue btn-u-small" if sell.class.model_name == 'Sell'
+            = link_to 'Изменить', edit_buy_path(sell), class: "btn-u btn-u-blue btn-u-small" if sell.class.model_name == 'Buy'
+        - if can? :destroy, sell
+          %td.edit_td
+            = link_to 'Удалить', sell, :method => :delete, :data => { :confirm => 'Вы уверены?' }, class: "btn-u btn-u-red btn-u-small"
     - if @ad.empty?
       Объявлений нет
       
-.apple_pagination
-  = will_paginate @ad
+.well.well-small
+  = will_paginate @ad, renderer: BootstrapPagination::Rails
 
 - if can? :create, Sell
-  = link_to 'Новое объявление', new_sell_path, {class: 'btn btn-success'}
+  = link_to 'Новое объявление', new_sell_path, {class: 'btn-u'}
 - elsif can? :create, Buy
-  = link_to 'Подать объявление о покупке', new_buy_path, {class: 'btn btn-success'}
+  = link_to 'Подать объявление о покупке', new_buy_path, {class: 'btn-u'}
