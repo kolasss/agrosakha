@@ -7,20 +7,19 @@ Website: http://htmlstream.com/preview/unify
 */
 
 /*Import Google Fonts*/
-@import url(http://fonts.googleapis.com/css?family=Monda:400,700);
 @import url(http://fonts.googleapis.com/css?family=Open+Sans);
 
 * {
 	border-radius:0 !important;
 }
 
-body { 
+/*body { 
     padding:0;
 	color:#333; 
     font-size:13px;
     line-height:1.6;
 	background:#fff;
-}
+}*/
 
 p, a, li { 
 	color:#555;
@@ -97,8 +96,6 @@ h1 i, h2 i, h3 i, h4 i, h5 i {
 	color:#72c02c;
 	text-decoration:none;
 }
-
-/
 
 /*Tabs*/
 .nav-tabs { 
