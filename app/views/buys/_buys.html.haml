@@ -8,8 +8,6 @@
         %th Район
         %th Единица
         %th Цена
-        %th.empty
-        %th.empty
     %tbody
       - @buys.each do |buy|
         %tr
@@ -37,14 +35,14 @@
             = buy.count_type.name if buy.count_type
           %td.price.middle
             = number_to_currency buy.price, strip_insignificant_zeros: true
-          - if can? :manage, buy
-            %td.edit_td.middle
-              = link_to 'Изменить', edit_buy_path(buy), class: "btn-u btn-u-blue btn-u-small"
-            %td.edit_td.middle
-              = link_to 'Удалить', buy, :method => :delete, :data => { :confirm => 'Вы уверены?' }, class: "btn-u btn-u-red btn-u-small"
-          - else
-            %td.empty
-            %td.empty
+          / - if can? :manage, buy
+          /   %td.edit_td.middle
+          /     = link_to 'Изменить', edit_buy_path(buy), class: "btn-u btn-u-blue btn-u-small"
+          /   %td.edit_td.middle
+          /     = link_to 'Удалить', buy, :method => :delete, :data => { :confirm => 'Вы уверены?' }, class: "btn-u btn-u-red btn-u-small"
+          / - else
+          /   %td.empty
+          /   %td.empty
 
       - if @buys.empty?
         %tr

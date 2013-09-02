@@ -15,6 +15,8 @@ class User < ActiveRecord::Base
   has_many :buys, :dependent => :destroy
   has_one :profile, :dependent => :destroy
 
+  validates :name, :presence => true, :length => { :maximum => 100 }
+
   after_create :default_role
 
   self.per_page = 25
