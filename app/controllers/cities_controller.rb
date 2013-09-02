@@ -1,5 +1,6 @@
 class CitiesController < ApplicationController
   load_and_authorize_resource
+  before_filter :search_sell
   # GET /cities
   # GET /cities.json
   def index

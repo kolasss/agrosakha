@@ -1,22 +1,24 @@
 %h1 Список районов
 
-%table.table.table-hover
-  %tr
-    %th Id
-    %th Наименование
-    %th
-    %th
-
-  - @regions.each do |region|
+%table.table.table-hover.table-condensed
+  %thead
     %tr
-      %td= region.id
-      %td= link_to region.name, region
-      %td
-        - if can? :update, region
-          = link_to 'Изменить', edit_region_path(region), :class => 'btn btn-mini'
-      %td
-        - if can? :destroy, region
-          = link_to 'Удалить', region, :method => :delete, :data => { :confirm => 'Вы уверены?' }, :class => 'btn btn-mini btn-danger'
+      %th Id
+      %th Наименование
+      %th
+      %th
+
+  %tbody
+    - @regions.each do |region|
+      %tr
+        %td= region.id
+        %td= link_to region.name, region
+        %td
+          - if can? :update, region
+            = link_to 'Изменить', edit_region_path(region), :class => 'btn btn-mini'
+        %td
+          - if can? :destroy, region
+            = link_to 'Удалить', region, :method => :delete, :data => { :confirm => 'Вы уверены?' }, :class => 'btn btn-mini btn-danger'
 
 %br
 

@@ -76,4 +76,10 @@ Agro14::Application.configure do
     # :default_url => '/:attachment/missing_:style.png'
     :default_url => "/:attachment/missing/:style/:category_name"
   }
+
+  # Add the fonts path
+  config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
+
+  # Precompile additional assets
+  # config.assets.precompile += %w( .svg .eot .woff .ttf )
 end

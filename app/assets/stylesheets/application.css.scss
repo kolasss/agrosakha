@@ -12,45 +12,130 @@
  *= require_tree .
  *= require_self
 */
+@font-face {
+    font-family: 'corporate_e_w10_boldregular';
+    src: url('corporateew10-bold-webfont.eot');
+    src: url('corporateew10-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('corporateew10-bold-webfont.woff') format('woff'),
+         url('corporateew10-bold-webfont.ttf') format('truetype'),
+         url('corporateew10-bold-webfont.svg#corporate_e_w10_boldregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'corporate_e_w10_bold_italicRg';
+    src: url('corporateew10-bolditalic-webfont.eot');
+    src: url('corporateew10-bolditalic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('corporateew10-bolditalic-webfont.woff') format('woff'),
+         url('corporateew10-bolditalic-webfont.ttf') format('truetype'),
+         url('corporateew10-bolditalic-webfont.svg#corporate_e_w10_bold_italicRg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'corporate_e_w10_demiregular';
+    src: url('corporateew10-demi-webfont.eot');
+    src: url('corporateew10-demi-webfont.eot?#iefix') format('embedded-opentype'),
+         url('corporateew10-demi-webfont.woff') format('woff'),
+         url('corporateew10-demi-webfont.ttf') format('truetype'),
+         url('corporateew10-demi-webfont.svg#corporate_e_w10_demiregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'corporate_e_w10_italicregular';
+    src: url('corporateew10-italic-webfont.eot');
+    src: url('corporateew10-italic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('corporateew10-italic-webfont.woff') format('woff'),
+         url('corporateew10-italic-webfont.ttf') format('truetype'),
+         url('corporateew10-italic-webfont.svg#corporate_e_w10_italicregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'corporate_e_w10_lightregular';
+    src: url('corporateew10-light-webfont.eot');
+    src: url('corporateew10-light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('corporateew10-light-webfont.woff') format('woff'),
+         url('corporateew10-light-webfont.ttf') format('truetype'),
+         url('corporateew10-light-webfont.svg#corporate_e_w10_lightregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'corporate_e_w10_light_italiRg';
+    src: url('corporateew10-lightitalic-webfont.eot');
+    src: url('corporateew10-lightitalic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('corporateew10-lightitalic-webfont.woff') format('woff'),
+         url('corporateew10-lightitalic-webfont.ttf') format('truetype'),
+         url('corporateew10-lightitalic-webfont.svg#corporate_e_w10_light_italiRg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'corporate_e_w10_mdregular';
+    src: url('corporateew10-md-webfont.eot');
+    src: url('corporateew10-md-webfont.eot?#iefix') format('embedded-opentype'),
+         url('corporateew10-md-webfont.woff') format('woff'),
+         url('corporateew10-md-webfont.ttf') format('truetype'),
+         url('corporateew10-md-webfont.svg#corporate_e_w10_mdregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'corporate_e_w10_md_italicRg';
+    src: url('corporateew10-mditalic-webfont.eot');
+    src: url('corporateew10-mditalic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('corporateew10-mditalic-webfont.woff') format('woff'),
+         url('corporateew10-mditalic-webfont.ttf') format('truetype'),
+         url('corporateew10-mditalic-webfont.svg#corporate_e_w10_md_italicRg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'corporate_e_w10_regularRg';
+    src: url('corporateew10-regular-webfont.eot');
+    src: url('corporateew10-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('corporateew10-regular-webfont.woff') format('woff'),
+         url('corporateew10-regular-webfont.ttf') format('truetype'),
+         url('corporateew10-regular-webfont.svg#corporate_e_w10_regularRg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'corporate_e_w10_demi_italicRg';
+    src: url('corporateew10-demiitalic-webfont.eot');
+    src: url('corporateew10-demiitalic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('corporateew10-demiitalic-webfont.woff') format('woff'),
+         url('corporateew10-demiitalic-webfont.ttf') format('truetype'),
+         url('corporateew10-demiitalic-webfont.svg#corporate_e_w10_demi_italicRg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
 
 body {
   //background-color: #CEECF5;
   background-color: #fff;
   color: #333;
-  font-family: Helvetica, Arial, sans-serif;
-  font-size: 13px;
+  font-family: 'corporate_e_w10_mdregular', Helvetica, Arial, sans-serif;
+  font-size: 14px;
   line-height: 18px;
 }
 
 //overriding boostrap
-.navbar {
-  background-color: #088A08;
-}
-.mylogo {
-  line-height: 59px;
-}
-.mylogo img {
-  max-width: 40%;
-}
-.navbar .brand {
-  color: #fff;
-  text-shadow: none;
-}
-.navbar .nav {
-  //height: 100%;
-}
-.navbar .nav > li > a {
-  color: #fff;
-  text-shadow: none;
-  line-height: 32px;
-}
-.navbar .nav > li > a:hover {
-  //color: #cc0000;
-  background-color: #04B404;
-}
-.navbar .nav > .active > a, .navbar .nav > .active > a:hover{
-  color: #fff;
-  background-color: #0B610B;
+input, button, select, textarea {
+    font-family: inherit;
 }
 
 /*table */
@@ -75,38 +160,118 @@ body {
 .mainname {
   margin-left: 12px;
 }
+
+/*navbar*/
+.border_bottom {
+  border-bottom: 1px solid #777777;
+}
+.navrow1 {
+  //height: 30px;
+  .green {
+    color: #56ac28;
+    line-height: 30px;
+  }
+  .gray {
+    color: #777;
+  }
+}
+.navbar .nav {
+  height: 100%;
+}
+.navbar .nav > li > a {
+  //color: #fff;
+  padding-top: 0;
+  padding-bottom: 0;
+  text-shadow: none;
+  line-height: 30px;
+}
+.navbar .nav > li > a:hover {
+  color: #56ac28;
+  //background-color: #04B404;
+}
+.navbar .nav > .active > a, .navbar .nav > .active > a:hover{
+  color: #56ac28;
+  background-color: transparent;
+  box-shadow: none;
+}
+.mylogo {
+  a {
+    color: #56ac28;
+    font-size: 3em;
+    line-height: 1.4;
+    //font-weight: bold;
+    font-family: 'corporate_e_w10_boldregular', Helvetica, Arial, sans-serif;
+    letter-spacing: 0.2em;
+  }
+  a:hover {
+    text-decoration: none;
+  }
+}
+
 /* ads menu */
 .ads {
   width: 100%;
-  //border-bottom: 0;
-  //border: 1px solid;
+  border-bottom: none;
+  li{
+    display: table-cell;
+    float: none;
+    width: 1%;
+    text-align: center;
+  }
+  a { 
+    font-size:24px;
+    //padding:5px 15px !important; 
+  }
 }
-.ads li{
-  display: table-cell;
-  float: none;
-  width: 1%;
-  text-align: center;
-  //border-left: 1px solid black;
+.ads 
+.ads 
+.ads li.active a, 
+.ads li.active a:hover,
+.ads > .active > a, 
+.ads > .active > a:hover, 
+.ads > .active > a:focus { 
+  color:#56ac28;
+  border:none; 
+  //background:#72c02c;
+  cursor: pointer;
 }
-.ads li:first-child {
-  //border-left: 0;
+.ads > li > a { 
+  border:none;
+  border-radius:0; 
 }
-.ads .active a{
-  //background-color: #EEEEEE;
-  //border: 1px solid #EEEEEE;
+.ads > li > a:hover { 
+  color:#56ac28;
+  background: none; 
 }
-.nav-tabs > .active > a:hover{
-  //background-color: #EEEEEE;
-  //border: 1px solid #EEEEEE;
-}
-.nav-tabs > li > a {
-  //border-radius: 0;
-  //margin: 0;
+
+/* Sign in and register tabs */
+#signintabs {
+  ul.nav {
+    width: 100%;
+    //border-bottom: none;
+    li{
+      display: table-cell;
+      float: none;
+      width: 1%;
+      text-align: center;
+    }
+    a { 
+      //font-size:24px;
+      //padding:5px 15px !important; 
+    }
+    .tab-content { 
+      //padding:7px 10px;
+      //border-top:solid 2px #72c02c; 
+    }
+  }
+  
 }
 
 
+
+/* other */
 .content {
-  border-top: 1px solid #fff;
+  //border-top: 1px solid #fff;
   //background-color: #eee;
   padding: 20px;
   margin: 0 -20px; /* negative indent the amount of the padding to maintain the grid system */
@@ -132,14 +297,20 @@ body {
 .indextable {
 	overflow-x: auto;
   margin-top: 20px;
+  table {
+    vertical-align: center;
+  }
   .category {
-    font-size: 11px;
+    font-size: 12px;
     color: #A4A4A4;
     margin-bottom: 0;
   }
   h5 {
     a {
-      color: #380B61;
+      //color: #380B61;
+      font-size: 1.4em;
+      line-height: 1;
+      text-decoration: none;
     }
     margin: 5px 0;
   }
@@ -147,13 +318,15 @@ body {
     margin-bottom: 3px;
   }
   .price {
-    color: #0B3B17;
+    //color: #0B3B17;
+    font-size: 2em;
+    line-height: 1;
   }
   .profile a {
     color: #848484;
   }
-  .city {
-    color: #848484;
+  td.middle {
+    vertical-align: middle;
   }
   .thumb_img {
     width: 120px;
@@ -163,19 +336,20 @@ body {
     max-height: 100px;
   }
   .edit_td {
-    width: 100px;
+    width: 83px;
+  }
+  .empty {
+    width: 0;
+    padding: 0;
   }
 }
 
 /* add ad button */
 .advbtn {
   margin-bottom: 20px;
-  padding-top: 9px;
-  padding-bottom: 9px;
-  border-radius: 0;
-  //width: 80%;
-  //display: block;
-  //width: 100%;
+  //padding-top: 9px;
+  //padding-bottom: 9px;
+  //border-radius: 0;
 }
 
 /* form */
@@ -215,17 +389,41 @@ ul.wysihtml5-toolbar {
   width: 300px;
 }
 
-
+/*
 .subcat {
   padding-left: 15px;
   label {
     font-size: 1em;
   }
 }
-.catsblock {
-  margin-right: 20px;
-}
+*/
 
+/* list of categories */
+.catsblock {
+  margin-bottom: 10px;
+  li.nosubs {
+    min-height: 21px;
+  }
+  a {
+    text-shadow: none;
+    line-height: 1.1;
+  }
+  .cat {
+    font-weight: bold;
+  }
+  .nav-list {
+    padding-left: 10px;
+    padding-right: 0;
+  }
+}
+.nav-list > .active > a, .nav-list > .active > a:hover, .nav-list > .active > a:focus {
+  color: #56ac28;
+  text-shadow: none;
+  background: none;
+}
+.nav > li > a:hover, .nav > li > a:focus {
+  background: none;
+}
 
 /* Sticky footer */
 html,
@@ -257,25 +455,32 @@ footer {
 
 /* Search form for sells. buys */
 .searchform {
-  overflow-x: auto;
+  //overflow-x: auto;
   .searchblock {
-    float: left;
-    margin-right: 40px;
+    //float: left;
+    //margin-right: 40px;
   }
   input {
-    font-size: 12px;
+    //font-size: 12px;
+    width: 98%;
+    height: 30px;
+    -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
   }
   select {
-    font-size: 12px;
-    width: 250px;
+    //font-size: 12px;
+    //width: 250px;
+    width: 98%;
   }
   label {
-    font-size: 12px;
+    //font-size: 12px;
   }
   .btn-filter {
     margin-top: 26px;
     height: 28px;
-    float: left;
+    width: 98%;
+    //float: left;
   }
 }
 

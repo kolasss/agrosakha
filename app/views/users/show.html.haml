@@ -4,6 +4,9 @@
 - if @user.email
 	%p
 		Email: #{@user.email}
+
+= link_to 'Изменить', edit_user_registration_path(@user), class: "btn"
+
 %br
 - if @user.profile
 	%h4 Профиль организации

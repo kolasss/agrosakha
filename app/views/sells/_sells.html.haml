@@ -1,36 +1,61 @@
 .indextable
-  %table.table.table-hover.table-condensed
-    - @sells.each do |sell|
+  %table.table.table-hover
+    %thead
       %tr
-        / %td
-        /   %b= custom_format(sell.updated_at)
-        /   %br
-        /   = sell.updated_at.to_s :time
-        %td.thumb_img
-          = link_to image_tag(sell.image.url(:thumb), alt: ""), sell
-        %td
-          %p.category
-            = sell.category.name if sell.category
-            = "/ " + sell.subcategory.name if sell.subcategory
-          %h5
-            = link_to sell.title, sell
-          %p.price
-            = number_to_currency sell.price, strip_insignificant_zeros: true
-            = ' за ' + sell.count_type.name if sell.count_type
-          %p.profile
-            = link_to sell.user.profile.name, sell.user.profile if sell.user.profile
-          - if sell.city
-            %p.city
+        %th Дата
+        %th Фото
+        %th Наименование
+        %th Район
+        %th Единица
+        %th Цена
+        %th.empty
+        %th.empty
+    %tbody
+      - @sells.each do |sell|
+        %tr
+          %td.middle
+            %b= custom_format(sell.updated_at)
+            %br
+            = sell.updated_at.to_s :time
+          %td.thumb_img
+            = link_to image_tag(sell.image.url(:thumb), alt: ""), sell
+          %td
+            %p.category
+              = sell.category.name if sell.category
+              = "/ " + sell.subcategory.name if sell.subcategory
+            %h5
+              = link_to sell.title, sell
+            %p.profile
+              = link_to sell.user.profile.name, sell.user.profile if sell.user.profile
+          %td.middle
+            - if sell.city
               = sell.city.region.name
-              = " - " + sell.city.name
-        - if can? :update, sell
-          %td.edit_td
-            = link_to 'Изменить', edit_sell_path(sell), class: "btn-u btn-u-blue btn-u-small"
-        - if can? :destroy, sell
-          %td.edit_td
-            = link_to 'Удалить', sell, :method => :delete, :data => { :confirm => 'Вы уверены?' }, class: "btn-u btn-u-red btn-u-small"
-    - if @sells.empty?
-      Объявлений нет
+              = ", " + sell.city.name
+            - else
+              Нет данных
+          %td.count.middle
+            = sell.count_type.name if sell.count_type
+          %td.price.middle
+            = number_to_currency sell.price, strip_insignificant_zeros: true
+          - if can? :manage, sell
+            %td.edit_td.middle
+              = link_to 'Изменить', edit_sell_path(sell), class: "btn-u btn-u-blue btn-u-small"
+            %td.edit_td.middle
+              = link_to 'Удалить', sell, :method => :delete, :data => { :confirm => 'Вы уверены?' }, class: "btn-u btn-u-red btn-u-small"
+          - else
+            %td.empty
+            %td.empty
+
+      - if @sells.empty?
+        %tr
+          %td
+          %td
+          %td
+            %h3
+              Объявлений нет
+          %td
+          %td
+          %td
       
 .well.well-small
   = will_paginate @sells, renderer: BootstrapPagination::Rails

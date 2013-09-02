@@ -1,20 +1,21 @@
 %h1 Список населенных пунктов
 
-%table.table
-  %tr
-    %th Id
-    %th Наименование
-    %th Район
-    %th
-    %th
-
-  - @cities.each do |city|
+%table.table.table-hover.table-condensed
+  %thead
     %tr
-      %td= city.id
-      %td= link_to city.name, city
-      %td= link_to city.region.name, city.region
-      %td= link_to 'Изменить', edit_city_path(city), :class => 'btn btn-mini'
-      %td= link_to 'Удалить', city, :method => :delete, :data => { :confirm => 'Вы уверены?' }, :class => 'btn btn-mini btn-danger'
+      %th Id
+      %th Наименование
+      %th Район
+      %th
+      %th
+  %tbody
+    - @cities.each do |city|
+      %tr
+        %td= city.id
+        %td= link_to city.name, city
+        %td= link_to city.region.name, city.region
+        %td= link_to 'Изменить', edit_city_path(city), :class => 'btn btn-mini'
+        %td= link_to 'Удалить', city, :method => :delete, :data => { :confirm => 'Вы уверены?' }, :class => 'btn btn-mini btn-danger'
 
 %br
 

@@ -23,6 +23,7 @@ module ApplicationHelper
     end
   end
 
+  #for search gem
   def filter_url
     if params[:controller] == "home" && params[:action] == "index"
       root_path
@@ -45,5 +46,19 @@ module ApplicationHelper
         profiles_subcategory_path(params[:id].to_i)
       end
     end
+  end
+
+
+  #for devise
+  def resource_name
+    :user
+  end
+ 
+  def resource
+    @resource ||= User.new
+  end
+ 
+  def devise_mapping
+    @devise_mapping ||= Devise.mappings[:user]
   end
 end

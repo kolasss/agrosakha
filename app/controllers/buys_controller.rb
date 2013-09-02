@@ -20,6 +20,8 @@ class BuysController < ApplicationController
   # GET /buys/1.json
   def show
     # @buy = Buy.find(params[:id])
+    @q = Buy.search(params[:q])
+    @regions = Region.all
 
     respond_to do |format|
       format.html # show.html.erb
@@ -31,6 +33,8 @@ class BuysController < ApplicationController
   # GET /buys/new.json
   def new
     # @buy = Buy.new
+    @q = Buy.search(params[:q])
+    @regions = Region.all
 
     respond_to do |format|
       format.html # new.html.erb
@@ -45,6 +49,9 @@ class BuysController < ApplicationController
 
     @cities = City.where(:region_id => @buy.city.region_id).order(:name) if @buy.city
     @subcats = Subcategory.where(:category_id => @buy.subcategory.category_id) if @buy.subcategory
+
+    @q = Buy.search(params[:q])
+    @regions = Region.all
   end
 
   # POST /buys

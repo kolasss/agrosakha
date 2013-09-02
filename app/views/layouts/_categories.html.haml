@@ -1,37 +1,39 @@
-.catsblock
-	- if params[:controller] == "sells"
+.catsblock.row-fluid
+	- if params[:controller] == "buys"
 		%ul.nav.nav-list
 			- Category.all.each do |category|
-				%li{:class => ("active" if params[:action] == "show_category" && params[:id].to_i == category.id)}
-					- name = "#{category.name} (#{category.sells.size})"
-					= link_to name, sells_category_path(category)
-					- if !category.subcategories.empty?
-						%ul.nav.nav-list
-							- category.subcategories.each do |subcat|
-								%li{:class => ("active" if params[:action] == "show_subcategory" && params[:id].to_i == subcat.id)}
-									- name = "#{subcat.name} (#{subcat.sells.size})"
-									= link_to name, sells_subcategory_path(subcat)
-	- elsif params[:controller] == "buys"
-		%ul.nav.nav-list
-			- Category.all.each do |category|
-				%li{:class => ("active" if params[:action] == "show_category" && params[:id].to_i == category.id)}
+				%li.span4{:class => [("active" if params[:action] == "show_category" && params[:id].to_i == category.id), ("nosubs" if category.subcategories.empty?)].join(' ')}
 					- name = "#{category.name} (#{category.buys.size})"
-					= link_to name, buys_category_path(category)
+					= link_to name, buys_category_path(category), class: "cat"
 					- if !category.subcategories.empty?
 						%ul.nav.nav-list
 							- category.subcategories.each do |subcat|
 								%li{:class => ("active" if params[:action] == "show_subcategory" && params[:id].to_i == subcat.id)}
 									- name = "#{subcat.name} (#{subcat.buys.size})"
 									= link_to name, buys_subcategory_path(subcat)
+
 	- elsif params[:controller] == "profiles"
 		%ul.nav.nav-list
 			- Category.all.each do |category|
-				%li{:class => ("active" if params[:action] == "show_category" && params[:id].to_i == category.id)}
+				%li.span4{:class => [("active" if params[:action] == "show_category" && params[:id].to_i == category.id), ("nosubs" if category.subcategories.empty?)].join(' ')}
 					- name = "#{category.name} (#{category.profiles.size})"
-					= link_to name, profiles_category_path(category)
+					= link_to name, profiles_category_path(category), class: "cat"
 					- if !category.subcategories.empty?
 						%ul.nav.nav-list
 							- category.subcategories.each do |subcat|
 								%li{:class => ("active" if params[:action] == "show_subcategory" && params[:id].to_i == subcat.id)}
 									- name = "#{subcat.name} (#{subcat.profiles.size})"
 									= link_to name, profiles_subcategory_path(subcat)
+
+	- else
+		%ul.nav.nav-list
+			- Category.all.each do |category|
+				%li.span4{:class => [("active" if params[:action] == "show_category" && params[:id].to_i == category.id), ("nosubs" if category.subcategories.empty?)].join(' ')}
+					- name = "#{category.name} (#{category.sells.size})"
+					= link_to name, sells_category_path(category), class: "cat"
+					- if !category.subcategories.empty?
+						%ul.nav.nav-list
+							- category.subcategories.each do |subcat|
+								%li{:class => ("active" if params[:action] == "show_subcategory" && params[:id].to_i == subcat.id)}
+									- name = "#{subcat.name} (#{subcat.sells.size})"
+									= link_to name, sells_subcategory_path(subcat)

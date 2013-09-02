@@ -7,7 +7,7 @@ Website: http://htmlstream.com/preview/unify
 */
 
 /*Import Google Fonts*/
-@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+/*@import url(http://fonts.googleapis.com/css?family=Open+Sans);*/
 
 * {
 	border-radius:0 !important;
@@ -32,8 +32,10 @@ a:hover,
 a:active {
    outline:0 !important;
 }
-a:hover {
-	color:#72c02c;
+a:hover,
+a:focus {
+	/*color:#72c02c;*/
+	color:#56ac28;
 	text-decoration:underline;
 }
 
@@ -41,9 +43,9 @@ h1, h2, h3, h4, h5 {
 	color:#555; 
 	margin-top:5px; 
 	text-shadow:none; 
-	text-shadow:0 0 1px #f6f6f6;
+	/*text-shadow:0 0 1px #f6f6f6;*/
 	font-weight:normal !important; 
-	font-family:'Open Sans', sans-serif; 
+	/*font-family:'Open Sans', sans-serif; */
 } 
 h1 i, h2 i, h3 i, h4 i, h5 i {
 	margin-right:7px;
@@ -95,36 +97,6 @@ h1 i, h2 i, h3 i, h4 i, h5 i {
 .breadcrumb li a:hover {
 	color:#72c02c;
 	text-decoration:none;
-}
-
-/*Tabs*/
-.nav-tabs { 
-	background:none !important;
-}
-.nav-tabs a { 
-	font-size:14px;
-	padding:5px 15px !important; 
-}
-.nav-tabs li.active a, 
-.nav-tabs li.active a:hover,
-.nav-tabs > .active > a, 
-.nav-tabs > .active > a:hover, 
-.nav-tabs > .active > a:focus { 
-	color:#fff;
-	border:none; 
-	background:#72c02c; 
-}
-.nav-tabs > li > a { 
-	border:none;
-	border-radius:0; 
-}
-.nav-tabs > li > a:hover { 
-	color:#fff; 
-	background:#72c02c; 
-}
-.tab-content { 
-	padding:7px 10px;
-	border-top:solid 2px #72c02c; 
 }
 
 
@@ -241,10 +213,12 @@ a.btn-u-large {
 }
 
 .btn-u-green {
-	background: #2ecc71 !important;
+	/*background: #2ecc71 !important;*/
+	background: #56ac28 !important;
 }
 .btn-u-green:hover {
-	background: #27ae60 !important;
+	/*background: #27ae60 !important;*/
+	background: #4a9422 !important;
 }
 
 .btn-u-yellow {

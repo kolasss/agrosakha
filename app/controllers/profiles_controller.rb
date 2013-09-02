@@ -30,6 +30,9 @@ class ProfilesController < ApplicationController
     # @buys = Buy.paginate(:page => params[:page])
     @ad = (@sells + @buys).paginate(:page => params[:page], :per_page => 20)
 
+    @q = Profile.search(params[:q])
+    @regions = Region.all
+
     # respond_to do |format|
     #   format.html # show.html.erb
     #   format.json { render json: @profile }
@@ -39,6 +42,9 @@ class ProfilesController < ApplicationController
   # GET /profiles/new
   # GET /profiles/new.json
   def new
+    @q = Profile.search(params[:q])
+    @regions = Region.all
+
     if @profile = current_user.profile
       render :action => :edit
     else
@@ -52,6 +58,9 @@ class ProfilesController < ApplicationController
 
   # GET /profiles/1/edit
   def edit
+    @q = Profile.search(params[:q])
+    @regions = Region.all
+    
     # @profile = Profile.find(params[:id])
     if @profile.city
       @cities = City.where(:region_id => @profile.city.region_id).order(:name)

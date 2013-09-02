@@ -23,22 +23,21 @@
       #main{:role => "main"}
         .container
           .content
-            .row
+            .row.border_bottom
               .span3
-                - if can? :create, Sell
-                  = link_to 'Подать объявление', new_sell_path, {class: 'btn-u btn-u-large advbtn input-block-level'}
-                - elsif can? :create, Buy
-                  = link_to 'Подать объявление', new_buy_path, {class: 'btn btn-success btn-large advbtn input-block-level'}
-                .well.well-small
-                  = render 'layouts/mainmenu'
+                = render 'layouts/mainmenu'
+                
+              .span6
+                / - if params[:controller] == "sells" || params[:controller] == "buys" || params[:controller] == "home"
+                = render 'layouts/advs'
                 = render 'layouts/categories'
-              .span9
-                - if (params[:controller] == "sells" || params[:controller] == "buys" || params[:controller] == "home" || params[:controller] == "profiles") && (params[:action] == "index" || params[:action] == "show_category" || params[:action] == "show_subcategory")
-                  = render 'layouts/filter'
-                - if params[:controller] == "sells" || params[:controller] == "buys" || params[:controller] == "home"
-                  = render 'layouts/advs'
-                = render 'layouts/messages'
-                = yield
+
+              .span3
+                / - if (params[:controller] == "sells" || params[:controller] == "buys" || params[:controller] == "home" || params[:controller] == "profiles") && (params[:action] == "index" || params[:action] == "show_category" || params[:action] == "show_subcategory")
+                = render 'layouts/filter'
+            .row
+              = render 'layouts/messages'
+              = yield
 
         / ! end of .container
         #push
