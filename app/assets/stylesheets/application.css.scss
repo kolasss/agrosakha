@@ -155,6 +155,22 @@ input, button, select, textarea {
   //border: none;
 }
 
+/* affix sidebar */
+.affix {
+  //width: inherit; //helped keep the content the same size on fluid layouts
+  //position: fixed;
+  top: 10px;  //height of the nav
+}
+.sidebar {
+  margin-left: 0;
+}
+/* for mobile */
+@media (max-width: 767px){
+  .affix{
+      position:static;
+  }
+}
+
 /*my css */
 /* user name */
 .mainname {
@@ -223,7 +239,7 @@ input, button, select, textarea {
     font-size:24px;
     //padding:5px 15px !important; 
   }
-}
+}/*
 .ads 
 .ads 
 .ads li.active a, 
@@ -243,7 +259,7 @@ input, button, select, textarea {
 .ads > li > a:hover { 
   color:#56ac28;
   background: none; 
-}
+}*/
 
 /* Sign in and register tabs */
 #signintabs {
@@ -449,7 +465,7 @@ ul.wysihtml5-toolbar {
   li.nosubs {
     min-height: 21px;
   }
-  a {
+  .nav-list > li > a {
     text-shadow: none;
     line-height: 1.1;
   }

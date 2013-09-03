@@ -1,7 +1,7 @@
-- if can? :create, Sell
-  = link_to 'Подать объявление', new_sell_path, {class: 'btn-u btn-u-large advbtn input-block-level btn-u-green'}
-- elsif can? :create, Buy
-  = link_to 'Подать объявление', new_buy_path, {class: 'btn-u btn-u-large advbtn input-block-level btn-u-green'}
+/ - if can? :create, Sell
+/   = link_to 'Подать объявление', new_sell_path, {class: 'btn-u btn-u-large advbtn input-block-level btn-u-green'}
+/ - elsif can? :create, Buy
+/   = link_to 'Подать объявление', new_buy_path, {class: 'btn-u btn-u-large advbtn input-block-level btn-u-green'}
 - if user_signed_in?
   %ul.nav.nav-pills.nav-stacked.well.well-small
     %h4.mainname= link_to current_user.name, current_user

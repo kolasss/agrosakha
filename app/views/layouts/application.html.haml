@@ -23,17 +23,29 @@
       #main{:role => "main"}
         .container
           .content
-            .row-fluid.border_bottom
-              .span3
-                = render 'layouts/mainmenu'
-              .span6
-                = render 'layouts/advs'
+            / .row-fluid.border_bottom
+            /   .span3
+            /     = render 'layouts/mainmenu'
+            /   .span6
+            /     = render 'layouts/advs'
+            /     = render 'layouts/categories'
+            /   .span3
+            /     = render 'layouts/filter'
+            .row
+              
+              .span9
+                
                 = render 'layouts/categories'
+                = render 'layouts/advs'
+                = render 'layouts/messages'
+                = yield
               .span3
-                = render 'layouts/filter'
-            .row-fluid
-              = render 'layouts/messages'
-              = yield
+                .sidebar.span3{"data-spy"=>"affix", "data-offset-top"=>"100"}
+                  = render 'layouts/addbutton'
+                  = render 'layouts/mainmenu'
+                  = render 'layouts/filter'
+                / = render 'layouts/advs'
+                
 
         / ! end of .container
         #push
