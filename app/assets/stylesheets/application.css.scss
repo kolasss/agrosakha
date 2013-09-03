@@ -170,6 +170,7 @@ input, button, select, textarea {
   .green {
     color: #56ac28;
     line-height: 30px;
+    margin-left: 15px;
   }
   .gray {
     color: #777;
@@ -289,17 +290,18 @@ input, button, select, textarea {
         -moz-box-sizing: border-box;
         box-sizing: border-box;
       }
-      .email {
+      .control-group {
         margin-bottom: 2px;
       }
       .btn-filter {
-        //margin-top: 26px;
+        margin-top: 8px;
         height: 28px;
         width: 98%;
-        margin-bottom: 10px;
+        //margin-bottom: 10px;
         //float: left;
       }
-      .boolean{
+      .user_remember_me {
+        margin-top: 10px;
         margin-bottom: 0;
       }
       label.checkbox {
@@ -340,10 +342,9 @@ input, button, select, textarea {
 /* table with sells and buys */
 .indextable {
 	overflow-x: auto;
-  margin-top: 20px;
-  table {
-    vertical-align: center;
-  }
+  //margin-top: 15px;
+  max-width: 940px;
+  margin: 15px auto 0;
   .category {
     font-size: 12px;
     color: #A4A4A4;
@@ -444,7 +445,7 @@ ul.wysihtml5-toolbar {
 
 /* list of categories */
 .catsblock {
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   li.nosubs {
     min-height: 21px;
   }
@@ -467,6 +468,14 @@ ul.wysihtml5-toolbar {
 }
 .nav > li > a:hover, .nav > li > a:focus {
   background: none;
+}
+
+
+/* profile show */
+.prof {
+  background: #D7D7D7;
+  padding: 10px;
+  margin: 15px 0;
 }
 
 /* Sticky footer */

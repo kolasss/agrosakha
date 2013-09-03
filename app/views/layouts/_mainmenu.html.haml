@@ -1,8 +1,7 @@
 - if can? :create, Sell
   = link_to 'Подать объявление', new_sell_path, {class: 'btn-u btn-u-large advbtn input-block-level btn-u-green'}
 - elsif can? :create, Buy
-  = link_to 'Подать объявление', new_buy_path, {class: 'btn btn-success btn-large advbtn input-block-level'}
-
+  = link_to 'Подать объявление', new_buy_path, {class: 'btn-u btn-u-large advbtn input-block-level btn-u-green'}
 - if user_signed_in?
   %ul.nav.nav-pills.nav-stacked.well.well-small
     %h4.mainname= link_to current_user.name, current_user
@@ -13,6 +12,8 @@
     / - elsif can? :create, Profile
     /   %li
     /     = link_to 'Создать профиль Вашей организации', new_profile_path
+    %li
+      = link_to 'Профиль организации', current_user.profile
     - if current_user.has_role? :admin
       %li
         = link_to 'Администрирование', users_path
@@ -27,7 +28,7 @@
         %a{href:"#register_tab", "data-toggle" => "tab"} Регистрация
     .tab-content
       #signin_tab.tab-pane.fade.active.in
-        = simple_form_for(resource, :as => resource_name, :url => user_session_path, :html => {:class => '' }) do |f|
+        = simple_form_for("user", :url => user_session_path, :html => {:class => '' }) do |f|
           = f.input :email, :autofocus => true, label: false
           = f.input :password, label: false
           - if devise_mapping.recoverable? && controller_name != 'passwords'
@@ -35,14 +36,12 @@
           = f.button :submit, "Войти", :class => 'btn-u btn-u-green btn-filter'
           = f.input :remember_me, :as => :boolean, :label => false, :inline_label => true if devise_mapping.rememberable?
       #register_tab.tab-pane.fade
-        = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => 'form-vertical' }) do |f|
-          = f.error_notification
-          = display_base_errors resource
-          = f.input :name, :autofocus => true
-          = f.input :email, :required => true
-          = f.input :password, :required => true
-          = f.input :password_confirmation, :required => true
-          = f.button :submit, 'Зарегистрировать', :class => 'btn-primary'
+        = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => '' }) do |f|
+          = f.input :name, :autofocus => true, label: false
+          = f.input :email, label: false
+          = f.input :password, label: false
+          = f.input :password_confirmation, label: false
+          = f.button :submit, 'Зарегистрировать', :class => 'btn-u btn-u-blue btn-filter'
 
   / %li
   /   = link_to 'Зарегистрироваться', new_user_registration_path

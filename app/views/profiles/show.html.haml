@@ -12,10 +12,10 @@
 /               - if subcat.category == cat
 /                 %li= subcat.name
 
-.well
+.prof
   - if can? :update, @profile
     = link_to 'Изменить', edit_profile_path(@profile), class: "btn-u btn-u-blue btn-u-small headbtn"
-  %h4
+  %h3
     = @profile.name
 
   %table.table.table-condensed.table-striped

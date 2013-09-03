@@ -81,14 +81,16 @@ ru:
       defaults:
         # password: 'placeholder parol'
       user:
+        name: "Имя"
         email: 'Электронная почта'
         password: 'Пароль'
+        password_confirmation: "Подтверждение пароля"
         # middlename: "Отчество"
         # new:
         #   email: 'Электронная почта'
-        # edit:
-        #   password: 'Новый пароль'
-        #   password_confirmation: "Подтверждение нового пароля"
+        edit:
+          password: 'Новый пароль'
+          password_confirmation: "Подтверждение нового пароля"
       grant:
         fullname: "Иванов Иван Иванович"
         region: "Намский улус"

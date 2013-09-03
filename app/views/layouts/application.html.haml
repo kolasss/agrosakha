@@ -23,19 +23,15 @@
       #main{:role => "main"}
         .container
           .content
-            .row.border_bottom
+            .row-fluid.border_bottom
               .span3
                 = render 'layouts/mainmenu'
-                
               .span6
-                / - if params[:controller] == "sells" || params[:controller] == "buys" || params[:controller] == "home"
                 = render 'layouts/advs'
                 = render 'layouts/categories'
-
               .span3
-                / - if (params[:controller] == "sells" || params[:controller] == "buys" || params[:controller] == "home" || params[:controller] == "profiles") && (params[:action] == "index" || params[:action] == "show_category" || params[:action] == "show_subcategory")
                 = render 'layouts/filter'
-            .row
+            .row-fluid
               = render 'layouts/messages'
               = yield
 
