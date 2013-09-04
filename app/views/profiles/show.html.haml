@@ -12,61 +12,60 @@
 /               - if subcat.category == cat
 /                 %li= subcat.name
 
-.prof
-  - if can? :update, @profile
-    = link_to 'Изменить', edit_profile_path(@profile), class: "btn-u btn-u-blue btn-u-small headbtn"
-  %h3
-    = @profile.name
+- if can? :update, @profile
+  = link_to 'Изменить', edit_profile_path(@profile), class: "btn-u btn-u-blue btn-u-small headbtn"
+%h3
+  = @profile.name
 
-  %table.table.table-condensed.table-striped
-    %tr
-      %td
-        %b ИНН
-      %td
-        - if @profile.inn
-          = @profile.inn
-        - else
-          Нет данных
-    - if @profile.city
-      %tr
-        %td 
-          %b Населенный пункт
-        %td
-          = @profile.city.region.name + ' район'
-          = "/ " + @profile.city.name
+%table.table.table-condensed.table-striped
+  %tr
+    %td
+      %b ИНН
+    %td
+      - if @profile.inn
+        = @profile.inn
+      - else
+        Нет данных
+  - if @profile.city
     %tr
       %td 
-        %b Категории
+        %b Населенный пункт
       %td
-        - if @profile.categories.empty?
-          Нет данных
-        - else
-          %ul
-            - @profile.categories.each do |cat|
-              %li= cat.name
-              - unless @profile.subcategories.empty? && cat.subcategories.empty?
-                %ul
-                  - @profile.subcategories.each do |subcat|
-                    - if subcat.category == cat
-                      %li= subcat.name
-    - if @profile.phone && !@profile.phone.empty?
-      %tr
-        %td 
-          %b Телефон
-        %td
-          = @profile.phone
-    - if @profile.address && !@profile.address.empty?
-      %tr
-        %td 
-          %b Адрес
-        %td
-          = @profile.address
-    - if @profile.desc && !@profile.desc.empty?
-      %tr
-        %td 
-          %b Описание
-        %td
-          = raw @profile.desc
+        = @profile.city.region.name + ' район'
+        = "/ " + @profile.city.name
+  %tr
+    %td 
+      %b Категории
+    %td
+      - if @profile.categories.empty?
+        Нет данных
+      - else
+        %ul
+          - @profile.categories.each do |cat|
+            %li= cat.name
+            - unless @profile.subcategories.empty? && cat.subcategories.empty?
+              %ul
+                - @profile.subcategories.each do |subcat|
+                  - if subcat.category == cat
+                    %li= subcat.name
+  - if @profile.phone && !@profile.phone.empty?
+    %tr
+      %td 
+        %b Телефон
+      %td
+        = @profile.phone
+  - if @profile.address && !@profile.address.empty?
+    %tr
+      %td 
+        %b Адрес
+      %td
+        = @profile.address
+  - if @profile.desc && !@profile.desc.empty?
+    %tr
+      %td 
+        %b Описание
+      %td
+        = raw @profile.desc
 
 %h5 Объявления организации
 .sellsblock

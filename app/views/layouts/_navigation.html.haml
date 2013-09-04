@@ -1,25 +1,37 @@
-/ = link_to "Agrosakha.ru", root_path, :class => 'brand'
-/ = link_to image_tag("/images/logo3.png"), root_path, :class => 'mylogo'
-.row-fluid.border_bottom.navrow1
-	.span6
-		%span.green
-			ЭЛЕКТРОННАЯ БИРЖА СЕЛЬХОЗ ПРОДУКЦИИ,
-		%span.gray
-			777-777
-	.span6
-		%ul.nav.pull-right
-			%li{:class => ("active" if params[:controller] == "home" || params[:controller] == "sells" || params[:controller] == "buys")}
-				= link_to 'КАТАЛОГ', root_path
-			%li{:class => ("active" if params[:controller] == "profiles")}
-				= link_to 'РЕЕСТР ПРОИЗВОДИТЕЛЕЙ', profiles_path
-			%li
-				= link_to 'СТАТИСТИКА', "#"
-.row-fluid
-	.span4.offset4.pagination-centered.mylogo
-		= link_to "АГРОСАХА", root_path, :class => ''
-	.span4
-		%ul.nav.pull-right
-			%li
-				= link_to 'О ПРОЕКТЕ', "#"
-			%li
-				= link_to 'КОНТАКТЫ', "#"
+/ %span.green.pull-left
+/ 	Электронная биржа сельхоз продукции
+
+%ul.nav.usermenu
+	- if user_signed_in?
+
+		%li
+			= link_to current_user.name, current_user
+		%li.bigpad
+			= link_to 'Профиль организации', current_user.profile
+		- if current_user.has_role? :admin
+			%li.bigpad
+				= link_to 'Администрирование', users_path
+		%li.bigpad
+			= link_to 'Выйти', destroy_user_session_path, :method=>'delete'
+
+	- else
+
+		%li
+			= link_to 'Войти', new_user_session_path
+		%li.smallpad
+			или
+		%li.smallpad
+			= link_to 'Зарегистрироваться', new_user_registration_path
+
+%ul.nav.pull-right
+	%li{:class => ("active" if params[:controller] == "home" || params[:controller] == "sells" || params[:controller] == "buys")}
+		= link_to 'Каталог', root_path
+	%li{:class => ("active" if params[:controller] == "profiles")}
+		= link_to 'Реестр производителей', profiles_path
+	%li
+		= link_to 'Статистика', "#"
+	%li
+		= link_to 'О проекте', "#"
+	%li
+		= link_to 'Контакты', "#"
+			

@@ -1,7 +1,9 @@
 %ul.nav.nav-tabs.ads
-  / %li{:class => ("active" if params[:controller] == "home")}
-  /   = link_to 'Все объявления', root_path
-  %li{:class => ("active" if params[:controller] == "sells")}
-    = link_to 'ПРЕДЛОЖЕНИЕ', sells_path
-  %li{:class => ("active" if params[:controller] == "buys")}
-    = link_to 'СПРОС', buys_path
+	- if params[:controller] == "sells" || params[:controller] == "buys"
+		%li{:class => ("active" if params[:controller] == "sells")}
+			= link_to 'Предложение', sells_path
+		%li{:class => ("active" if params[:controller] == "buys")}
+			= link_to 'Спрос', buys_path
+	- else
+		%li.nolink
+			Электронная биржа сельхоз продукции

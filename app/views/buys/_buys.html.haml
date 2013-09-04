@@ -5,14 +5,14 @@
         %th Дата
         %th Фото
         %th Наименование
-        %th Район
-        %th Единица
+        %th.hidden-phone.hidden-tablet Район
+        %th.hidden-phone.hidden-tablet Единица
         %th Цена
     %tbody
       - @buys.each do |buy|
         %tr
           %td.middle
-            %b= custom_format(buy.updated_at)
+            = custom_format(buy.updated_at)
             %br
             = buy.updated_at.to_s :time
           %td.thumb_img
@@ -25,16 +25,16 @@
               = link_to buy.title, buy
             %p.profile
               = link_to buy.user.profile.name, buy.user.profile if buy.user.profile
-          %td.middle
+          %td.middle.hidden-phone.hidden-tablet
             - if buy.city
               = buy.city.region.name
               = ", " + buy.city.name
             - else
               Нет данных
-          %td.count.middle
+          %td.count.middle.hidden-phone.hidden-tablet
             = buy.count_type.name if buy.count_type
           %td.price.middle
-            = number_to_currency buy.price, strip_insignificant_zeros: true
+            = link_to (number_to_currency buy.price, strip_insignificant_zeros: true), buy 
           / - if can? :manage, buy
           /   %td.edit_td.middle
           /     = link_to 'Изменить', edit_buy_path(buy), class: "btn-u btn-u-blue btn-u-small"
@@ -51,13 +51,13 @@
           %td
             %h3
               Объявлений нет
-          %td
-          %td
+          %td.hidden-phone.hidden-tablet
+          %td.hidden-phone.hidden-tablet
           %td
 
      
 .well.well-small
   = will_paginate @buys, renderer: BootstrapPagination::Rails
 
-- if can? :create, Buy
-  = link_to 'Новое объявление о покупке', new_buy_path, {class: 'btn-u'}
+/ - if can? :create, Buy
+/   = link_to 'Новое объявление о покупке', new_buy_path, {class: 'btn-u'}

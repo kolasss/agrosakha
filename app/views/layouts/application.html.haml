@@ -16,36 +16,31 @@
           = stylesheet_link_tag "ie6.css"
   %body{:class => "#{controller_name} #{action_name}"}
     #wrap
-      .navbar.navbar-static-top
+      .navbar.navbar-static-top.border_bottom
         %nav
           .container
             = render 'layouts/navigation'
       #main{:role => "main"}
         .container
-          .content
-            / .row-fluid.border_bottom
-            /   .span3
-            /     = render 'layouts/mainmenu'
-            /   .span6
-            /     = render 'layouts/advs'
-            /     = render 'layouts/categories'
-            /   .span3
-            /     = render 'layouts/filter'
-            .row
-              
-              .span9
-                
-                = render 'layouts/categories'
-                = render 'layouts/advs'
-                = render 'layouts/messages'
+          .row
+            .span2
+              = link_to image_tag('/images/logo.png'), root_path, class: "mylogo"
+            .span10
+              = render 'layouts/filter'
+          .row
+            .span2
+              = render 'layouts/categories'
+            .span8
+              = render 'layouts/messages'
+              = render 'layouts/advs'
+              .yieldblock
                 = yield
-              .span3
-                .sidebar.span3{"data-spy"=>"affix", "data-offset-top"=>"100"}
-                  = render 'layouts/addbutton'
-                  = render 'layouts/mainmenu'
-                  = render 'layouts/filter'
-                / = render 'layouts/advs'
-                
+            .span2
+              .sidebar.span2{"data-spy"=>"affix", "data-offset-top"=>"104"}
+                = render 'layouts/addbutton'
+
+              = render 'layouts/popular'
+              / = render 'layouts/mainmenu'
 
         / ! end of .container
         #push

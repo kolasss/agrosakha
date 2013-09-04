@@ -1,9 +1,6 @@
-/ - if can? :create, Sell
-/   = link_to 'Подать объявление', new_sell_path, {class: 'btn-u btn-u-large advbtn input-block-level btn-u-green'}
-/ - elsif can? :create, Buy
-/   = link_to 'Подать объявление', new_buy_path, {class: 'btn-u btn-u-large advbtn input-block-level btn-u-green'}
+
 - if user_signed_in?
-  %ul.nav.nav-pills.nav-stacked.well.well-small
+  %ul.nav
     %h4.mainname= link_to current_user.name, current_user
 
     / - if current_user && current_user.profile
@@ -20,30 +17,30 @@
     %li
       = link_to 'Выйти', destroy_user_session_path, :method=>'delete'
 - else
-  #signintabs.well.well-small
-    %ul.nav.nav-tabs
-      %li.active
-        %a{href:"#signin_tab", "data-toggle" => "tab"} Войти
-      %li
-        %a{href:"#register_tab", "data-toggle" => "tab"} Регистрация
-    .tab-content
-      #signin_tab.tab-pane.fade.active.in
-        = simple_form_for("user", :url => user_session_path, :html => {:class => '' }) do |f|
-          = f.input :email, :autofocus => true, label: false
-          = f.input :password, label: false
-          - if devise_mapping.recoverable? && controller_name != 'passwords'
-            = link_to "Forgot your password?", new_password_path(resource_name)
-          = f.button :submit, "Войти", :class => 'btn-u btn-u-green btn-filter'
-          = f.input :remember_me, :as => :boolean, :label => false, :inline_label => true if devise_mapping.rememberable?
-      #register_tab.tab-pane.fade
-        = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => '' }) do |f|
-          = f.input :name, :autofocus => true, label: false
-          = f.input :email, label: false
-          = f.input :password, label: false
-          = f.input :password_confirmation, label: false
-          = f.button :submit, 'Зарегистрировать', :class => 'btn-u btn-u-blue btn-filter'
-
-  / %li
-  /   = link_to 'Зарегистрироваться', new_user_registration_path
-  / %li
-  /   = link_to 'Войти', new_user_session_path
+  / #signintabs.well.well-small
+  /   %ul.nav.nav-tabs
+  /     %li.active
+  /       %a{href:"#signin_tab", "data-toggle" => "tab"} Войти
+  /     %li
+  /       %a{href:"#register_tab", "data-toggle" => "tab"} Регистрация
+  /   .tab-content
+  /     #signin_tab.tab-pane.fade.active.in
+  /       = simple_form_for("user", :url => user_session_path, :html => {:class => '' }) do |f|
+  /         = f.input :email, label: false
+  /         = f.input :password, label: false
+  /         - if devise_mapping.recoverable? && controller_name != 'passwords'
+  /           = link_to "Forgot your password?", new_password_path(resource_name)
+  /         = f.button :submit, "Войти", :class => 'btn-u btn-u-green btn-filter'
+  /         = f.input :remember_me, :as => :boolean, :label => false, :inline_label => true if devise_mapping.rememberable?
+  /     #register_tab.tab-pane.fade
+  /       = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => '' }) do |f|
+  /         = f.input :name, label: false
+  /         = f.input :email, label: false
+  /         = f.input :password, label: false
+  /         = f.input :password_confirmation, label: false
+  /         = f.button :submit, 'Зарегистрировать', :class => 'btn-u btn-u-blue btn-filter'
+  %ul.nav
+    %li
+      = link_to 'Войти', new_user_session_path
+    %li
+      = link_to 'Зарегистрироваться', new_user_registration_path

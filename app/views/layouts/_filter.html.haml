@@ -1,12 +1,10 @@
-= search_form_for @q, :url => filter_url, :class => "well well-small searchform" do |f|
-	.searchblock
+= search_form_for @q, :url => filter_url, :class => "searchform" do |f|
+	.span6.searchblock
 		- if params[:controller] == "profiles"
-			= f.label :name_cont, 'Поиск по наименованию'
-			= f.text_field :name_cont
+			= f.text_field :name_cont, :placeholder => "Поиск..."
 		- else
-			= f.label :title_cont, 'Поиск по заголовку'
-			= f.text_field :title_cont
-	.searchblock
-		= f.label :region_id_eq, 'Фильтр по районам'
+			= f.text_field :title_cont, :placeholder => "Поиск..."
+	.span2
 		= f.collection_select :region_id_eq, @regions, :id, :name, {:include_blank => "Все районы"}
-	= f.submit "Применить", class: "btn-u btn-u-green btn-filter"
+	.span1
+		= f.submit "Поиск", class: "btn-u btn-u-blue btn-filter"
