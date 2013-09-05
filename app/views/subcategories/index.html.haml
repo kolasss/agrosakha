@@ -1,21 +1,25 @@
 %h1 Подкатегории
 
 %table.table.table-hover.table-condensed
-  %tr
-    %th Стандартное изображание
-    %th Наименование
-    %th Категория
-    %th
-    %th
-    %th
-
-  - @subcategories.each do |subcategory|
+  %thead
     %tr
-      %td= image_tag("/images/missing/thumb/#{subcategory.default_image}", class: "img-polaroid")
-      %td= link_to subcategory.name, subcategory
-      %td= subcategory.category.name
-      %td= link_to 'Изменить', edit_subcategory_path(subcategory), :class => 'btn btn-mini'
-      %td= link_to 'Удалить', subcategory, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn btn-mini btn-danger'
+      %th Порядок
+      %th Стандартное изображание
+      %th Наименование
+      %th Категория
+      %th
+      %th
+      %th
+
+  %tbody
+    - @subcategories.each do |subcategory|
+      %tr
+        %td= subcategory.sort_id
+        %td= image_tag("/images/missing/thumb/#{subcategory.default_image}", class: "img-polaroid")
+        %td= link_to subcategory.name, subcategory
+        %td= subcategory.category.name
+        %td= link_to 'Изменить', edit_subcategory_path(subcategory), :class => 'btn btn-mini'
+        %td= link_to 'Удалить', subcategory, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => 'btn btn-mini btn-danger'
 
 %br
 

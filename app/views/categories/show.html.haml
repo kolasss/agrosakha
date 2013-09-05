@@ -18,6 +18,7 @@
   %table.table.table-hover
     - @category.subcategories.each do |subcategory|
       %tr
+        %td= subcategory.sort_id
         %td= link_to subcategory.name, subcategory
         - if can? :update, subcategory
           %td= link_to 'Изменить', edit_subcategory_path(subcategory), :class => 'btn btn-mini'

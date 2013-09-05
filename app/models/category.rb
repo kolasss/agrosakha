@@ -1,5 +1,5 @@
 class Category < ActiveRecord::Base
-  attr_accessible :name, :default_image
+  attr_accessible :name, :default_image, :sort_id
 
   has_many :subcategories, :dependent => :destroy, :order => "id asc"
   has_many :sells, :dependent => :destroy
@@ -8,4 +8,7 @@ class Category < ActiveRecord::Base
 
   validates :name, :presence => true
   validates :default_image, :presence => true
+  validates :sort_id, :presence => true, :numericality => { :greater_than_or_equal_to => 0 }
+
+  default_scope order('sort_id ASC')
 end

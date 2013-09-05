@@ -46,7 +46,7 @@ class CountTypesController < ApplicationController
 
     respond_to do |format|
       if @count_type.save
-        format.html { redirect_to @count_type, notice: 'Count type was successfully created.' }
+        format.html { redirect_to count_types_path, notice: 'Count type was successfully created.' }
         format.json { render json: @count_type, status: :created, location: @count_type }
       else
         format.html { render action: "new" }
@@ -62,7 +62,7 @@ class CountTypesController < ApplicationController
 
     respond_to do |format|
       if @count_type.update_attributes(params[:count_type])
-        format.html { redirect_to @count_type, notice: 'Count type was successfully updated.' }
+        format.html { redirect_to count_types_path, notice: 'Count type was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -78,7 +78,7 @@ class CountTypesController < ApplicationController
     @count_type.destroy
 
     respond_to do |format|
-      format.html { redirect_to count_types_url }
+      format.html { redirect_to count_types_path }
       format.json { head :no_content }
     end
   end

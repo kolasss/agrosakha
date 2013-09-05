@@ -55,7 +55,7 @@ class SubcategoriesController < ApplicationController
     #   end
     # end
     if @subcategory.save
-      redirect_to @subcategory, notice: 'Подкатегория создана.'
+      redirect_to subcategories_path, notice: 'Подкатегория создана.'
     else
       render action: "new"
     end
@@ -76,7 +76,7 @@ class SubcategoriesController < ApplicationController
     #   end
     # end
     if @subcategory.update_attributes(params[:subcategory])
-      redirect_to @subcategory, notice: 'Подкатегория обновлена.'
+      redirect_to subcategories_path, notice: 'Подкатегория обновлена.'
     else
       render action: "edit"
     end

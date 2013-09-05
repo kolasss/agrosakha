@@ -122,7 +122,7 @@ class ProfilesController < ApplicationController
     @profile.destroy
 
     respond_to do |format|
-      format.html { redirect_to profiles_url }
+      format.html { redirect_to profiles_path }
       format.json { head :no_content }
     end
   end

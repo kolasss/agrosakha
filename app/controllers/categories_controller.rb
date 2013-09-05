@@ -55,7 +55,7 @@ class CategoriesController < ApplicationController
     #   end
     # end
     if @category.save
-      redirect_to @category, notice: 'Категория создана.'
+      redirect_to categories_path, notice: 'Категория создана.'
     else
       render action: "new"
     end
@@ -76,7 +76,7 @@ class CategoriesController < ApplicationController
     #   end
     # end
     if @category.update_attributes(params[:category])
-      redirect_to @category, notice: 'Категория обновлена.'
+      redirect_to categories_path, notice: 'Категория обновлена.'
     else
       render action: "edit"
     end

@@ -54,7 +54,7 @@ class CitiesController < ApplicationController
     #   end
     # end
     if @city.save
-      redirect_to @city, notice: 'City was successfully created.'
+      redirect_to cities_path, notice: 'City was successfully created.'
     else
       render action: "new"
     end
@@ -75,7 +75,7 @@ class CitiesController < ApplicationController
     #   end
     # end
     if @city.update_attributes(params[:city])
-      redirect_to @city, notice: 'City was successfully updated.'
+      redirect_to cities_path, notice: 'City was successfully updated.'
     else
       render action: "edit"
     end

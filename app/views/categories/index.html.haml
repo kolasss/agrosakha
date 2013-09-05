@@ -3,6 +3,7 @@
 %table.table.table-hover.table-condensed
   %thead
     %tr
+      %th Порядок
       %th Стандартное изображание
       %th Наименование
       %th
@@ -12,6 +13,7 @@
   %tbody
     - @categories.each do |category|
       %tr
+        %td= category.sort_id
         %td= image_tag("/images/missing/thumb/#{category.default_image}", class: "img-polaroid")
         %td= link_to category.name, category
         %td
