@@ -17,10 +17,10 @@
 %h3
   = @profile.name
 
-%table.table.table-condensed.table-striped
+%table.table.table-striped
   %tr
     %td
-      %b ИНН
+      ИНН
     %td
       - if @profile.inn
         = @profile.inn
@@ -29,13 +29,13 @@
   - if @profile.city
     %tr
       %td 
-        %b Населенный пункт
+        Населенный пункт
       %td
         = @profile.city.region.name + ' район'
         = "/ " + @profile.city.name
   %tr
     %td 
-      %b Категории
+      Категории
     %td
       - if @profile.categories.empty?
         Нет данных
@@ -51,24 +51,24 @@
   - if @profile.phone && !@profile.phone.empty?
     %tr
       %td 
-        %b Телефон
+        Телефон
       %td
         = @profile.phone
   - if @profile.address && !@profile.address.empty?
     %tr
       %td 
-        %b Адрес
+        Адрес
       %td
         = @profile.address
   - if @profile.desc && !@profile.desc.empty?
     %tr
       %td 
-        %b Описание
+        Описание
       %td
         = raw @profile.desc
 
-%h5 Объявления организации
+%h4 Объявления организации
 .sellsblock
   = render 'sells'
 
-  = link_to 'Назад', :back, class: "btn"
+= link_to 'Назад', :back, class: "btn"

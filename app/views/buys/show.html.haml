@@ -1,61 +1,60 @@
 / %p#notice= notice
-.well
-  - if can? :update, @buy
-    = link_to 'Изменить', edit_buy_path(@buy), class: "btn-u btn-u-blue btn-u-small headbtn"
-  %h4
-    = @buy.title
-  - if @buy.image.file?
-    .thumbnail
-      = image_tag @buy.image.url(:large)
-  %p
-    = raw @buy.body
-  %table.table.table-condensed.table-striped
-    %tr
-      %td
-        %b Цена
-      %td
-        = number_to_currency @buy.price
-        = ' за ' + @buy.count_type.name if @buy.count_type
-    %tr
-      %td 
-        %b Количество
-      %td
-        = number_with_precision @buy.count, precision: 2, strip_insignificant_zeros: true
-        = ' ' + @buy.count_type.name if @buy.count_type
-    %tr
-      %td 
-        %b Категория
-      %td
-        = @buy.category.name
-        = "/ " + @buy.subcategory.name if @buy.subcategory
-    - if @buy.city
-      %tr
-        %td 
-          %b Населенный пункт
-        %td
-          = @buy.city.region.name + ' район'
-          = "/ " + @buy.city.name
+- if can? :update, @buy
+  = link_to 'Изменить', edit_buy_path(@buy), class: "btn-u btn-u-blue btn-u-small headbtn"
+%h4
+  = @buy.title
+- if @buy.image.file?
+  .thumbnail
+    = image_tag @buy.image.url(:large)
+%p
+  = raw @buy.body
+%table.table.table-condensed.table-striped
+  %tr
+    %td
+      Цена
+    %td
+      = number_to_currency @buy.price
+      = ' за ' + @buy.count_type.name if @buy.count_type
+  %tr
+    %td 
+      Количество
+    %td
+      = number_with_precision @buy.count, precision: 2, strip_insignificant_zeros: true
+      = ' ' + @buy.count_type.name if @buy.count_type
+  %tr
+    %td 
+      Категория
+    %td
+      = @buy.category.name
+      = "/ " + @buy.subcategory.name if @buy.subcategory
+  - if @buy.city
     %tr
       %td 
-        %b Организация
+        Населенный пункт
       %td
-        = link_to @buy.user.profile.name, @buy.user.profile if @buy.user.profile
-    - if @buy.user.profile.phone && !@buy.user.profile.phone.empty?
-      %tr
-        %td 
-          %b Телефон
-        %td
-          = @buy.user.profile.phone
-    - if @buy.user.profile.address && !@buy.user.profile.address.empty?
-      %tr
-        %td 
-          %b Адрес
-        %td
-          = @buy.user.profile.address
+        = @buy.city.region.name + ' район'
+        = "/ " + @buy.city.name
+  %tr
+    %td 
+      Организация
+    %td
+      = link_to @buy.user.profile.name, @buy.user.profile if @buy.user.profile
+  - if @buy.user.profile.phone && !@buy.user.profile.phone.empty?
     %tr
       %td 
-        %b Создано
+        Телефон
       %td
-        = l(@buy.updated_at, :format => :long)
+        = @buy.user.profile.phone
+  - if @buy.user.profile.address && !@buy.user.profile.address.empty?
+    %tr
+      %td 
+        Адрес
+      %td
+        = @buy.user.profile.address
+  %tr
+    %td 
+      Создано
+    %td
+      = l(@buy.updated_at, :format => :long)
 
-  = link_to 'Назад', :back, class: "btn"
+= link_to 'Назад', :back, class: "btn"

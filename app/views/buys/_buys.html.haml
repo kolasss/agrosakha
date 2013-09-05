@@ -25,6 +25,9 @@
               = link_to buy.title, buy
             %p.profile
               = link_to buy.user.profile.name, buy.user.profile if buy.user.profile
+            - if can? :manage, buy
+              = link_to 'Изменить', edit_buy_path(buy), class: "btn-u btn-u-blue btn-u-small"
+              = link_to 'Удалить', buy, :method => :delete, :data => { :confirm => 'Вы уверены?' }, class: "btn-u btn-u-red btn-u-small"
           %td.middle.hidden-phone.hidden-tablet
             - if buy.city
               = buy.city.region.name
@@ -35,14 +38,6 @@
             = buy.count_type.name if buy.count_type
           %td.price.middle
             = link_to (number_to_currency buy.price, strip_insignificant_zeros: true), buy 
-          / - if can? :manage, buy
-          /   %td.edit_td.middle
-          /     = link_to 'Изменить', edit_buy_path(buy), class: "btn-u btn-u-blue btn-u-small"
-          /   %td.edit_td.middle
-          /     = link_to 'Удалить', buy, :method => :delete, :data => { :confirm => 'Вы уверены?' }, class: "btn-u btn-u-red btn-u-small"
-          / - else
-          /   %td.empty
-          /   %td.empty
 
       - if @buys.empty?
         %tr

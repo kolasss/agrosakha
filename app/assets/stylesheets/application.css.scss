@@ -129,7 +129,7 @@ body {
   background-color: #f7f7f7;
   color: #333;
   font-family: 'corporate_e_w10_mdregular', Helvetica, Arial, sans-serif;
-  font-size: 12px;
+  font-size: 87.5%;
   //line-height: 18px;
 }
 
@@ -178,7 +178,7 @@ input, button, select, textarea {
 .border_bottom {
   border-bottom: 1px solid #ccc;
   background-color: #fff;
-  //box-shadow: 3px 3px 3px -2px #ccc;
+  box-shadow: 3px 3px 3px -2px #ccc;
 }
 .navbar {
   .green {
@@ -221,7 +221,7 @@ input, button, select, textarea {
 }
 
 .mylogo img {
-  margin-top: 8px;
+  margin-top: 13px;
 }
 
 /* ads menu */
@@ -269,14 +269,15 @@ input, button, select, textarea {
 
 /* table with sells and buys */
 .indextable {
-  font-size: 14px;
+  //font-size: 14px;
   .category {
-    font-size: 10px;
+    font-size: 86%;
     color: #848484;
     margin-bottom: 0;
   }
   h5 {
     a {
+      font-size: 114%;
       text-decoration: none;
     }
     margin: 5px 0 0;
@@ -290,7 +291,7 @@ input, button, select, textarea {
     text-align: center;
   }
   .price a {
-    font-size: 22px;
+    font-size: 150%;
     line-height: 1;
     text-decoration: none;
   }
@@ -416,7 +417,7 @@ footer {
 
 /* Search form */
 .searchform {
-  padding-top: 5px;
+  padding-top: 10px;
   .searchblock {
     margin-left: 0;
   }

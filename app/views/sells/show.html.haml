@@ -11,50 +11,50 @@
 %table.table.table-condensed.table-striped
   %tr
     %td
-      %b Цена
+      Цена
     %td
       = number_to_currency @sell.price
       = ' за ' + @sell.count_type.name if @sell.count_type
   %tr
     %td 
-      %b Количество
+      Количество
     %td
       = number_with_precision @sell.count, precision: 2, strip_insignificant_zeros: true
       = ' ' + @sell.count_type.name if @sell.count_type
   %tr
     %td 
-      %b Категория
+      Категория
     %td
       = @sell.category.name
       = "/ " + @sell.subcategory.name if @sell.subcategory
   - if @sell.city
     %tr
       %td 
-        %b Населенный пункт
+        Населенный пункт
       %td
         = @sell.city.region.name + ' район'
         = "/ " + @sell.city.name
   %tr
     %td 
-      %b Организация
+      Организация
     %td
       = link_to @sell.user.profile.name, @sell.user.profile
   - unless @sell.user.profile.phone.empty?
     %tr
       %td 
-        %b Телефон
+        Телефон
       %td
         = @sell.user.profile.phone
   - unless @sell.user.profile.address.empty?
     %tr
       %td 
-        %b Адрес
+        Адрес
       %td
         = @sell.user.profile.address
   %tr
     %td 
-      %b Создано
+      Создано
     %td
       = l(@sell.updated_at, :format => :long)
 
-  = link_to 'Назад', :back, class: "btn"
+= link_to 'Назад', :back, class: "btn"

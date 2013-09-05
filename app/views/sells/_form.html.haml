@@ -1,52 +1,51 @@
 = simple_form_for(@sell, :html => { :class => 'form-horizontal' }) do |f|
   = f.error_notification
 
-  .form-inputs.row
-    .span9
-      / #category and subcategory selects
-      = f.association :category, :prompt => "Выберите категорию", input_html: { class: 'category_input' }
-      / = f.association :subcategory
-      .control-group.select.optional.sell_subcategory
-        %label.select.optional.control-label{ for: "sell_subcategory_id" }
-          Подкатегория
-        #sell_subcategory.controls
-          = render :partial => "subcats"
+  .form-inputs
+    / #category and subcategory selects
+    = f.association :category, :prompt => "Выберите категорию", input_html: { class: 'category_input' }
+    / = f.association :subcategory
+    .control-group.select.optional.sell_subcategory
+      %label.select.optional.control-label{ for: "sell_subcategory_id" }
+        Подкатегория
+      #sell_subcategory.controls
+        = render :partial => "subcats"
 
-      - if params[:action] == "new"
-        = f.input :type, :collection => [['Предложение',true] ,['Спрос', false]], :as => :radio_buttons, :item_wrapper_class => 'inline', :label => 'Тип объявления', checked: true
+    - if params[:action] == "new"
+      = f.input :type, :collection => [['Предложение',true] ,['Спрос', false]], :as => :radio_buttons, :item_wrapper_class => 'inline', :label => 'Тип объявления', checked: true
 
-      / #region and city selects
-      = f.association :region, :prompt => "Выберите район", input_html: { class: 'category_input' }
-      / = f.association :city
-      .control-group.select.optional.sell_city
-        %label.select.optional.control-label{ for: "sell_city_id" }
-          Населенный пункт
-        #sell_city.controls
-          = render :partial => "cities"
+    / #region and city selects
+    = f.association :region, :prompt => "Выберите район", input_html: { class: 'category_input' }
+    / = f.association :city
+    .control-group.select.optional.sell_city
+      %label.select.optional.control-label{ for: "sell_city_id" }
+        Населенный пункт
+      #sell_city.controls
+        = render :partial => "cities"
 
-      = f.input :title, input_html: { class: 'title_input' }
-      .fortextarea
-        = f.input :body, input_html: { class: 'wysihtml5' }, as: :text
+    = f.input :title, input_html: { class: 'title_input' }
+    .fortextarea
+      = f.input :body, input_html: { class: 'wysihtml5' }, as: :text
 
-      / image
-      / -if f.error(:image_file_name) || f.error(:image_content_type) || f.error(:image_content_type)
-      /   = f.input :image, wrapper_html: { class: 'error' }
-      / -else
-      = f.input :image
-      / %ul.myerror
-      /   -if f.error :image_file_name
-      /     %li= f.error :image_file_name
-      /   -if f.error :image_content_type
-      /     %li= f.error :image_content_type
-      /   -if f.error :image_file_size
-      /     %li= f.error :image_file_size
-      - if @sell.image.file? && params[:action] == "edit"
-        .thumbnail.well 
-          = image_tag @sell.image.url(:large)
+    / image
+    / -if f.error(:image_file_name) || f.error(:image_content_type) || f.error(:image_content_type)
+    /   = f.input :image, wrapper_html: { class: 'error' }
+    / -else
+    = f.input :image
+    / %ul.myerror
+    /   -if f.error :image_file_name
+    /     %li= f.error :image_file_name
+    /   -if f.error :image_content_type
+    /     %li= f.error :image_content_type
+    /   -if f.error :image_file_size
+    /     %li= f.error :image_file_size
+    - if @sell.image.file? && params[:action] == "edit"
+      .thumbnail.well 
+        = image_tag @sell.image.url(:large)
 
-      = f.input :price, :hint_html => { :class => "inline_hint" }, input_html: { class: 'count_input' }
-      = f.input :count, :wrapper_html => { :class => "inline_field_wrapper" }, input_html: { class: 'count_input' }
-      = f.association :count_type, :wrapper_html => { :class => "inline_field_wrapper ctype_wrapper" }, :label => false, input_html: { class: 'ctype_input' }, :selected => 0
+    = f.input :price, :hint_html => { :class => "inline_hint" }, input_html: { class: 'count_input' }
+    = f.input :count, :wrapper_html => { :class => "inline_field_wrapper" }, input_html: { class: 'count_input' }
+    = f.association :count_type, :wrapper_html => { :class => "inline_field_wrapper ctype_wrapper" }, :label => false, input_html: { class: 'ctype_input' }, :selected => 0
 
   .form-actions
     = f.button :submit, :class => 'btn-u btn-u-blue'
