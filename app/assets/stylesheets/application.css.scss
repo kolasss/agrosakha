@@ -275,6 +275,13 @@ input, button, select, textarea {
   color: #333;
   table {
     direction: ltr;
+    a {
+      text-decoration: none;
+      color: #333;
+      &:hover {
+        color: #56ac28;
+      }
+    }
   }
   .category {
     font-size: 86%;
@@ -284,8 +291,6 @@ input, button, select, textarea {
   h5 {
     a {
       font-size: 114%;
-      text-decoration: none;
-      color: #333;
     }
     margin: 5px 0 0;
   }
@@ -301,11 +306,8 @@ input, button, select, textarea {
     //min-width: 120px;
     white-space: nowrap;
     a {
-      //font-family: 'corporate_e_w10_boldregular', Helvetica, Arial, sans-serif;
       font-size: 160%;
       line-height: 1;
-      text-decoration: none;
-      color: #333;
     }
   }
   .thumb_img {
