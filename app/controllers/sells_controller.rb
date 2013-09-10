@@ -67,7 +67,11 @@ class SellsController < ApplicationController
           format.html { redirect_to @buy, notice: 'Объявление создано.' }
           format.json { render json: @buy, status: :created, location: @buy }
         else
-          format.html { render action: "new" }
+          format.html { 
+            @q = Sell.search(params[:q])
+            @regions = Region.all
+            render action: "new" 
+          }
           format.json { render json: @buy.errors, status: :unprocessable_entity }
         end
       end
@@ -82,7 +86,11 @@ class SellsController < ApplicationController
           format.html { redirect_to @sell, notice: 'Объявление создано.' }
           format.json { render json: @sell, status: :created, location: @sell }
         else
-          format.html { render action: "new" }
+          format.html { 
+            @q = Sell.search(params[:q])
+            @regions = Region.all
+            render action: "new" 
+          }
           format.json { render json: @sell.errors, status: :unprocessable_entity }
         end
       end

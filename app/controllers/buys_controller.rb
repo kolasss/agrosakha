@@ -65,7 +65,11 @@ class BuysController < ApplicationController
         format.html { redirect_to @buy, notice: 'Объявление создано.' }
         format.json { render json: @buy, status: :created, location: @buy }
       else
-        format.html { render action: "new" }
+        format.html { 
+          @q = Buy.search(params[:q])
+          @regions = Region.all
+          render action: "new" 
+        }
         format.json { render json: @buy.errors, status: :unprocessable_entity }
       end
     end
@@ -82,7 +86,11 @@ class BuysController < ApplicationController
         format.html { redirect_to session.delete(:return_to) || root_path, notice: 'Объявление обновлено.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
+        format.html { 
+          @q = Buy.search(params[:q])
+          @regions = Region.all
+          render action: "edit" 
+        }
         format.json { render json: @buy.errors, status: :unprocessable_entity }
       end
     end

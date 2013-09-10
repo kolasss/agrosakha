@@ -18,16 +18,8 @@ class ProfilesController < ApplicationController
   # GET /profiles/1
   # GET /profiles/1.json
   def show
-    # @profile = Profile.find(params[:id])
-
-    # @q = Sell.search(params[:q])
-    # @sells = @q.result(:distinct => true)
     @sells = @profile.user.sells.all
-    # @sells = Sell.paginate(:page => params[:page])
-    # @q2 = Buy.search(params[:q])
-    # @buys = @q2.result(:distinct => true)
     @buys = @profile.user.buys.all
-    # @buys = Buy.paginate(:page => params[:page])
     @ad = (@sells + @buys).paginate(:page => params[:page], :per_page => 20)
 
     @q = Profile.search(params[:q])
@@ -78,7 +70,11 @@ class ProfilesController < ApplicationController
         format.html { redirect_to @profile, notice: 'Profile was successfully created.' }
         format.json { render json: @profile, status: :created, location: @profile }
       else
-        format.html { render action: "new" }
+        format.html { 
+          @q = Profile.search(params[:q])
+          @regions = Region.all
+          render action: "new" 
+        }
         format.json { render json: @profile.errors, status: :unprocessable_entity }
       end
     end
@@ -108,7 +104,11 @@ class ProfilesController < ApplicationController
         format.html { redirect_to @profile, notice: 'Profile was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
+        format.html { 
+          @q = Profile.search(params[:q])
+          @regions = Region.all
+          render action: "edit" 
+        }
         format.json { render json: @profile.errors, status: :unprocessable_entity }
       end
     end
