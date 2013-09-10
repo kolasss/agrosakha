@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130905071334) do
+ActiveRecord::Schema.define(:version => 20130910022439) do
 
   create_table "buys", :force => true do |t|
     t.string   "title"
@@ -69,6 +69,15 @@ ActiveRecord::Schema.define(:version => 20130905071334) do
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "ga_pageviews_records", :force => true do |t|
+    t.string   "model_type",                      :null => false
+    t.integer  "model_id",                        :null => false
+    t.integer  "pageviews",        :default => 0, :null => false
+    t.integer  "unique_pageviews", :default => 0, :null => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
   end
 
   create_table "posts", :force => true do |t|

@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Model type:
+  = @ga_pageviews_record.model_type
+%p
+  %b Model:
+  = @ga_pageviews_record.model_id
+%p
+  %b Pageviews:
+  = @ga_pageviews_record.pageviews
+%p
+  %b Unique pageviews:
+  = @ga_pageviews_record.unique_pageviews
+
+= link_to 'Edit', edit_ga_pageviews_record_path(@ga_pageviews_record)
+\|
+= link_to 'Back', ga_pageviews_records_path

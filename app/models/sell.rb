@@ -30,4 +30,32 @@ class Sell < ActiveRecord::Base
     :content_type => { :content_type => ['image/jpeg', 'image/png', 'image/gif', 'image/jpg'] },
     :size => { :in => 10..300.kilobytes }
 
+
+  #parse from google analytics
+  def self.update_from_ga
+    config = YAML.load_file(Rails.root.join("config/google_analytics.yml"))[Rails.env].symbolize_keys
+    Garb::Session.login(config[:email], config[:password])
+    profile = Garb::Management::Profile.all.detect { |p| p.web_property_id == config[:ua] }
+    raise "missing profile #{config[:ua]} in #{Garb::Management::Profile.all.map(&:web_property_id)}" unless profile
+
+    report = GoogleAnalyticsPageviews.results(profile, {
+      :start_date => 1.month.ago, 
+      :end_date => Date.today, 
+      :filters => {:page_path.contains => '\/(sells|buys)\/'}, 
+      :sort => [:pageviews, :uniquePageviews]
+    })
+
+    report.each do |rep|
+      model = /^\/(?<type>[a-z-]+)\/(?<id>\d+)$/.match(rep.page_path)
+      if model && (model[:type] == "sells" || model[:type] == "buys")
+        GaPageviewsRecord.create!({
+          :model_type => model[:type],
+          :model_id => model[:id],
+          :pageviews => rep.pageviews,
+          :unique_pageviews => rep.unique_pageviews,
+        })
+      end
+    end
+  end
+
 end

@@ -1,4 +1,5 @@
 Agro14::Application.routes.draw do
+  resources :ga_pageviews_records
   resources :posts
   resources :profiles
   resources :buys

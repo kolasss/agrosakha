@@ -139,10 +139,16 @@ input, button, select, textarea {
 }
 
 /*table */
-.table th {
-  color: #828282;
-  font-weight: normal;
-  text-align: center;
+.table{
+  th {
+    color: #828282;
+    font-weight: normal;
+    text-align: center;
+  }
+  td.middle {
+    vertical-align: middle;
+    text-align: center;
+  }
 }
 
 
@@ -221,7 +227,7 @@ input, button, select, textarea {
 }
 
 .mylogo img {
-  margin-top: 13px;
+  margin-top: 12px;
 }
 
 /* ads menu */
@@ -298,10 +304,6 @@ input, button, select, textarea {
   .profile a {
     color: #848484;
   }
-  td.middle {
-    vertical-align: middle;
-    text-align: center;
-  }
   .price {
     //min-width: 120px;
     white-space: nowrap;
@@ -323,6 +325,47 @@ input, button, select, textarea {
 .advbtn {
   margin-top: 38px;
   margin-bottom: 20px;
+}
+/* popular */
+#popular {
+  //width: 100%;
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 10px;
+
+  a {
+    text-decoration: none;
+    color: #333;
+    &:hover {
+      color: #56ac28;
+    }
+  }
+
+  h5 {
+    a {
+      font-size: 114%;
+    }
+    margin: 5px 0 0;
+  }
+  
+  .profile a {
+    color: #848484;
+  }
+  .price {
+    margin: 0;
+    //min-width: 120px;
+    //white-space: nowrap;
+    a {
+      font-size: 160%;
+      line-height: 1;
+    }
+  }
+}
+/* banners */
+#banners {
+  img {
+    margin-top: 15px;
+  }
 }
 
 /* form */

@@ -1,0 +1,25 @@
+%h1 Список данных с Google Analytics
+
+%table.table.table-hover.table-condensed
+  %thead
+    %tr
+      %th Model
+      %th Pageviews
+      %th Unique pageviews
+      %th Updated at
+      %th
+      %th
+  %tbody
+    - @ga_pageviews_records.each do |ga_pageviews_record|
+      %tr
+        %td= link_to (ga_pageviews_record.model_type+"/"+ga_pageviews_record.model_id.to_s), ga_pageviews_record
+        %td.middle= ga_pageviews_record.pageviews
+        %td.middle= ga_pageviews_record.unique_pageviews
+        / %td= ga_pageviews_record.updated_at.to_s :long
+        %td= l(ga_pageviews_record.updated_at, :format => :long)
+        %td= link_to 'Изменить', edit_ga_pageviews_record_path(ga_pageviews_record), :class => 'btn btn-mini'
+        %td= link_to 'Удалить', ga_pageviews_record, :method => :delete, :data => { :confirm => 'Вы уверены?' }, :class => 'btn btn-mini btn-danger'
+
+%br
+
+= link_to 'New Ga pageviews record', new_ga_pageviews_record_path

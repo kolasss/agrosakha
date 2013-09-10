@@ -9,9 +9,7 @@ class Ability
       can :read, :all
       can :show_category, [Sell, Buy, Profile]
       can :show_subcategory, [Sell, Buy, Profile]
-      cannot :index, User
-      # can :show2, Grant
-      # can :show2, Grantcorp
+      cannot :index, [User, Post, GaPageviewsRecord]
       # can :create, Comment
       # can :update, Comment do |comment|
       #   comment.try(:user) == user || user.role?(:moderator)
@@ -21,11 +19,6 @@ class Ability
         can :manage, [Buy, Profile], :user_id => user.id
       elsif user.has_role?(:user)
         can :manage, [Buy, Sell, Profile], :user_id => user.id
-        # can [:update, :destroy], [Buy, Sell, Profile], :user_id => user.id
-        # can [:update, :destroy], Sell, :user_id => user.id
-        # can [:update, :destroy], Profile, :user_id => user.id
-        # can :manage, Profile, :user_id => user.id
-        # can [:update, :destroy], Profile, :user_id => user.id
       end
     end
     # Define abilities for the passed in user here. For example:

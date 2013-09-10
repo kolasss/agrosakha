@@ -1,0 +1,2 @@
+module GaPageviewsRecordsHelper
+end

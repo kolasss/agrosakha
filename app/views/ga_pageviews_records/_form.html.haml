@@ -1,0 +1,11 @@
+= simple_form_for(@ga_pageviews_record) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :model_type
+    = f.input :model_id
+    = f.input :pageviews
+    = f.input :unique_pageviews
+
+  .form-actions
+    = f.button :submit

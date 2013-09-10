@@ -48,3 +48,4 @@ gem 'html_slicer'
 
 gem "paperclip", "~> 3.0"
 gem 'aws-sdk'
+gem 'garb', :git => 'git://github.com/Sija/garb.git'
