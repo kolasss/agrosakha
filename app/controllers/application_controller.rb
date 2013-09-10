@@ -15,11 +15,13 @@ class ApplicationController < ActionController::Base
 
   def one_popular
   	@ga = GaPageviewsRecord.limit(10).shuffle.first
-  	if @ga.model_type == "sells"
-  		@popular = Sell.find_by_id(@ga.model_id)
-	  else
-  		@popular = Buy.find_by_id(@ga.model_id)
-  	end
+    if @ga
+    	if @ga.model_type == "sells"
+    		@popular = Sell.find_by_id(@ga.model_id)
+  	  else
+    		@popular = Buy.find_by_id(@ga.model_id)
+    	end
+    end
 		@popular = Sell.first if !@popular
   end
 end
