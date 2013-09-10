@@ -2,6 +2,6 @@ desc "This task is called by the Heroku scheduler add-on"
 
 task :parse_ga => :environment do
   puts "Updating info from Google Analytics"
-  Participant.update_from_ga
+  Sell.update_from_ga
   puts "done."
 end

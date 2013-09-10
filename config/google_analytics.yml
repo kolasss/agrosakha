@@ -1,14 +1,14 @@
 development:
   email: <%= ENV['GOOGLE_ANALYTICS_EMAIL'] %>
   password: <%= ENV['GOOGLE_ANALYTICS_PASSWORD'] %>
-  ua: <%= ENV['GOOGLE_ANALYICS_UA'] %>
+  ua: <%= ENV['GOOGLE_ANALYTICS_UA'] %>
 
 production:
   email: <%= ENV['GOOGLE_ANALYTICS_EMAIL'] %>
   password: <%= ENV['GOOGLE_ANALYTICS_PASSWORD'] %>
-  ua: <%= ENV['GOOGLE_ANALYICS_UA'] %>
+  ua: <%= ENV['GOOGLE_ANALYTICS_UA'] %>
 
 test:
   email: <%= ENV['GOOGLE_ANALYTICS_EMAIL'] %>
   password: <%= ENV['GOOGLE_ANALYTICS_PASSWORD'] %>
-  ua: <%= ENV['GOOGLE_ANALYICS_UA'] %>
+  ua: <%= ENV['GOOGLE_ANALYTICS_UA'] %>
