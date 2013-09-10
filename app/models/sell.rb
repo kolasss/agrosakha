@@ -34,7 +34,7 @@ class Sell < ActiveRecord::Base
   #parse from google analytics
   def self.update_from_ga
     config = YAML.load(ERB.new(File.read("#{Rails.root}/config/google_analytics.yml")).result)[Rails.env].symbolize_keys
-    p config
+    # p config
     Garb::Session.login(config[:email], config[:password])
     profile = Garb::Management::Profile.all.detect { |p| p.web_property_id == config[:ua] }
     raise "missing profile #{config[:ua]} in #{Garb::Management::Profile.all.map(&:web_property_id)}" unless profile
