@@ -7,32 +7,11 @@
       - if can? :update, post
         = link_to 'Изменить', edit_post_path(post), class: "btn btn-mini headbtn"
       - if can? :destroy, post
-        = link_to 'Удалить', post, :method => :delete, :data => { :confirm => 'Вы уверены?' }, class: "btn btn-mini btn-danger"
+        = link_to 'Удалить', post, :method => :delete, :data => { :confirm => 'Вы уверены?' }, class: "btn btn-mini btn-danger headbtn"
     %p
       = raw post.shorten
     .clearfix
       = link_to 'Подробнее', post, class: "btn pull-right"
-
-
-/ %table.table
-/   %tr
-/     %th Заголовок
-/     %th preview
-/     %th
-/     %th
-/     %th
-
-/   - @posts.each do |post|
-/     %tr
-/       %td= post.title
-/       %td= raw post.shorten
-/       %td= link_to 'Show', post
-/       %td
-/         - if can? :update, post
-/           = link_to 'Edit', edit_post_path(post)
-/       %td
-/         - if can? :destroy, post
-/           = link_to 'Destroy', post, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 - if can? :create, Post

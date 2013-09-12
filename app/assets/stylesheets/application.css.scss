@@ -24,61 +24,6 @@
 
 }
 @font-face {
-    font-family: 'corporate_e_w10_bold_italicRg';
-    src: url('corporateew10-bolditalic-webfont.eot');
-    src: url('corporateew10-bolditalic-webfont.eot?#iefix') format('embedded-opentype'),
-         url('corporateew10-bolditalic-webfont.woff') format('woff'),
-         url('corporateew10-bolditalic-webfont.ttf') format('truetype'),
-         url('corporateew10-bolditalic-webfont.svg#corporate_e_w10_bold_italicRg') format('svg');
-    font-weight: normal;
-    font-style: normal;
-
-}
-@font-face {
-    font-family: 'corporate_e_w10_demiregular';
-    src: url('corporateew10-demi-webfont.eot');
-    src: url('corporateew10-demi-webfont.eot?#iefix') format('embedded-opentype'),
-         url('corporateew10-demi-webfont.woff') format('woff'),
-         url('corporateew10-demi-webfont.ttf') format('truetype'),
-         url('corporateew10-demi-webfont.svg#corporate_e_w10_demiregular') format('svg');
-    font-weight: normal;
-    font-style: normal;
-
-}
-@font-face {
-    font-family: 'corporate_e_w10_italicregular';
-    src: url('corporateew10-italic-webfont.eot');
-    src: url('corporateew10-italic-webfont.eot?#iefix') format('embedded-opentype'),
-         url('corporateew10-italic-webfont.woff') format('woff'),
-         url('corporateew10-italic-webfont.ttf') format('truetype'),
-         url('corporateew10-italic-webfont.svg#corporate_e_w10_italicregular') format('svg');
-    font-weight: normal;
-    font-style: normal;
-
-}
-@font-face {
-    font-family: 'corporate_e_w10_lightregular';
-    src: url('corporateew10-light-webfont.eot');
-    src: url('corporateew10-light-webfont.eot?#iefix') format('embedded-opentype'),
-         url('corporateew10-light-webfont.woff') format('woff'),
-         url('corporateew10-light-webfont.ttf') format('truetype'),
-         url('corporateew10-light-webfont.svg#corporate_e_w10_lightregular') format('svg');
-    font-weight: normal;
-    font-style: normal;
-
-}
-@font-face {
-    font-family: 'corporate_e_w10_light_italiRg';
-    src: url('corporateew10-lightitalic-webfont.eot');
-    src: url('corporateew10-lightitalic-webfont.eot?#iefix') format('embedded-opentype'),
-         url('corporateew10-lightitalic-webfont.woff') format('woff'),
-         url('corporateew10-lightitalic-webfont.ttf') format('truetype'),
-         url('corporateew10-lightitalic-webfont.svg#corporate_e_w10_light_italiRg') format('svg');
-    font-weight: normal;
-    font-style: normal;
-
-}
-@font-face {
     font-family: 'corporate_e_w10_mdregular';
     src: url('corporateew10-md-webfont.eot');
     src: url('corporateew10-md-webfont.eot?#iefix') format('embedded-opentype'),
@@ -89,48 +34,13 @@
     font-style: normal;
 
 }
-@font-face {
-    font-family: 'corporate_e_w10_md_italicRg';
-    src: url('corporateew10-mditalic-webfont.eot');
-    src: url('corporateew10-mditalic-webfont.eot?#iefix') format('embedded-opentype'),
-         url('corporateew10-mditalic-webfont.woff') format('woff'),
-         url('corporateew10-mditalic-webfont.ttf') format('truetype'),
-         url('corporateew10-mditalic-webfont.svg#corporate_e_w10_md_italicRg') format('svg');
-    font-weight: normal;
-    font-style: normal;
-
-}
-@font-face {
-    font-family: 'corporate_e_w10_regularRg';
-    src: url('corporateew10-regular-webfont.eot');
-    src: url('corporateew10-regular-webfont.eot?#iefix') format('embedded-opentype'),
-         url('corporateew10-regular-webfont.woff') format('woff'),
-         url('corporateew10-regular-webfont.ttf') format('truetype'),
-         url('corporateew10-regular-webfont.svg#corporate_e_w10_regularRg') format('svg');
-    font-weight: normal;
-    font-style: normal;
-
-}
-@font-face {
-    font-family: 'corporate_e_w10_demi_italicRg';
-    src: url('corporateew10-demiitalic-webfont.eot');
-    src: url('corporateew10-demiitalic-webfont.eot?#iefix') format('embedded-opentype'),
-         url('corporateew10-demiitalic-webfont.woff') format('woff'),
-         url('corporateew10-demiitalic-webfont.ttf') format('truetype'),
-         url('corporateew10-demiitalic-webfont.svg#corporate_e_w10_demi_italicRg') format('svg');
-    font-weight: normal;
-    font-style: normal;
-
-}
 
 
 body {
-  //background-color: #CEECF5;
   background-color: #f7f7f7;
   color: #333;
   font-family: 'corporate_e_w10_mdregular', Helvetica, Arial, sans-serif;
   font-size: 87.5%;
-  //line-height: 18px;
 }
 
 //overriding boostrap
@@ -157,6 +67,9 @@ input, button, select, textarea {
   top: 10px;  //height of the nav
   .advbtn {
     margin-top: 0;
+  }
+  .addtxt {
+    background-color: #f7f7f7;
   }
 }
 .sidebar {
@@ -305,7 +218,6 @@ input, button, select, textarea {
     color: #848484;
   }
   .price {
-    //min-width: 120px;
     white-space: nowrap;
     a {
       font-size: 160%;
@@ -322,13 +234,21 @@ input, button, select, textarea {
 }
 
 /* add ad button */
+.addbtndiv {
+  margin-bottom: 20px;
+}
 .advbtn {
   margin-top: 38px;
-  margin-bottom: 20px;
+}
+.addtxt {
+  padding: 10px 0 5px;
+  line-height: 1.1;
+  a {
+    line-height: 1.1;
+  }
 }
 /* popular */
 #popular {
-  //width: 100%;
   background: #fff;
   border: 1px solid #ddd;
   padding: 10px;
@@ -383,9 +303,7 @@ ul.wysihtml5-toolbar {
   padding: 10px 4px 0 10px;
 }
 .fortextarea {
-  //padding-right: 20px;
   textarea {
-    //max-width: 100%;
     min-width: 250px;
     width: 70%;
     height: 150px;
@@ -495,6 +413,11 @@ footer {
   }
 }
 
+/* profile show */
+.profilebackbtn {
+  margin-bottom: 35px;
+}
+
 /*buttons edit and delete*/
 .headbtn {
   //margin-left: 30px;
@@ -506,5 +429,15 @@ footer {
   color: #B94A48;
   .help-inline {
     color: #B94A48;
+  }
+}
+
+/* posts */
+.post {
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  .headbtn {
+    margin-left: 10px;
   }
 }

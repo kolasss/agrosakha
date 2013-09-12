@@ -2,12 +2,14 @@
 class BuysController < ApplicationController
   load_and_authorize_resource
   skip_load_resource :only => [:index, :show_category, :show_subcategory, :update_city_select, :update_subcat_select]
+  
+  skip_before_filter :search_sell
+  before_filter :search_buy, :except => [:show_category, :show_subcategory, :update_city_select, :update_subcat_select]
+     
   # GET /buys
   # GET /buys.json
   def index
     # @cities = City.all
-    @regions = Region.all
-    @q = Buy.search(params[:q])
     @buys = @q.result(:distinct => true).paginate(:page => params[:page])
 
     respond_to do |format|
@@ -20,8 +22,6 @@ class BuysController < ApplicationController
   # GET /buys/1.json
   def show
     # @buy = Buy.find(params[:id])
-    @q = Buy.search(params[:q])
-    @regions = Region.all
 
     respond_to do |format|
       format.html # show.html.erb
@@ -33,8 +33,6 @@ class BuysController < ApplicationController
   # GET /buys/new.json
   def new
     # @buy = Buy.new
-    @q = Buy.search(params[:q])
-    @regions = Region.all
 
     respond_to do |format|
       format.html # new.html.erb
@@ -49,9 +47,6 @@ class BuysController < ApplicationController
 
     @cities = City.where(:region_id => @buy.city.region_id).order(:name) if @buy.city
     @subcats = Subcategory.where(:category_id => @buy.subcategory.category_id) if @buy.subcategory
-
-    @q = Buy.search(params[:q])
-    @regions = Region.all
   end
 
   # POST /buys
@@ -65,11 +60,7 @@ class BuysController < ApplicationController
         format.html { redirect_to @buy, notice: 'Объявление создано.' }
         format.json { render json: @buy, status: :created, location: @buy }
       else
-        format.html { 
-          @q = Buy.search(params[:q])
-          @regions = Region.all
-          render action: "new" 
-        }
+        format.html { render action: "new" }
         format.json { render json: @buy.errors, status: :unprocessable_entity }
       end
     end
@@ -86,11 +77,7 @@ class BuysController < ApplicationController
         format.html { redirect_to session.delete(:return_to) || root_path, notice: 'Объявление обновлено.' }
         format.json { head :no_content }
       else
-        format.html { 
-          @q = Buy.search(params[:q])
-          @regions = Region.all
-          render action: "edit" 
-        }
+        format.html { render action: "edit" }
         format.json { render json: @buy.errors, status: :unprocessable_entity }
       end
     end
@@ -153,5 +140,11 @@ class BuysController < ApplicationController
       @subcats = Subcategory.where(:category_id => params[:id])
     end
     render :partial => "subcats", :locals => {:subcats => @subcats}
+  end
+
+private
+  def search_buy
+    @regions = Region.all
+    @q = Buy.search(params[:q])
   end
 end

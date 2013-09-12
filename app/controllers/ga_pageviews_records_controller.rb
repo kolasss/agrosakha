@@ -1,10 +1,12 @@
 class GaPageviewsRecordsController < ApplicationController
   load_and_authorize_resource
-  before_filter :search_sell
+  skip_load_resource :only => [:index]
+  # before_filter :search_sell
   # GET /ga_pageviews_records
   # GET /ga_pageviews_records.json
   def index
     # @ga_pageviews_records = GaPageviewsRecord.all
+    @ga_pageviews_records = GaPageviewsRecord.paginate(:page => params[:page])
 
     respond_to do |format|
       format.html # index.html.erb

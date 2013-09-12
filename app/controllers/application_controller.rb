@@ -2,7 +2,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   before_filter :one_popular
-  before_filter :search_sell, if: :devise_controller?
+  # before_filter :search_sell, if: :devise_controller?
+  before_filter :search_sell, :except => [:show_category, :show_subcategory, :update_city_select, :update_subcat_select]
 
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to root_path, :alert => exception.message

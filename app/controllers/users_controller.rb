@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   load_and_authorize_resource
   skip_load_resource :only => :index
 
-  before_filter :search_sell
+  # before_filter :search_sell
 
   def index
     # authorize! :index, @user, :message => 'Not authorized as an administrator.'

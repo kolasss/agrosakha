@@ -1,7 +1,7 @@
 #encoding: utf-8
 class CategoriesController < ApplicationController
   load_and_authorize_resource
-  before_filter :search_sell
+  # before_filter :search_sell
   # GET /categories
   # GET /categories.json
   def index

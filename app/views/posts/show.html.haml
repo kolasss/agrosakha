@@ -1,9 +1,8 @@
 / %p#notice= notice
-
+- if can? :update, @post
+  = link_to 'Изменить', edit_post_path(@post), class: "btn-u btn-u-blue btn-u-small headbtn"
 %h2
   = @post.title
-/ %p
-/   = raw @post.shorten
 %p
   = raw @post.body
 

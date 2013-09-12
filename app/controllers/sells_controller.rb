@@ -6,8 +6,6 @@ class SellsController < ApplicationController
   # GET /sells.json
   def index
     # @cities = City.all
-    @regions = Region.all
-    @q = Sell.search(params[:q])
     @sells = @q.result(:distinct => true).paginate(:page => params[:page])
 
     respond_to do |format|
@@ -20,8 +18,6 @@ class SellsController < ApplicationController
   # GET /sells/1.json
   def show
     # @sell = Sell.find(params[:id])
-    @q = Sell.search(params[:q])
-    @regions = Region.all
 
     respond_to do |format|
       format.html # show.html.erb
@@ -33,8 +29,6 @@ class SellsController < ApplicationController
   # GET /sells/new.json
   def new
     # @sell = Sell.new
-    @q = Sell.search(params[:q])
-    @regions = Region.all
 
     respond_to do |format|
       format.html # new.html.erb
@@ -49,9 +43,6 @@ class SellsController < ApplicationController
 
     @cities = City.where(:region_id => @sell.city.region_id).order(:name) if @sell.city
     @subcats = Subcategory.where(:category_id => @sell.subcategory.category_id) if @sell.subcategory
-
-    @q = Sell.search(params[:q])
-    @regions = Region.all
   end
 
   # POST /sells
@@ -67,11 +58,7 @@ class SellsController < ApplicationController
           format.html { redirect_to @buy, notice: 'Объявление создано.' }
           format.json { render json: @buy, status: :created, location: @buy }
         else
-          format.html { 
-            @q = Sell.search(params[:q])
-            @regions = Region.all
-            render action: "new" 
-          }
+          format.html { render action: "new" }
           format.json { render json: @buy.errors, status: :unprocessable_entity }
         end
       end
@@ -86,11 +73,7 @@ class SellsController < ApplicationController
           format.html { redirect_to @sell, notice: 'Объявление создано.' }
           format.json { render json: @sell, status: :created, location: @sell }
         else
-          format.html { 
-            @q = Sell.search(params[:q])
-            @regions = Region.all
-            render action: "new" 
-          }
+          format.html { render action: "new" }
           format.json { render json: @sell.errors, status: :unprocessable_entity }
         end
       end
@@ -100,7 +83,6 @@ class SellsController < ApplicationController
   # PUT /sells/1
   # PUT /sells/1.json
   def update
-    # authorize! :update, @sell
     # @sell = Sell.find(params[:id])
 
     respond_to do |format|
@@ -117,7 +99,6 @@ class SellsController < ApplicationController
   # DELETE /sells/1
   # DELETE /sells/1.json
   def destroy
-    # authorize! :destroy, @sell
     # @sell = Sell.find(params[:id])
     @sell.destroy
 

@@ -20,6 +20,7 @@
         %td= link_to 'Изменить', edit_ga_pageviews_record_path(ga_pageviews_record), :class => 'btn btn-mini'
         %td= link_to 'Удалить', ga_pageviews_record, :method => :delete, :data => { :confirm => 'Вы уверены?' }, :class => 'btn btn-mini btn-danger'
 
-%br
+.well.well-small
+  = will_paginate @ga_pageviews_records, renderer: BootstrapPagination::Rails
 
-= link_to 'New Ga pageviews record', new_ga_pageviews_record_path
+= link_to 'New Ga pageviews record', new_ga_pageviews_record_path, {class: 'btn'}

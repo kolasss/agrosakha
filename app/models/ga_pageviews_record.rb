@@ -7,4 +7,6 @@ class GaPageviewsRecord < ActiveRecord::Base
   validates :unique_pageviews, :presence => true
 
   default_scope order('updated_at DESC')
+
+  self.per_page = 100
 end

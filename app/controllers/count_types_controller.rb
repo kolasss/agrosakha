@@ -1,6 +1,6 @@
 class CountTypesController < ApplicationController
   load_and_authorize_resource
-  before_filter :search_sell
+  # before_filter :search_sell
   # GET /count_types
   # GET /count_types.json
   def index

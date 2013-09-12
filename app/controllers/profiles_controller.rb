@@ -1,11 +1,13 @@
 class ProfilesController < ApplicationController
   load_and_authorize_resource
   skip_load_resource :only => [:new, :index, :show_category, :show_subcategory, :update_city_select]
+  
+  skip_before_filter :search_sell
+  before_filter :search_profile, :except => [:show_category, :show_subcategory, :update_city_select]
+
   # GET /profiles
   # GET /profiles.json
   def index
-    @regions = Region.all
-    @q = Profile.search(params[:q])
     @profiles = @q.result(:distinct => true).paginate(:page => params[:page])
     # @profiles = Profile.paginate(:page => params[:page])
 
@@ -22,9 +24,6 @@ class ProfilesController < ApplicationController
     @buys = @profile.user.buys.all
     @ad = (@sells + @buys).paginate(:page => params[:page], :per_page => 20)
 
-    @q = Profile.search(params[:q])
-    @regions = Region.all
-
     # respond_to do |format|
     #   format.html # show.html.erb
     #   format.json { render json: @profile }
@@ -34,9 +33,6 @@ class ProfilesController < ApplicationController
   # GET /profiles/new
   # GET /profiles/new.json
   def new
-    @q = Profile.search(params[:q])
-    @regions = Region.all
-
     if @profile = current_user.profile
       render :action => :edit
     else
@@ -50,9 +46,6 @@ class ProfilesController < ApplicationController
 
   # GET /profiles/1/edit
   def edit
-    @q = Profile.search(params[:q])
-    @regions = Region.all
-    
     # @profile = Profile.find(params[:id])
     if @profile.city
       @cities = City.where(:region_id => @profile.city.region_id).order(:name)
@@ -70,11 +63,7 @@ class ProfilesController < ApplicationController
         format.html { redirect_to @profile, notice: 'Profile was successfully created.' }
         format.json { render json: @profile, status: :created, location: @profile }
       else
-        format.html { 
-          @q = Profile.search(params[:q])
-          @regions = Region.all
-          render action: "new" 
-        }
+        format.html { render action: "new" }
         format.json { render json: @profile.errors, status: :unprocessable_entity }
       end
     end
@@ -104,11 +93,7 @@ class ProfilesController < ApplicationController
         format.html { redirect_to @profile, notice: 'Profile was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { 
-          @q = Profile.search(params[:q])
-          @regions = Region.all
-          render action: "edit" 
-        }
+        format.html { render action: "edit" }
         format.json { render json: @profile.errors, status: :unprocessable_entity }
       end
     end
@@ -117,7 +102,6 @@ class ProfilesController < ApplicationController
   # DELETE /profiles/1
   # DELETE /profiles/1.json
   def destroy
-    # authorize! :destroy, @profile
     # @profile = Profile.find(params[:id])
     @profile.destroy
 
@@ -158,5 +142,11 @@ class ProfilesController < ApplicationController
       @cities = City.where(:region_id => params[:id]).order(:name)
     end
     render :partial => "cities", :locals => {:cities => @cities}
+  end
+
+private
+  def search_profile
+    @regions = Region.all
+    @q = Profile.search(params[:q])
   end
 end

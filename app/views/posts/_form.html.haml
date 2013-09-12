@@ -3,7 +3,8 @@
 
   .form-inputs
     = f.input :title
-    = f.input :body, input_html: { class: 'wysihtml5' }, as: :text
+    .fortextarea
+      = f.input :body, input_html: { class: 'wysihtml5' }, as: :text
 
   .form-actions
     = f.button :submit, :class => 'btn-u btn-u-blue'

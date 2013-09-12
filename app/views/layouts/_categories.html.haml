@@ -16,24 +16,24 @@
 		%ul.nav.nav-list
 			- Category.all.each do |category|
 				%li{:class => ("active" if params[:action] == "show_category" && params[:id].to_i == category.id)}
-					- category.buys.size > 0 ? name = "#{category.name} (#{category.buys.size})" :  name = "#{category.name}"
+					- category.profiles.size > 0 ? name = "#{category.name} (#{category.profiles.size})" :  name = "#{category.name}"
 					= link_to name, profiles_category_path(category), class: "cat"
 					- if !category.subcategories.empty?
 						%ul.nav.nav-list.subcat
 							- category.subcategories.each do |subcat|
 								%li{:class => ("active" if params[:action] == "show_subcategory" && params[:id].to_i == subcat.id)}
-									- subcat.buys.size > 0 ? name = "#{subcat.name} (#{subcat.buys.size})" :  name = "#{subcat.name}"
+									- subcat.profiles.size > 0 ? name = "#{subcat.name} (#{subcat.profiles.size})" :  name = "#{subcat.name}"
 									= link_to name, profiles_subcategory_path(subcat)
 
 	- else
 		%ul.nav.nav-list
 			- Category.all.each do |category|
 				%li{:class => ("active" if params[:action] == "show_category" && params[:id].to_i == category.id)}
-					- category.buys.size > 0 ? name = "#{category.name} (#{category.buys.size})" :  name = "#{category.name}"
+					- category.sells.size > 0 ? name = "#{category.name} (#{category.sells.size})" :  name = "#{category.name}"
 					= link_to name, sells_category_path(category), class: "cat"
 					- if !category.subcategories.empty?
 						%ul.nav.nav-list.subcat
 							- category.subcategories.each do |subcat|
 								%li{:class => ("active" if params[:action] == "show_subcategory" && params[:id].to_i == subcat.id)}
-									- subcat.buys.size > 0 ? name = "#{subcat.name} (#{subcat.buys.size})" :  name = "#{subcat.name}"
+									- subcat.sells.size > 0 ? name = "#{subcat.name} (#{subcat.sells.size})" :  name = "#{subcat.name}"
 									= link_to name, sells_subcategory_path(subcat)
