@@ -1,3 +1,6 @@
+- content_for :head do
+  %meta{:content => @buy.subcategory.nil? ? @buy.category.name : @buy.category.name+", "+@buy.subcategory.name, :name => "keywords"}
+  
 / %p#notice= notice
 - if can? :update, @buy
   = link_to 'Изменить', edit_buy_path(@buy), class: "btn-u btn-u-blue btn-u-small headbtn"

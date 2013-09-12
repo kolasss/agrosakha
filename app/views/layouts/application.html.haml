@@ -3,17 +3,18 @@
   %head
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
       %title= content_for?(:title) ? yield(:title) : "Agrosakha.ru"
-      %meta{:content => content_for?(:description) ? yield(:description) : "Agrosakha.ru", :name => "description"}
-        = stylesheet_link_tag "application", :media => "all"
-        = javascript_include_tag "application"
-        = csrf_meta_tags
-        = yield(:head)
+      %meta{:content => "Единая площадка сбыта сельскохозяйственной продукции Республики Саха (Якутия)", :name => "description"}
 
-        /HTML5 shim, for IE6-8 support of HTML5 elements
-        /[if lt IE 9]
-          %script{:src  => "http://html5shim.googlecode.com/svn/trunk/html5.js"}
-        /[if IE 6]
-          = stylesheet_link_tag "ie6.css"
+      = stylesheet_link_tag "application", :media => "all"
+      = javascript_include_tag "application"
+      = csrf_meta_tags
+      = yield(:head)
+
+      /HTML5 shim, for IE6-8 support of HTML5 elements
+      /[if lt IE 9]
+        %script{:src  => "http://html5shim.googlecode.com/svn/trunk/html5.js"}
+      /[if IE 6]
+        = stylesheet_link_tag "ie6.css"
   %body{:class => "#{controller_name} #{action_name}"}
     #wrap
       .navbar.navbar-static-top.border_bottom

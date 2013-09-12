@@ -3,10 +3,11 @@
 
 
 /* TEAM */
-  <your title>: <your name>
-  Site:
-  Twitter:
-  Location:
+  developer: Nikolai Ammosov
+  Location: Yakutsk
+
+  design: Sergey Khristoforov
+  Location: Yakutsk
 
 /* THANKS */
   Daniel Kehoe (@rails_apps) for the RailsApps project
