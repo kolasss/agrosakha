@@ -1,3 +1,4 @@
+#encoding: utf-8
 class CitiesController < ApplicationController
   load_and_authorize_resource
   # before_filter :search_sell
@@ -54,7 +55,7 @@ class CitiesController < ApplicationController
     #   end
     # end
     if @city.save
-      redirect_to cities_path, notice: 'City was successfully created.'
+      redirect_to cities_path, notice: 'Населенный пункт создан.'
     else
       render action: "new"
     end
@@ -75,7 +76,7 @@ class CitiesController < ApplicationController
     #   end
     # end
     if @city.update_attributes(params[:city])
-      redirect_to cities_path, notice: 'City was successfully updated.'
+      redirect_to cities_path, notice: 'Населенный пункт изменен.'
     else
       render action: "edit"
     end

@@ -17,9 +17,27 @@ ru:
       buy:
         one: "Объявление"
         other: "Объявления"
-      event:
-        one: "Мероприятие"
-        other: "Мероприятия"
+      category:
+        one: "Категорию"
+        other: "Категории"
+      city:
+        one: "Населенный пункт"
+        other: "Населенные пункты"
+      count_type:
+        one: "Еденицу измерения"
+        other: "Еденицы измерения"
+      ga_pageviews_record:
+        one: "Запись"
+        other: "Записи"
+      post:
+        one: "Статью"
+        other: "Статьи"
+      region:
+        one: "Район"
+        other: "Районы"
+      subcategory:
+        one: "Подкатегорию"
+        other: "Подкатегории"
     attributes:
       user:
         login: "Handle"
@@ -41,9 +59,9 @@ ru:
   unauthorized:
     manage:
       all: "Доступ запрещен."
-      user: "Not allowed to manage other user accounts."
-    update:
-      project: "asdNot allowed to update this project."
+      user: "Запрещено изменять учетные записи других пользователей."
+    create:
+      sell: "Для подачи объявления войдите или зарегистрируйтесь"
 
   will_paginate:
     previous_label: "&#8592; Пред."
@@ -62,6 +80,3 @@ ru:
 
       multi_page: "Displaying %{model} %{from} - %{to} of %{count} in total"
       multi_page_html: "Displaying %{model} <b>%{from}&nbsp;-&nbsp;%{to}</b> of <b>%{count}</b> in total"
-  helpers:
-    label:
-      region_id_eq: "asda"

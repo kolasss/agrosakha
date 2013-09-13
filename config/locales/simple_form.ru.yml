@@ -20,23 +20,14 @@ ru:
         email: 'Электронная почта'
       user:
         remember_me: "Запомнить меня"
-        # middlename: "Отчество"
         new:
           email: 'Электронная почта'
-          # middlename: "Отчество"
         edit:
-          # avatar: "Аватар"
           password: 'Новый пароль'
           password_confirmation: "Подтверждение нового пароля"
-          # surname: "Фамилия"
-          # middlename: "Отчество"
-      event:
-        title: "Заголовок"
-        year: "Год"
-        body: "Описание"
       sell:
         title: "Заголовок"
-        body: "Основоной блок"
+        body: "Основной блок"
         count: "Количество"
         count_type: "Количественная единица измерения"
         price: "Цена за единицу"
@@ -48,7 +39,7 @@ ru:
         submit: "Создать"
       buy:
         title: "Заголовок"
-        body: "Основоной блок"
+        body: "Основной блок"
         count: "Количество"
         count_type: "Количественная единица измерения"
         price: "Цена за единицу"
@@ -68,6 +59,31 @@ ru:
         address: "Адрес"
         desc: "Описание"
         phone: "Телефон"
+      category:
+        name: "Наименование"
+        default_image: "Изображение по умолчанию"
+        sort_id: "Порядок"
+      subcategory:
+        name: "Наименование"
+        category: "Категория"
+        default_image: "Изображение по умолчанию"
+        sort_id: "Порядок"
+      region:
+        name: "Наименование"
+      city:
+        name: "Наименование"
+        region: "Район"
+      count_type:
+        name: "Наименование"
+      ga_pageviews_record:
+        model_id: "Номер в базе"
+        model_type: "Тип"
+        pageviews: "Просмотров"
+        unique_pageviews: "Уникальных просмотров"
+      post:
+        title: "Заголовок"
+        body: "Основной блок"
+
 
     hints:
       defaults:
@@ -85,50 +101,11 @@ ru:
         email: 'Электронная почта'
         password: 'Пароль'
         password_confirmation: "Подтверждение пароля"
-        # middlename: "Отчество"
-        # new:
-        #   email: 'Электронная почта'
         edit:
           password: 'Новый пароль'
           password_confirmation: "Подтверждение нового пароля"
-      grant:
-        fullname: "Иванов Иван Иванович"
-        region: "Намский улус"
-        city: "с. Намцы"
-        okved: "15.2"
-        okved_str: "Реализация продуктов питания"
-        reason: "Подключение 20 кВт электроэнергии"
-        category: "общественное питание / сельское хозяйство (расшифровать)"
-        summ: 520
-        support: 150
-        budget: 100
-        local_budget: 50
-        main_capital: 100
-        income: 20
-        tax: 6
-        workers: 2
-        workers_planned: 1
-        return_period: 3
-      grantcorp:
-        corpname: 'ООО "Пегас"'
-        fullname: "Иванов Иван Иванович, Петров Алексей Михайлович"
-        birthday: "6 июля 1973, 22 мая 1981"
-        gender: "м, м"
-        region: "Намский улус"
-        city: "с. Намцы"
-        unemployed: "да, нет"
-        okved: "15.2"
-        okved_str: "Реализация продуктов питания"
-        reason: "Подключение 20 кВт электроэнергии"
-        category: "общественное питание / сельское хозяйство (расшифровать)"
-        summ: 520
-        support: 150
-        budget: 100
-        local_budget: 50
-        main_capital: 100
-        income: 20
-        tax: 6
-        workers: 2
-        workers_planned: 1
-        return_period: 3
+      category:
+        default_image: "missing.png"
+      subcategory:
+        default_image: "missing.png"
 

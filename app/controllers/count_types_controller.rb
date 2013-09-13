@@ -1,3 +1,4 @@
+#encoding: utf-8
 class CountTypesController < ApplicationController
   load_and_authorize_resource
   # before_filter :search_sell
@@ -46,7 +47,7 @@ class CountTypesController < ApplicationController
 
     respond_to do |format|
       if @count_type.save
-        format.html { redirect_to count_types_path, notice: 'Count type was successfully created.' }
+        format.html { redirect_to count_types_path, notice: 'Еденица измерения создана.' }
         format.json { render json: @count_type, status: :created, location: @count_type }
       else
         format.html { render action: "new" }
@@ -62,7 +63,7 @@ class CountTypesController < ApplicationController
 
     respond_to do |format|
       if @count_type.update_attributes(params[:count_type])
-        format.html { redirect_to count_types_path, notice: 'Count type was successfully updated.' }
+        format.html { redirect_to count_types_path, notice: 'Еденица измерения обновлена.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

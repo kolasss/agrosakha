@@ -1,3 +1,4 @@
+#encoding: utf-8
 class RegionsController < ApplicationController
   load_and_authorize_resource
   # before_filter :search_sell
@@ -54,7 +55,7 @@ class RegionsController < ApplicationController
     #   end
     # end
     if @region.save
-      redirect_to @region, notice: 'Region was successfully created.'
+      redirect_to @region, notice: 'Район создан.'
     else
       render action: "new"
     end
@@ -75,7 +76,7 @@ class RegionsController < ApplicationController
     #   end
     # end
     if @region.update_attributes(params[:region])
-      redirect_to @region, notice: 'Region was successfully updated.'
+      redirect_to @region, notice: 'Район обновлен.'
     else
       render action: "edit"
     end

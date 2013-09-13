@@ -1,18 +1,18 @@
-%p#notice= notice
+/ %p#notice= notice
 
 %p
-  %b Model type:
+  %b Тип:
   = @ga_pageviews_record.model_type
 %p
-  %b Model:
+  %b Номер:
   = @ga_pageviews_record.model_id
 %p
-  %b Pageviews:
+  %b Просмотров:
   = @ga_pageviews_record.pageviews
 %p
-  %b Unique pageviews:
+  %b Уникальных просмотров:
   = @ga_pageviews_record.unique_pageviews
 
-= link_to 'Edit', edit_ga_pageviews_record_path(@ga_pageviews_record)
+= link_to 'Изменить', edit_ga_pageviews_record_path(@ga_pageviews_record)
 \|
-= link_to 'Back', ga_pageviews_records_path
+= link_to 'Назад', ga_pageviews_records_path

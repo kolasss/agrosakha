@@ -1,3 +1,4 @@
+#encoding: utf-8
 class ProfilesController < ApplicationController
   load_and_authorize_resource
   skip_load_resource :only => [:new, :index, :show_category, :show_subcategory, :update_city_select]
@@ -60,7 +61,7 @@ class ProfilesController < ApplicationController
 
     respond_to do |format|
       if @profile.save
-        format.html { redirect_to @profile, notice: 'Profile was successfully created.' }
+        format.html { redirect_to @profile, notice: 'Профиль создан.' }
         format.json { render json: @profile, status: :created, location: @profile }
       else
         format.html { render action: "new" }
@@ -90,7 +91,7 @@ class ProfilesController < ApplicationController
 
     respond_to do |format|
       if @profile.update_attributes(params[:profile])
-        format.html { redirect_to @profile, notice: 'Profile was successfully updated.' }
+        format.html { redirect_to @profile, notice: 'Профиль обновлен.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

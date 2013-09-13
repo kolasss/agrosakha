@@ -41,14 +41,6 @@
             = sell.count_type.name if sell.count_type
           %td.price.middle
             = link_to (number_to_currency sell.price, strip_insignificant_zeros: true), sell 
-          / - if can? :manage, sell
-          /   %td.edit_td.middle
-          /     = link_to 'Изменить', edit_sell_path(sell), class: "btn-u btn-u-blue btn-u-small"
-          /   %td.edit_td.middle
-          /     = link_to 'Удалить', sell, :method => :delete, :data => { :confirm => 'Вы уверены?' }, class: "btn-u btn-u-red btn-u-small"
-          / - else
-          /   %td.empty
-          /   %td.empty
 
       - if @ad.empty?
         %tr

@@ -239,6 +239,8 @@ input, button, select, textarea {
 }
 .advbtn {
   margin-top: 38px;
+  font-family: 'corporate_e_w10_boldregular', Helvetica, Arial, sans-serif;
+  padding: 17px 13px !important;
 }
 .addtxt {
   padding: 10px 0 5px;
@@ -440,4 +442,9 @@ footer {
   .headbtn {
     margin-left: 10px;
   }
+}
+
+/* alert */
+.alert {
+  text-align: center;
 }

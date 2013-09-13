@@ -1,3 +1,4 @@
+#encoding: utf-8
 class GaPageviewsRecordsController < ApplicationController
   load_and_authorize_resource
   skip_load_resource :only => [:index]
@@ -48,7 +49,7 @@ class GaPageviewsRecordsController < ApplicationController
 
     respond_to do |format|
       if @ga_pageviews_record.save
-        format.html { redirect_to @ga_pageviews_record, notice: 'Ga pageviews record was successfully created.' }
+        format.html { redirect_to @ga_pageviews_record, notice: 'Запись статистики создана.' }
         format.json { render json: @ga_pageviews_record, status: :created, location: @ga_pageviews_record }
       else
         format.html { render action: "new" }
@@ -64,7 +65,7 @@ class GaPageviewsRecordsController < ApplicationController
 
     respond_to do |format|
       if @ga_pageviews_record.update_attributes(params[:ga_pageviews_record])
-        format.html { redirect_to @ga_pageviews_record, notice: 'Ga pageviews record was successfully updated.' }
+        format.html { redirect_to @ga_pageviews_record, notice: 'Запись статистики обновлена.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
