@@ -16,7 +16,7 @@
     %td
       Цена
     %td
-      = number_to_currency @buy.price
+      = number_to_currency @buy.price, strip_insignificant_zeros: true
       = ' за ' + @buy.count_type.name if @buy.count_type
   %tr
     %td 

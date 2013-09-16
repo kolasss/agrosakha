@@ -87,6 +87,8 @@ class SellsController < ApplicationController
   # PUT /sells/1.json
   def update
     # @sell = Sell.find(params[:id])
+    params[:sell][:price].sub!(",", ".")
+    params[:sell][:count].sub!(",", ".")
 
     respond_to do |format|
       if @sell.update_attributes(params[:sell])

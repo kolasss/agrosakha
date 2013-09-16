@@ -6,5 +6,5 @@
 %p
   = raw @post.body
 
-/ = link_to 'Edit', edit_post_path(@post), class: "btn"
-/ = link_to 'Back', :back, class: "btn"
+- if can? :update, @post
+  = link_to 'Назад', :back, class: "btn"

@@ -53,6 +53,8 @@ class BuysController < ApplicationController
   # POST /buys.json
   def create
     # @buy = Buy.new(params[:buy])
+    @buy.price.sub!(",", ".")
+    @buy.count.sub!(",", ".")
     @buy.user = current_user
 
     respond_to do |format|
@@ -71,6 +73,8 @@ class BuysController < ApplicationController
   def update
     # authorize! :update, @buy
     # @buy = Buy.find(params[:id])
+    params[:buy][:price].sub!(",", ".")
+    params[:buy][:count].sub!(",", ".")
 
     respond_to do |format|
       if @buy.update_attributes(params[:buy])
