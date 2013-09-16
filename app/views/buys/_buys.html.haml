@@ -10,25 +10,27 @@
         %th Цена
     %tbody
       - @buys.each do |buy|
-        %tr
-          %td.middle
+        %tr{itemscope: true, itemtype: "http://schema.org/Offer"}
+          %td.middle{itemprop: "availabilityStarts", datetime: buy.updated_at.iso8601 }
             = custom_format(buy.updated_at)
             %br
             = buy.updated_at.to_s :time
           %td.thumb_img
-            = link_to image_tag(buy.image.url(:thumb), alt: ""), buy
+            = link_to image_tag(buy.image.url(:thumb), alt: "", itemprop: "image"), buy
           %td
-            %p.category
+            %p.category{itemprop: "category"}
               = buy.category.name if buy.category
               = "/ " + buy.subcategory.name if buy.subcategory
-            %h5
-              = link_to buy.title, buy
-            %p.profile
-              = link_to buy.user.profile.name, buy.user.profile if buy.user.profile
+            %h5{itemprop: "name"}
+              = link_to buy.title, buy, {itemprop: "url"}
+            %p.profile{itemprop: "seller", itemscope: true, itemtype: "http://schema.org/Organization"}
+              - if buy.user.profile
+                %span{itemprop: "name"}
+                  = link_to buy.user.profile.name, buy.user.profile, {itemprop: "url"}
             - if can? :manage, buy
               = link_to 'Изменить', edit_buy_path(buy), class: "btn-u btn-u-blue btn-u-small"
               = link_to 'Удалить', buy, :method => :delete, :data => { :confirm => 'Вы уверены?' }, class: "btn-u btn-u-red btn-u-small"
-          %td.middle.hidden-phone.hidden-tablet
+          %td.middle.hidden-phone.hidden-tablet{itemprop: "eligibleRegion"}
             - if buy.city
               = buy.city.region.name
               = ", " + buy.city.name
@@ -36,8 +38,8 @@
               Нет данных
           %td.count.middle.hidden-phone.hidden-tablet
             = buy.count_type.name if buy.count_type
-          %td.price.middle
-            = link_to (number_to_currency buy.price, strip_insignificant_zeros: true), buy 
+          %td.price.middle{itemprop: "price", content: buy.price}
+            = link_to (number_to_currency buy.price, strip_insignificant_zeros: true), buy, {:itemprop => "priceCurrency", :content => "RUB"}
 
       - if @buys.empty?
         %tr

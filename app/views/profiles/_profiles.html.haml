@@ -3,18 +3,19 @@
 .indextable
   %table.table.table-hover.table-condensed
     - @profiles.each do |profile|
-      %tr
+      %tr{itemscope: true, itemtype: "http://schema.org/Organization"}
         %td
           - if profile.city
             %p.city
               = profile.city.region.name
               = " - " + profile.city.name
-          %h5
-            = link_to profile.name, profile
+          %h5{itemprop: "name"}
+            = link_to profile.name, profile, {itemprop: "url"}
           %p
             Телефон: 
             -if profile.phone && !profile.phone.empty?
-              = profile.phone
+              %span{itemprop: "telephone"}
+                = profile.phone
             -else
               Нет данных
           %p.profile
