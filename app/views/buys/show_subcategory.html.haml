@@ -1,15 +1,6 @@
-/ %h4 Покупка
-
-/ = search_form_for @q, :url => buys_subcategory_path(params[:id].to_i), :class => "well well-small searchform" do |f|
-/ 	.searchblock
-/ 		= f.label :title_cont, 'Поиск по заголовку'
-/ 		= f.text_field :title_cont
-/ 	/ = f.label :city_id_eq, "Фильтр по населенному пункту"
-/ 	/ = f.collection_select :city_id_eq, @cities, :id, :name, {:include_blank => "Все"}
-/ 	.searchblock
-/ 		= f.label :region_id_eq, "Фильтр по региону"
-/ 		= f.collection_select :region_id_eq, @regions, :id, :name, {:include_blank => "Все"}
-/ 	.clearfix
-/ 	= f.submit "Применить", class: "btn btn-small"
+- content_for :title do
+  = "Спрос: " + @category.name
+- content_for :description do
+  = "Спрос: " + @category.name
 
 = render 'buys'

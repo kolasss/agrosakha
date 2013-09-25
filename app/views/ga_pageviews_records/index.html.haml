@@ -9,14 +9,18 @@
       %th Обновленно
       %th
       %th
+      %th
   %tbody
     - @ga_pageviews_records.each do |ga_pageviews_record|
       %tr
-        %td= link_to (ga_pageviews_record.model_type+"/"+ga_pageviews_record.model_id.to_s), ga_pageviews_record
+        %td
+          = link_to (ga_pageviews_record.model_type+"/"+ga_pageviews_record.model_id.to_s), ga_pageviews_record
+          
         %td.middle= ga_pageviews_record.pageviews
         %td.middle= ga_pageviews_record.unique_pageviews
         %td= l(ga_pageviews_record.updated_at, :format => :long)
-        %td= link_to 'Изменить', edit_ga_pageviews_record_path(ga_pageviews_record), :class => 'btn btn-mini'
+        %td= link_to 'Просмотр', root_path + (ga_pageviews_record.model_type+"/"+ga_pageviews_record.model_id.to_s), :class => 'btn btn-mini btn-info'
+        %td= link_to 'Изменить', edit_ga_pageviews_record_path(ga_pageviews_record), {class: 'btn btn-mini'}
         %td= link_to 'Удалить', ga_pageviews_record, :method => :delete, :data => { :confirm => 'Вы уверены?' }, :class => 'btn btn-mini btn-danger'
 
 .well.well-small

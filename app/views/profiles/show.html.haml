@@ -1,16 +1,9 @@
-/ %p#notice= notice
-
-/ - unless @profile.categories.empty?
-/   %p
-/     %b Категории:
-/     %ul
-/       - @profile.categories.each do |cat|
-/         %li= cat.name
-/         - unless @profile.subcategories.empty? && cat.subcategories.empty?
-/           %ul
-/             - @profile.subcategories.each do |subcat|
-/               - if subcat.category == cat
-/                 %li= subcat.name
+- content_for :title do
+  = @profile.name
+- content_for :description do
+  = "Профиль организации "+ @profile.name
+- content_for :keywords do
+  = @profile.city.nil? ? "" : @profile.city.region.name+", "+@profile.city.name
 
 - if can? :update, @profile
   = link_to 'Изменить', edit_profile_path(@profile), class: "btn-u btn-u-blue btn-u-small headbtn"

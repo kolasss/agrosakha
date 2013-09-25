@@ -13,6 +13,6 @@
   %b Уникальных просмотров:
   = @ga_pageviews_record.unique_pageviews
 
-= link_to 'Изменить', edit_ga_pageviews_record_path(@ga_pageviews_record)
-\|
-= link_to 'Назад', ga_pageviews_records_path
+= link_to 'Просмотр', root_path + (@ga_pageviews_record.model_type+"/"+@ga_pageviews_record.model_id.to_s), :class => 'btn btn-info'
+= link_to 'Изменить', edit_ga_pageviews_record_path(@ga_pageviews_record), class: "btn"
+= link_to 'Назад', ga_pageviews_records_path, class: "btn"

@@ -1,3 +1,8 @@
+- content_for :title do
+  = @post.title
+- content_for :description do
+  = "Информация о "+ @post.title
+
 / %p#notice= notice
 - if can? :update, @post
   = link_to 'Изменить', edit_post_path(@post), class: "btn-u btn-u-blue btn-u-small headbtn"

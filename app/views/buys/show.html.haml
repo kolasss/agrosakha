@@ -1,5 +1,9 @@
-- content_for :head do
-  %meta{:content => @buy.subcategory.nil? ? @buy.category.name : @buy.category.name+", "+@buy.subcategory.name, :name => "keywords"}
+- content_for :title do
+  = @buy.title
+- content_for :description do
+  = "Продажа "+ (@buy.subcategory.nil? ? @buy.category.name : @buy.subcategory.name) + (@buy.city.nil? ? "" : " в " + @buy.city.region.name + ' район, ' + @buy.city.name) + (" от " + @buy.user.profile.name)
+- content_for :keywords do
+  = @buy.subcategory.nil? ? @buy.category.name : @buy.category.name+", "+@buy.subcategory.name
   
 / %p#notice= notice
 - if can? :update, @buy

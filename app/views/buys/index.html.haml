@@ -1,18 +1,6 @@
-/ %h4 Покупка
-
-/ = search_form_for @q, :class => "well well-small searchform" do |f|
-/ 	.searchblock
-/ 		= f.label :title_cont, 'Поиск по заголовку'
-/ 		= f.text_field :title_cont
-/ 	/ = f.label :city_id_eq, "Фильтр по населенному пункту"
-/ 	/ = f.collection_select :city_id_eq, @cities, :id, :name, {:include_blank => "Все"}
-/ 	.searchblock
-/ 		= f.label :region_id_eq, "Фильтр по району"
-/ 		= f.collection_select :region_id_eq, @regions, :id, :name, {:include_blank => "Все"}
-/ 	.clearfix
-/ 	= f.submit "Применить", class: "btn btn-small"
-
-/ - if params[:controller] == "sells" || params[:controller] == "buys" || params[:controller] == "home"
-/ 	= render 'layouts/advs'
+- content_for :title do
+  Спрос
+- content_for :description do
+  Спрос: Все объявления
 
 = render 'buys'

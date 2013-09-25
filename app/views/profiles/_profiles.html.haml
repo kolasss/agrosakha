@@ -29,8 +29,8 @@
             = link_to 'Изменить', edit_profile_path(profile), class: "btn-u btn-u-blue btn-u-small"
     - if @profiles.empty?
       Записей нет
-.apple_pagination
-  = will_paginate @profiles
+.well.well-small
+  = will_paginate @profiles, renderer: BootstrapPagination::Rails
 
 %br
 - if current_user && current_user.profile
