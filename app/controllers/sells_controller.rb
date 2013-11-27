@@ -50,8 +50,8 @@ class SellsController < ApplicationController
   def create
     if params[:sell][:type] == 'false'
       params[:sell].delete :type
-      params[:sell][:price].sub!(",", ".")
-      params[:sell][:count].sub!(",", ".")
+      # params[:sell][:price].sub!(",", ".")
+      # params[:sell][:count].sub!(",", ".")
       @buy = Buy.new(params[:sell])
       @buy.user = current_user
 
@@ -66,8 +66,8 @@ class SellsController < ApplicationController
       end
     else
       params[:sell].delete :type
-      params[:sell][:price].sub!(",", ".")
-      params[:sell][:count].sub!(",", ".")
+      # params[:sell][:price].sub!(",", ".")
+      # params[:sell][:count].sub!(",", ".")
       @sell = Sell.new(params[:sell])
       @sell.user = current_user
 
@@ -87,8 +87,8 @@ class SellsController < ApplicationController
   # PUT /sells/1.json
   def update
     # @sell = Sell.find(params[:id])
-    params[:sell][:price].sub!(",", ".")
-    params[:sell][:count].sub!(",", ".")
+    # params[:sell][:price].sub!(",", ".")
+    # params[:sell][:count].sub!(",", ".")
 
     respond_to do |format|
       if @sell.update_attributes(params[:sell])
