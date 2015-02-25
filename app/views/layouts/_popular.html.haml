@@ -1,10 +1,11 @@
-%h5 Популярное
+- if @popular.present?
+	%h5 Популярное
 
-#popular
-	= link_to image_tag(@popular.image.url(:thumb), alt: ""), @popular if @popular.image.present?
-	%h5
-		= link_to @popular.title, @popular
-	%p.profile
-		= link_to @popular.user.profile.name, @popular.user.profile if @popular.user.profile
-	%p.price
-		= link_to (number_to_currency @popular.price, strip_insignificant_zeros: true), @popular 
+	#popular
+		= link_to image_tag(@popular.image.url(:thumb), alt: ""), @popular
+		%h5
+			= link_to @popular.title, @popular
+		%p.profile
+			= link_to @popular.user.profile.name, @popular.user.profile if @popular.user.profile
+		%p.price
+			= link_to (number_to_currency @popular.price, strip_insignificant_zeros: true), @popular 
