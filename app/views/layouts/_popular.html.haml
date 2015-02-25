@@ -1,7 +1,7 @@
 %h5 Популярное
 
 #popular
-	= link_to image_tag(@popular.image.url(:thumb), alt: ""), @popular
+	= link_to image_tag(@popular.image.url(:thumb), alt: ""), @popular if @popular.image.present?
 	%h5
 		= link_to @popular.title, @popular
 	%p.profile
