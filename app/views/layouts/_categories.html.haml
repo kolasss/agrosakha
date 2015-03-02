@@ -30,7 +30,6 @@
 	- else
 		%ul.nav.nav-list
 			- Category.all.each do |category|
-				- p category
 				%li{:class => ("active" if params[:action] == "show_category" && params[:id].to_i == category.id)}
 					- name = category.name
 					- name += " (#{category.sells.length})" if category.sells.length > 0

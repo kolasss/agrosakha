@@ -34,7 +34,6 @@ end
 
 gem 'jquery-rails'
 gem "haml-rails", ">= 0.4"
-# gem "bootstrap-sass", ">= 2.3.0.0"
 gem 'bootstrap-sass', '2.3.2.2'
 gem "devise", ">= 2.2.3"
 gem "cancan", ">= 1.6.9"
