@@ -1,11 +1,12 @@
 source 'https://rubygems.org'
 
-ruby '1.9.3'
-gem 'rails', '3.2.13'
+# ruby '1.9.3'
+ruby '2.2.0'
+gem 'rails', '~> 3.2.21'
 
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
+  gem 'sass-rails'
+  gem 'coffee-rails'
   gem 'uglifier', '>= 1.0.3'
 end
 
@@ -28,12 +29,13 @@ end
 group :development, :test do
 	gem "rspec-rails", ">= 2.12.2"
 	gem "factory_girl_rails", ">= 4.2.0"
-	gem 'sqlite3'
+	gem 'sqlite3', '~> 1.3.10'
 end
 
 gem 'jquery-rails'
 gem "haml-rails", ">= 0.4"
-gem "bootstrap-sass", ">= 2.3.0.0"
+# gem "bootstrap-sass", ">= 2.3.0.0"
+gem 'bootstrap-sass', '2.3.2.2'
 gem "devise", ">= 2.2.3"
 gem "cancan", ">= 1.6.9"
 gem "rolify", ">= 3.2.0"
@@ -46,8 +48,9 @@ gem 'will_paginate-bootstrap'
 gem 'bootstrap-wysihtml5-rails'
 gem 'html_slicer'
 
-gem "paperclip", "~> 3.0"
+gem "paperclip"
 gem 'aws-sdk'
-gem 'garb', :git => 'git://github.com/Sija/garb.git'
+# gem 'garb', :git => 'git://github.com/Sija/garb.git'
+gem 'garb'
 
-gem 'newrelic_rpm'
+# gem 'newrelic_rpm'
