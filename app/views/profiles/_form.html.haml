@@ -24,7 +24,7 @@
             %label.checkbox
               = check_box_tag 'profile[category_ids][]', category.id, @profile.category_ids.include?(category.id), :class => "check_boxes optional category_checkbox", :id => "profile_category_ids_#{category.id}"
               = category.name
-            - unless category.subcategories.empty?
+            - unless category.subcategories.blank?
               %ul.control-group.check_boxes.optional.subcat
                 / %label.check_boxes.optional.control-label Категории
                 .controls

@@ -12,7 +12,7 @@
 %p
   = image_tag("/images/missing/thumb/#{@category.default_image}", class: "img-polaroid")
 
-- unless @category.subcategories.empty?
+- unless @category.subcategories.blank?
   %h4 Подкатегории
 
   %table.table.table-hover

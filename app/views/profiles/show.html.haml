@@ -30,30 +30,30 @@
     %td 
       Категории
     %td
-      - if @profile.categories.empty?
+      - if @profile.categories.blank?
         Нет данных
       - else
         %ul
           - @profile.categories.each do |cat|
             %li= cat.name
-            - unless @profile.subcategories.empty? && cat.subcategories.empty?
+            - unless @profile.subcategories.blank? && cat.subcategories.blank?
               %ul
                 - @profile.subcategories.each do |subcat|
                   - if subcat.category == cat
                     %li= subcat.name
-  - if @profile.phone && !@profile.phone.empty?
+  - if @profile.phone && !@profile.phone.blank?
     %tr
       %td 
         Телефон
       %td
         = @profile.phone
-  - if @profile.address && !@profile.address.empty?
+  - if @profile.address && !@profile.address.blank?
     %tr
       %td 
         Адрес
       %td
         = @profile.address
-  - if @profile.desc && !@profile.desc.empty?
+  - if @profile.desc && !@profile.desc.blank?
     %tr
       %td 
         Описание

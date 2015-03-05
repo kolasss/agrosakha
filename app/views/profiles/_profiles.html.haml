@@ -13,21 +13,21 @@
             = link_to profile.name, profile, {itemprop: "url"}
           %p
             Телефон: 
-            -if profile.phone && !profile.phone.empty?
+            -if profile.phone && !profile.phone.blank?
               %span{itemprop: "telephone"}
                 = profile.phone
             -else
               Нет данных
           %p.profile
             Адрес: 
-            -if profile.address && !profile.address.empty?
+            -if profile.address && !profile.address.blank?
               = profile.address
             -else
               Нет данных
         %td
           - if can? :update, profile
             = link_to 'Изменить', edit_profile_path(profile), class: "btn-u btn-u-blue btn-u-small"
-    - if @profiles.empty?
+    - if @profiles.blank?
       Записей нет
 .well.well-small
   = will_paginate @profiles, renderer: BootstrapPagination::Rails

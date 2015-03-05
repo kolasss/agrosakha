@@ -48,7 +48,8 @@ gem 'bootstrap-wysihtml5-rails'
 gem 'html_slicer'
 
 gem "paperclip"
-gem 'aws-sdk'
+# gem 'aws-sdk'
+gem 'aws-sdk', '< 2.0'
 # gem 'garb', :git => 'git://github.com/Sija/garb.git'
 gem 'garb'
 

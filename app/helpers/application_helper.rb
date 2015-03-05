@@ -2,7 +2,7 @@
 module ApplicationHelper
 
   def display_base_errors resource
-    return '' if (resource.errors.empty?) or (resource.errors[:base].empty?)
+    return '' if (resource.errors.blank?) or (resource.errors[:base].blank?)
     messages = resource.errors[:base].map { |msg| content_tag(:p, msg) }.join
     html = <<-HTML
     <div class="alert alert-error alert-block">

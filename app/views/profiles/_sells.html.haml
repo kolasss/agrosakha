@@ -40,7 +40,7 @@
           %td.price.middle
             = link_to (number_to_currency sell.price, strip_insignificant_zeros: true), sell 
 
-      - if @ad.empty?
+      - if @ad.blank?
         %tr
           %td
           %td

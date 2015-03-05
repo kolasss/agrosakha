@@ -41,7 +41,7 @@
           %td.price.middle{itemprop: "price", content: buy.price}
             = link_to (number_to_currency buy.price, strip_insignificant_zeros: true), buy, {:itemprop => "priceCurrency", :content => "RUB"}
 
-      - if @buys.empty?
+      - if @buys.blank?
         %tr
           %td
           %td

@@ -7,7 +7,7 @@
   - if can? :destroy, @region
     %td= link_to 'Удалить', @region, :method => :delete, :data => { :confirm => 'Вы уверены?' }, :class => 'btn btn-mini btn-danger'
 
-- unless @region.cities.empty?
+- unless @region.cities.blank?
   %h4 Населенные пункты
 
   %table.table.table-hover

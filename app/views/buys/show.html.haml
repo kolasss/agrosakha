@@ -46,13 +46,13 @@
       Организация
     %td
       = link_to @buy.user.profile.name, @buy.user.profile if @buy.user.profile
-  - if @buy.user.profile.phone && !@buy.user.profile.phone.empty?
+  - if @buy.user.profile.phone && !@buy.user.profile.phone.blank?
     %tr
       %td 
         Телефон
       %td
         = @buy.user.profile.phone
-  - if @buy.user.profile.address && !@buy.user.profile.address.empty?
+  - if @buy.user.profile.address && !@buy.user.profile.address.blank?
     %tr
       %td 
         Адрес
