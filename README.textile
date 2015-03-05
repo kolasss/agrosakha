@@ -9,3 +9,32 @@ This application requires:
 * Ruby version 2.2.0
 * Rails version 3.2.21
 
+- установил rbenv, ruby
+
+- Для загрузки и обработки изображений нужен imagemagick:
+	sudo apt-get install imagemagick libmagickcore-dev
+
+- install postgresql 9.3
+
+	http://wiki.postgresql.org/wiki/Apt
+
+- create user for postgresql
+
+- echo "gem: --no-document" > ~/.gemrc
+
+- export RAILS_ENV=production >> ~/.bashrc 
+
+- для истории команд в irb
+
+~/.irbrc
+```
+require 'irb/ext/save-history'
+IRB.conf[:SAVE_HISTORY] = 200
+IRB.conf[:HISTORY_FILE] = "#{ENV['HOME']}/.irb-history"
+```
+
+	bundle install --deployment --binstubs
+	rake db:setup
+
+- настроить thin service
+- настроить nginx

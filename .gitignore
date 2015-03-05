@@ -74,3 +74,4 @@ pickle-email-*.html
 **.swp
 
 /config/s3.yml
+/bin/*

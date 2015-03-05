@@ -15,11 +15,11 @@ group :production do
   gem 'pg'
 end
 
-group :test do
-	gem "capybara", ">= 2.0.3"
-	gem "database_cleaner", ">= 1.0.0.RC1"
-	gem "email_spec", ">= 1.4.0"
-end
+# group :test do
+# 	gem "capybara", ">= 2.0.3"
+# 	gem "database_cleaner", ">= 1.0.0.RC1"
+# 	gem "email_spec", ">= 1.4.0"
+# end
 
 group :development do
 	gem "html2haml", ">= 1.0.1"
@@ -27,8 +27,8 @@ group :development do
 end
 
 group :development, :test do
-	gem "rspec-rails", ">= 2.12.2"
-	gem "factory_girl_rails", ">= 4.2.0"
+	# gem "rspec-rails", ">= 2.12.2"
+	# gem "factory_girl_rails", ">= 4.2.0"
 	gem 'sqlite3', '~> 1.3.10'
 end
 
