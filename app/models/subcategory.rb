@@ -3,6 +3,8 @@ class Subcategory < ActiveRecord::Base
   has_many :sells, :dependent => :destroy
   has_many :buys, :dependent => :destroy
   has_and_belongs_to_many :profiles
+
+  before_validation :set_image
   
   attr_accessible :name, :category_id, :default_image, :sort_id
 
@@ -12,4 +14,9 @@ class Subcategory < ActiveRecord::Base
   validates :sort_id, :presence => true, :numericality => { :greater_than_or_equal_to => 0 }
 
   default_scope order('category_id ASC, sort_id ASC')
+
+  private
+    def set_image
+      self.default_image = 'missing.png' if self.default_image.empty?
+    end
 end

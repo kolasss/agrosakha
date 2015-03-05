@@ -75,3 +75,4 @@ pickle-email-*.html
 
 /config/s3.yml
 /bin/*
+/public/assets/*
