@@ -17,6 +17,6 @@ class Subcategory < ActiveRecord::Base
 
   private
     def set_image
-      self.default_image = 'missing.png' if self.default_image.empty?
+      self.default_image = 'missing.png' if self.default_image.blank?
     end
 end
