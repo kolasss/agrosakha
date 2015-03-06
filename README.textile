@@ -9,6 +9,8 @@ This application requires:
 * Ruby version 2.2.0
 * Rails version 3.2.21
 
+h2. Деплой
+
 - установил rbenv, ruby
 
 - Для загрузки и обработки изображений нужен imagemagick:
