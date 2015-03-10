@@ -45,6 +45,9 @@ GEM
     cancan (1.6.10)
     climate_control (0.0.3)
       activesupport (>= 3.0)
+    clockwork (1.1.0)
+      activesupport
+      tzinfo
     cocaine (0.5.5)
       climate_control (>= 0.0.3, < 1.0)
     coffee-rails (3.2.2)
@@ -192,6 +195,7 @@ DEPENDENCIES
   bootstrap-sass (= 2.3.2.2)
   bootstrap-wysihtml5-rails
   cancan (>= 1.6.9)
+  clockwork
   coffee-rails
   devise (>= 2.2.3)
   garb

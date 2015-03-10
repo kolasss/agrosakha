@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   # attr_accessible :role_ids, :as => :admin
   attr_accessible :name, :email, :password, :password_confirmation, :role_ids, :as => :admin
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me
-  
+
   has_many :sells, :dependent => :destroy
   has_many :buys, :dependent => :destroy
   has_one :profile, :dependent => :destroy
@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
 
   private
     def default_role
-      self.roles << Role.where(:name => 'guest').first
+      self.roles << Role.where(:name => 'user').first
       @profile = self.create_profile(name: self.name)
     end
 end

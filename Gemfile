@@ -32,6 +32,7 @@ group :development, :test do
 	gem 'sqlite3', '~> 1.3.10'
 end
 
+gem 'clockwork'
 gem 'jquery-rails'
 gem "haml-rails", ">= 0.4"
 gem 'bootstrap-sass', '2.3.2.2'

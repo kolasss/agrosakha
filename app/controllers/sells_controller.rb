@@ -52,6 +52,7 @@ class SellsController < ApplicationController
       params[:sell].delete :type
       # params[:sell][:price].sub!(",", ".")
       # params[:sell][:count].sub!(",", ".")
+      @sell = Sell.new()
       @buy = Buy.new(params[:sell])
       @buy.user = current_user
 
@@ -60,7 +61,7 @@ class SellsController < ApplicationController
           format.html { redirect_to @buy, notice: 'Объявление создано.' }
           format.json { render json: @buy, status: :created, location: @buy }
         else
-          format.html { render action: "new" }
+          format.html { redirect_to action: "new", controller: "buys" }
           format.json { render json: @buy.errors, status: :unprocessable_entity }
         end
       end

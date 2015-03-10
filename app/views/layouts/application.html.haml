@@ -3,7 +3,7 @@
   %head
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
       %title= content_for?(:title) ? "Agrosakha.ru - "+yield(:title) : "Agrosakha.ru"
-     
+
       %meta{:content => content_for?(:description) ? yield(:description) : "Единая площадка сбыта сельскохозяйственной продукции Республики Саха (Якутия)", :name => "description"}
       %meta{:content => content_for?(:keywords) ? "объявления, Якутск, республика Саха, Якутия, сельское хозяйство, agrosakha, агросаха, доска объявлений, "+yield(:keywords) : "объявления, Якутск, республика Саха, Якутия, сельское хозяйство, agrosakha, агросаха, доска объявлений", :name => "keywords"}
 
@@ -54,28 +54,4 @@
       .container
         Единая площадка сбыта сельскохозяйственной продукции Республики Саха (Якутия)
     = google_analytics_js
-    <!-- Yandex.Metrika counter -->
-    <script type="text/javascript">
-    (function (d, w, c) {
-        (w[c] = w[c] || []).push(function() {
-            try {
-                w.yaCounter28869170 = new Ya.Metrika({id:28869170,
-                        clickmap:true,
-                        accurateTrackBounce:true});
-            } catch(e) { }
-        });
-
-        var n = d.getElementsByTagName("script")[0],
-            s = d.createElement("script"),
-            f = function () { n.parentNode.insertBefore(s, n); };
-        s.type = "text/javascript";
-        s.async = true;
-        s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
-
-        if (w.opera == "[object Opera]") {
-            d.addEventListener("DOMContentLoaded", f, false);
-        } else { f(); }
-    })(document, window, "yandex_metrika_callbacks");
-    </script>
-    <noscript><div><img src="//mc.yandex.ru/watch/28869170" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-    <!-- /Yandex.Metrika counter -->
+    = render 'layouts/metrika'

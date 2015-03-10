@@ -23,8 +23,28 @@ $(document).ready(function() {
 			locale: "ru-RU",
 			"image": false
 		});
+		$('.glyphicon-list').addClass('icon-list');                //govnocooooooode
+		$('.glyphicon-th-list').addClass('icon-th-list');
+		$('.glyphicon-indent-right').addClass('icon-indent-right');
+		$('.glyphicon-indent-left').addClass('icon-indent-left');
+		$('.glyphicon-share').addClass('icon-share');
+		$('.glyphicon-picture').addClass('icon-picture');
+		$('.glyphicon-quote').addClass('icon-quote');
+
+		$('.icon-list').removeClass('glyphicon-list');
+		$('.icon-th-list').removeClass('glyphicon-th-list');
+		$('.icon-indent-right').removeClass('glyphicon-indent-right');
+		$('.icon-indent-left').removeClass('glyphicon-indent-left');
+		$('.icon-share').removeClass('glyphicon-share');
+		$('.icon-picture').removeClass('glyphicon-picture');
+		$('.icon-quote').removeClass('glyphicon-quote');
+
+		$('.glyphicon').each(function(i, elem) {
+			$(elem).removeClass('glyphicon');
+			});
+		$('.icon-quote').text('" "');
 	});
-	
+
 	//change select cities collection in profile edit
 	$("#profile_region_id").change(function(){
   	// e.preventDefault();

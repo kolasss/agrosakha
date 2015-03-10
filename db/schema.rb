@@ -14,18 +14,18 @@
 ActiveRecord::Schema.define(:version => 20130910022439) do
 
   create_table "buys", :force => true do |t|
-    t.string   "title"
+    t.string   "title",                               :null => false
     t.string   "body"
-    t.float    "count"
-    t.integer  "count_type_id"
-    t.float    "price"
-    t.integer  "price_type"
+    t.float    "count",              :default => 0.0, :null => false
+    t.integer  "count_type_id",                       :null => false
+    t.float    "price",              :default => 0.0, :null => false
+    t.integer  "price_type",         :default => 1,   :null => false
     t.integer  "city_id"
-    t.integer  "category_id"
+    t.integer  "category_id",                         :null => false
     t.integer  "subcategory_id"
-    t.integer  "user_id"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.integer  "user_id",                             :null => false
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
     t.integer  "region_id"
     t.string   "image_file_name"
     t.string   "image_content_type"
@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(:version => 20130910022439) do
   add_index "buys", ["user_id"], :name => "index_buys_on_user_id"
 
   create_table "categories", :force => true do |t|
-    t.string   "name"
+    t.string   "name",                         :null => false
     t.datetime "created_at",                   :null => false
     t.datetime "updated_at",                   :null => false
     t.string   "default_image"
@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(:version => 20130910022439) do
   add_index "categories_profiles", ["category_id", "profile_id"], :name => "index_categories_profiles_on_category_id_and_profile_id"
 
   create_table "cities", :force => true do |t|
-    t.string   "name"
+    t.string   "name",       :null => false
     t.integer  "region_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(:version => 20130910022439) do
   add_index "cities", ["region_id"], :name => "index_cities_on_region_id"
 
   create_table "count_types", :force => true do |t|
-    t.string   "name"
+    t.string   "name",       :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -90,7 +90,7 @@ ActiveRecord::Schema.define(:version => 20130910022439) do
 
   create_table "profiles", :force => true do |t|
     t.integer  "user_id",    :null => false
-    t.string   "name"
+    t.string   "name",       :null => false
     t.integer  "inn"
     t.integer  "city_id"
     t.integer  "region_id"
@@ -113,7 +113,7 @@ ActiveRecord::Schema.define(:version => 20130910022439) do
   add_index "profiles_subcategories", ["subcategory_id", "profile_id"], :name => "index_profiles_subcategories_on_subcategory_id_and_profile_id"
 
   create_table "regions", :force => true do |t|
-    t.string   "name"
+    t.string   "name",       :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -130,18 +130,18 @@ ActiveRecord::Schema.define(:version => 20130910022439) do
   add_index "roles", ["name"], :name => "index_roles_on_name"
 
   create_table "sells", :force => true do |t|
-    t.string   "title"
+    t.string   "title",                               :null => false
     t.string   "body"
-    t.float    "count"
-    t.integer  "count_type_id"
-    t.float    "price"
-    t.integer  "price_type"
+    t.float    "count",              :default => 0.0, :null => false
+    t.integer  "count_type_id",                       :null => false
+    t.float    "price",              :default => 0.0, :null => false
+    t.integer  "price_type",         :default => 1,   :null => false
     t.integer  "city_id"
-    t.integer  "category_id"
+    t.integer  "category_id",                         :null => false
     t.integer  "subcategory_id"
-    t.integer  "user_id"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.integer  "user_id",                             :null => false
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
     t.integer  "region_id"
     t.string   "image_file_name"
     t.string   "image_content_type"
@@ -156,7 +156,7 @@ ActiveRecord::Schema.define(:version => 20130910022439) do
   add_index "sells", ["user_id"], :name => "index_sells_on_user_id"
 
   create_table "subcategories", :force => true do |t|
-    t.string   "name"
+    t.string   "name",                         :null => false
     t.integer  "category_id"
     t.datetime "created_at",                   :null => false
     t.datetime "updated_at",                   :null => false
