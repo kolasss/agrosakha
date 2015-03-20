@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # ruby '1.9.3'
-ruby '2.2.0'
+ruby '2.1.5'
 gem 'rails', '~> 3.2.21'
 
 group :assets do
@@ -44,7 +44,7 @@ gem "simple_form", ">= 2.1.0"
 gem 'russian', '~> 0.6.0'
 gem "ransack"
 gem 'will_paginate', '~> 3.0'
-gem 'will_paginate-bootstrap'
+gem 'will_paginate-bootstrap', '0.2.5'
 gem 'bootstrap-wysihtml5-rails'
 gem 'html_slicer'
 

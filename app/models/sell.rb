@@ -20,7 +20,7 @@ class Sell < ActiveRecord::Base
 
   default_scope order('updated_at DESC')
 
-  has_attached_file :image, 
+  has_attached_file :image,
     :styles => {
       :thumb => {:geometry => "100x100>"},
       :large => {:geometry => "500x500>"}
@@ -40,9 +40,9 @@ class Sell < ActiveRecord::Base
     raise "missing profile #{config[:ua]} in #{Garb::Management::Profile.all.map(&:web_property_id)}" unless profile
 
     report = GoogleAnalyticsPageviews.results(profile, {
-      :start_date => 1.month.ago, 
-      :end_date => Date.today, 
-      :filters => {:page_path.contains => '\/(sells|buys)\/'}, 
+      :start_date => 1.month.ago,
+      :end_date => Date.today,
+      :filters => {:page_path.contains => '\/(sells|buys)\/'},
       :sort => [:pageviews, :uniquePageviews]
     })
 
