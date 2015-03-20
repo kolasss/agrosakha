@@ -1,15 +1,15 @@
-h1. Agro14
+# Agro14
 
 This application was generated with the "rails_apps_composer":https://github.com/RailsApps/rails_apps_composer gem provided by the "RailsApps Project":http://railsapps.github.com/.
 
-h2. Ruby on Rails
+## Ruby on Rails
 
 This application requires:
 
 * Ruby version 2.2.0
 * Rails version 3.2.21
 
-h2. Деплой
+## Деплой
 
 - установил rbenv, ruby
 
@@ -42,3 +42,6 @@ IRB.conf[:HISTORY_FILE] = "#{ENV['HOME']}/.irb-history"
 - настроить nginx
 
 - насторить logrotate
+
+
+### Clockwork
