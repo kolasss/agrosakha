@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130910022439) do
+ActiveRecord::Schema.define(:version => 20150401050205) do
 
   create_table "buys", :force => true do |t|
     t.string   "title",                               :null => false
@@ -67,6 +67,14 @@ ActiveRecord::Schema.define(:version => 20130910022439) do
 
   create_table "count_types", :force => true do |t|
     t.string   "name",       :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "feeds", :force => true do |t|
+    t.string   "title"
+    t.text     "body"
+    t.text     "body_cache"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

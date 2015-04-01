@@ -1,0 +1,15 @@
+- content_for :title do
+  = @feed.title
+- content_for :description do
+  = "Информация о "+ @feed.title
+
+/ %p#notice= notice
+- if can? :update, @feed
+  = link_to 'Изменить', edit_feed_path(@feed), class: "btn-u btn-u-blue btn-u-small headbtn"
+%h2
+  = @feed.title
+%p
+  = raw @feed.body
+
+- if can? :update, @feed
+  = link_to 'Назад', :back, class: "btn"

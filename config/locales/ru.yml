@@ -32,6 +32,9 @@ ru:
       post:
         one: "Статью"
         other: "Статьи"
+      feed:
+        one: "Статью"
+        other: "Статьи"
       region:
         one: "Район"
         other: "Районы"

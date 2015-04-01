@@ -1,0 +1,18 @@
+%h3 Новости
+
+- @feeds.each do |feed|
+  .post
+    %h4
+      = link_to feed.title, feed
+      - if can? :update, feed
+        = link_to 'Изменить', edit_feed_path(feed), class: "btn btn-mini headbtn"
+      - if can? :destroy, feed
+        = link_to 'Удалить', feed, :method => :delete, :data => { :confirm => 'Вы уверены?' }, class: "btn btn-mini btn-danger headbtn"
+    %p
+      = raw feed.shorten
+    .clearfix
+      = link_to 'Подробнее', feed, class: "btn pull-right"
+
+%br
+- if can? :create, Feed
+  = link_to 'Добавить новость', new_feed_path, class: 'btn'
