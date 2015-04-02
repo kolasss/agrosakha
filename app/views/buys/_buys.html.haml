@@ -3,7 +3,7 @@
     %thead
       %tr
         %th Дата
-        %th Фото
+        %th.hidden-phone.hidden-tablet  Фото
         %th Наименование
         %th.hidden-phone.hidden-tablet Район
         %th.hidden-phone.hidden-tablet Единица
@@ -15,7 +15,7 @@
             = custom_format(buy.updated_at)
             %br
             = buy.updated_at.to_s :time
-          %td.thumb_img
+          %td.thumb_img.hidden-phone.hidden-tablet 
             = link_to image_tag(buy.image.url(:thumb), alt: "", itemprop: "image"), buy
           %td
             %p.category{itemprop: "category"}
@@ -52,7 +52,7 @@
           %td.hidden-phone.hidden-tablet
           %td
 
-     
+
 .well.well-small
   = will_paginate @buys, renderer: BootstrapPagination::Rails
 
