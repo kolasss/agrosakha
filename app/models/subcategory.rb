@@ -5,9 +5,17 @@ class Subcategory < ActiveRecord::Base
   has_and_belongs_to_many :profiles
 
   before_validation :set_image
-  
-  attr_accessible :name, :category_id, :default_image, :sort_id
 
+  attr_accessible :name, :category_id, :default_image, :sort_id
+  has_attached_file :default_image,
+    :styles => {
+      :thumb => {:geometry => "100x100>"},
+      :large => {:geometry => "500x500>"}
+    }
+
+  validates_attachment :default_image,
+    :content_type => { :content_type => ['image/jpeg', 'image/png', 'image/gif', 'image/jpg'] },
+    :size => { :in => 10..300.kilobytes }
   validates :name, :presence => true
   validates :category_id, :presence => true
   validates :default_image, :presence => true

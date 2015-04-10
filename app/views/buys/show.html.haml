@@ -4,7 +4,7 @@
   = "Продажа "+ (@buy.subcategory.nil? ? @buy.category.name : @buy.subcategory.name) + (@buy.city.nil? ? "" : " в " + @buy.city.region.name + ' район, ' + @buy.city.name) + (" от " + @buy.user.profile.name)
 - content_for :keywords do
   = @buy.subcategory.nil? ? @buy.category.name : @buy.category.name+", "+@buy.subcategory.name
-  
+
 / %p#notice= notice
 - if can? :update, @buy
   = link_to 'Изменить', edit_buy_path(@buy), class: "btn-u btn-u-blue btn-u-small headbtn"
@@ -12,7 +12,10 @@
   = @buy.title
 - if @buy.image.file?
   .thumbnail
-    = image_tag @buy.image.url(:large)
+    - if @buy.image_file_name == 'missing.png'
+      = image_tag("/images/missing/large/missing.png")
+    - else
+      = image_tag @buy.image.url(:large)
 %p
   = raw @buy.body
 %table.table.table-condensed.table-striped
@@ -23,43 +26,43 @@
       = number_to_currency @buy.price, strip_insignificant_zeros: true
       = ' за ' + @buy.count_type.name if @buy.count_type
   %tr
-    %td 
+    %td
       Количество
     %td
       = number_with_precision @buy.count, precision: 2, strip_insignificant_zeros: true
       = ' ' + @buy.count_type.name if @buy.count_type
   %tr
-    %td 
+    %td
       Категория
     %td
       = @buy.category.name
       = "/ " + @buy.subcategory.name if @buy.subcategory
   - if @buy.city
     %tr
-      %td 
+      %td
         Населенный пункт
       %td
         = @buy.city.region.name + ' район'
         = "/ " + @buy.city.name
   %tr
-    %td 
+    %td
       Организация
     %td
       = link_to @buy.user.profile.name, @buy.user.profile if @buy.user.profile
   - if @buy.user.profile.phone && !@buy.user.profile.phone.blank?
     %tr
-      %td 
+      %td
         Телефон
       %td
         = @buy.user.profile.phone
   - if @buy.user.profile.address && !@buy.user.profile.address.blank?
     %tr
-      %td 
+      %td
         Адрес
       %td
         = @buy.user.profile.address
   %tr
-    %td 
+    %td
       Создано
     %td
       = l(@buy.updated_at, :format => :long)

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150401050205) do
+ActiveRecord::Schema.define(:version => 20150410064117) do
 
   create_table "buys", :force => true do |t|
     t.string   "title",                               :null => false
@@ -40,11 +40,14 @@ ActiveRecord::Schema.define(:version => 20150401050205) do
   add_index "buys", ["user_id"], :name => "index_buys_on_user_id"
 
   create_table "categories", :force => true do |t|
-    t.string   "name",                         :null => false
-    t.datetime "created_at",                   :null => false
-    t.datetime "updated_at",                   :null => false
-    t.string   "default_image"
-    t.integer  "sort_id",       :default => 0, :null => false
+    t.string   "name",                                      :null => false
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
+    t.string   "default_image_file_name"
+    t.integer  "sort_id",                    :default => 0, :null => false
+    t.string   "default_image_content_type"
+    t.integer  "default_image_file_size"
+    t.datetime "default_image_updated_at"
   end
 
   add_index "categories", ["sort_id"], :name => "index_categories_on_sort_id"
@@ -164,12 +167,15 @@ ActiveRecord::Schema.define(:version => 20150401050205) do
   add_index "sells", ["user_id"], :name => "index_sells_on_user_id"
 
   create_table "subcategories", :force => true do |t|
-    t.string   "name",                         :null => false
+    t.string   "name",                                      :null => false
     t.integer  "category_id"
-    t.datetime "created_at",                   :null => false
-    t.datetime "updated_at",                   :null => false
-    t.string   "default_image"
-    t.integer  "sort_id",       :default => 0, :null => false
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
+    t.string   "default_image_file_name"
+    t.integer  "sort_id",                    :default => 0, :null => false
+    t.string   "default_image_content_type"
+    t.integer  "default_image_file_size"
+    t.datetime "default_image_updated_at"
   end
 
   add_index "subcategories", ["category_id"], :name => "index_subcategories_on_category_id"

@@ -4,6 +4,10 @@
   .form-inputs
     = f.input :name
     = f.association :category, :selected => params[:category] ? params[:category] : @subcategory.category_id
+    - if @subcategory.default_image_file_name == 'missing.png'
+      = image_tag("/images/missing/large/#{@subcategory.default_image_file_name}", class: "img-polaroid")
+    - else
+      = image_tag("#{@subcategory.default_image.url(:large)}", class: "img-polaroid")
     = f.input :default_image, as: :file
     = f.input :sort_id
 

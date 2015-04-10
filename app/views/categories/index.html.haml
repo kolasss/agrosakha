@@ -14,7 +14,11 @@
     - @categories.each do |category|
       %tr
         %td= category.sort_id
-        %td= image_tag("/images/missing/thumb/#{category.default_image}", class: "img-polaroid")
+        %td
+          - if category.default_image_file_name == 'missing.png'
+            = image_tag("/images/missing/thumb/#{category.default_image_file_name}", class: "img-polaroid")
+          - else
+            = image_tag("#{category.default_image.url(:thumb)}", class: "img-polaroid")
         %td= link_to category.name, category
         %td
           - if can? :update, category

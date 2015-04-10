@@ -15,8 +15,11 @@
             = custom_format(sell.updated_at)
             %br
             = sell.updated_at.to_s :time
-          %td.thumb_img.hidden-phone.hidden-tablet 
-            = link_to image_tag(sell.image.url(:thumb), alt: "", itemprop: "image"), sell
+          %td.thumb_img.hidden-phone.hidden-tablet
+            - if sell.image_file_name == 'missing.png'
+              = link_to image_tag("/images/missing/thumb/missing.png", alt: "", itemprop: "image"), sell
+            - else
+              = link_to image_tag("#{sell.image.url(:thumb)}", alt: "", itemprop: "image"), sell
           %td
             %p.category{itemprop: "category"}
               = sell.category.name if sell.category

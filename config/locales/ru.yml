@@ -59,6 +59,12 @@ ru:
               in_between: "Размер файла должен быть меньше %{max}"
             image_content_type:
               invalid: "Неверный тип файла"
+        subcategory:
+          attributes:
+            default_image_file_size:
+              in_between: "Размер файла должен быть меньше %{max}"
+            default_image_content_type:
+              invalid: "Неверный тип файла"
   unauthorized:
     manage:
       all: "Доступ запрещен."

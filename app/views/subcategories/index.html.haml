@@ -15,7 +15,11 @@
     - @subcategories.each do |subcategory|
       %tr
         %td= subcategory.sort_id
-        %td= image_tag("/images/missing/thumb/#{subcategory.default_image}", class: "img-polaroid")
+        %td
+          - if subcategory.default_image_file_name == 'missing.png'
+            = image_tag("/images/missing/thumb/#{subcategory.default_image_file_name}", class: "img-polaroid")
+          - else
+            = image_tag("#{subcategory.default_image.url(:thumb)}", class: "img-polaroid")
         %td= link_to subcategory.name, subcategory
         %td= subcategory.category.name
         %td= link_to 'Изменить', edit_subcategory_path(subcategory), :class => 'btn btn-mini'

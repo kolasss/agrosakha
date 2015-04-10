@@ -12,7 +12,10 @@
   = @sell.title
 - if @sell.image.file?
   .thumbnail
-    = image_tag @sell.image.url(:large)
+    - if @sell.image_file_name == 'missing.png'
+      = image_tag("/images/missing/large/missing.png")
+    - else
+      = image_tag @sell.image.url(:large)
 %p
   = raw @sell.body
 %table.table.table-condensed.table-striped
@@ -23,43 +26,43 @@
       = number_to_currency @sell.price, strip_insignificant_zeros: true
       = ' за ' + @sell.count_type.name if @sell.count_type
   %tr
-    %td 
+    %td
       Количество
     %td
       = number_with_precision @sell.count, precision: 2, strip_insignificant_zeros: true
       = ' ' + @sell.count_type.name if @sell.count_type
   %tr
-    %td 
+    %td
       Категория
     %td
       = @sell.category.name
       = "/ " + @sell.subcategory.name if @sell.subcategory
   - if @sell.city
     %tr
-      %td 
+      %td
         Населенный пункт
       %td
         = @sell.city.region.name + ' район'
         = "/ " + @sell.city.name
   %tr
-    %td 
+    %td
       Организация
     %td
       = link_to @sell.user.profile.name, @sell.user.profile
   - unless @sell.user.profile.phone.blank?
     %tr
-      %td 
+      %td
         Телефон
       %td
         = @sell.user.profile.phone
   - unless @sell.user.profile.address.blank?
     %tr
-      %td 
+      %td
         Адрес
       %td
         = @sell.user.profile.address
   %tr
-    %td 
+    %td
       Создано
     %td
       = l(@sell.updated_at, :format => :long)

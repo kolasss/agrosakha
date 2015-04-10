@@ -12,8 +12,8 @@
         = render :partial => "subcats"
 
     - if cannot? :create, Sell
-      %p.muted 
-        Для создания объявлений о продаже Вы должны подтвердить реквизиты Вашей организации: 
+      %p.muted
+        Для создания объявлений о продаже Вы должны подтвердить реквизиты Вашей организации:
         = link_to 'Контакты', root_path + "posts/3"
     - if params[:action] == "new"
       = f.input :type, :collection => [['Предложение',true] ,['Спрос', false]], :as => :radio_buttons, :item_wrapper_class => 'inline', :label => 'Тип объявления', checked: false, disabled: true
@@ -44,8 +44,11 @@
     /   -if f.error :image_file_size
     /     %li= f.error :image_file_size
     - if @buy.image.file? && params[:action] == "edit"
-      .thumbnail.well 
-        = image_tag @buy.image.url(:large)
+      .thumbnail.well
+        - if @sell.image_file_name == 'missing.png'
+          = image_tag("/images/missing/large/missing.png")
+        - else
+          = image_tag("#{@sell.image.url(:large)}")
 
     = f.input :price, :hint_html => { :class => "inline_hint" }, input_html: { class: 'count_input' }
     = f.input :count, :wrapper_html => { :class => "inline_field_wrapper" }, input_html: { class: 'count_input' }

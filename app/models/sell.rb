@@ -16,6 +16,7 @@ class Sell < ActiveRecord::Base
   validates :count_type_id, :presence => true
   validates :price, :presence => true, :numericality => { :greater_than_or_equal_to => 0 }
 
+  before_validation :set_image
   self.per_page = 20
 
   default_scope order('updated_at DESC')
@@ -29,7 +30,25 @@ class Sell < ActiveRecord::Base
   validates_attachment :image,
     :content_type => { :content_type => ['image/jpeg', 'image/png', 'image/gif', 'image/jpg'] },
     :size => { :in => 10..300.kilobytes }
-
+  def set_image
+    if image.blank?
+      if subcategory.nil?
+        unless category.default_image_file_name == 'missing.png'
+          image_buff = category.default_image
+          self.image = image_buff
+        else
+          self.image_file_name = 'missing.png'
+        end
+      else
+        unless subcategory.default_image_file_name == 'missing.png'
+          image_buff = subcategory.default_image
+          self.image = image_buff
+        else
+          self.image_file_name = 'missing.png'
+        end
+      end
+    end
+  end
 
   #parse from google analytics
   def self.update_from_ga

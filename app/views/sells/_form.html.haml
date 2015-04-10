@@ -40,8 +40,11 @@
     /   -if f.error :image_file_size
     /     %li= f.error :image_file_size
     - if @sell.image.file? && params[:action] == "edit"
-      .thumbnail.well 
-        = image_tag @sell.image.url(:large)
+      .thumbnail.well
+        - if @sell.image_file_name == 'missing.png'
+          = image_tag("/images/missing/large/missing.png")
+        - else
+          = image_tag("#{@sell.image.url(:large)}")
 
     = f.input :price, :hint_html => { :class => "inline_hint" }, input_html: { class: 'count_input' }
     = f.input :count, :wrapper_html => { :class => "inline_field_wrapper" }, input_html: { class: 'count_input' }
